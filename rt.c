@@ -25,16 +25,19 @@ static gboolean on_draw_event(GtkWidget *widget, cairo_t *cr,
 /* actual drawing function*/
 static void do_drawing(cairo_t *cr)
 {
-	/* set source colour black*/
 	double x,y;
+	t_camera camera;
+	t_sphere sphere1;
+
 	x = 0;
 	y = 0;
-	while (x <= 800)
+	camera = init_camera(init_p3(0, 0, 0), init_p3(0, 0, 1));
+	t_sphere = init_sphere(init_p3(0, 0, 30), 10);
+	while (x <= W_W)
 	{
-		while (y <= 800)
+		while (y <= W_H)
 		{
-			cairo_set_source_rgb(cr, x/2,y/2,0);
-			put_pixel(cr, x, y);
+
 			y++;
 		}
 		y = 0;
@@ -61,9 +64,9 @@ int main(int argc, char *argv[])
 					 G_CALLBACK(gtk_main_quit), NULL);
 
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-	gtk_window_set_default_size(GTK_WINDOW(window), 800, 800);
+	gtk_window_set_default_size(GTK_WINDOW(window), W_H, W_W);
 	gtk_window_set_resizable (GTK_WINDOW(window), FALSE);
-	gtk_window_set_title(GTK_WINDOW(window), "GTK window");
+	gtk_window_set_title(GTK_WINDOW(window), "RTv1");
 
 	gtk_widget_show_all(window);
 

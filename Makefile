@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= Rtv1
-SRC := rt.c draw.c
+SRC := rt.c draw.c inits.c
 OBJ := $(SRC:%.c=%.o)
 CFLAGS := `pkg-config --cflags --libs gtk+-3.0`
 LIB_FLAG :=  -L libft/ -lft -O0 `pkg-config --cflags --libs gtk+-3.0`
