@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= Rtv1
-SRC := rt.c draw.c inits.c
+NAME= Wolf3D
+SRC :=	src/
 OBJ := $(SRC:%.c=%.o)
-CFLAGS := `pkg-config --cflags --libs gtk+-3.0`
-LIB_FLAG :=  -L libft/ -lft -O0 `pkg-config --cflags --libs gtk+-3.0`
-LINUX_FLAG := -L libft/ -lft -O0 `pkg-config --cflags --libs gtk+-3.0` -lm
-INCLUDES := `pkg-config --cflags --libs gtk+-3.0` .
+CFLAGS := -Wall -Wextra -Werror -I includes
+LIB_FLAG :=  -L libft/ -lft `sdl2-config --libs --cflags` -O0
+LINUX_FLAG := -L libft/ -lft `sdl2-config --libs --cflags` -O0  -lm
+INCLUDES := includes SDL2
 
 all: $(NAME)
 
