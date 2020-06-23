@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= Wolf3D
-SRC :=	src/
+NAME= RTv1
+SRC :=	src/inits.c src/linal.c src/main.c src/trace.c
 OBJ := $(SRC:%.c=%.o)
 CFLAGS := -Wall -Wextra -Werror -I includes
 LIB_FLAG :=  -L libft/ -lft `sdl2-config --libs --cflags` -O0

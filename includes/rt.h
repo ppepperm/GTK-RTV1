@@ -67,4 +67,14 @@ typedef struct		s_rgb
 t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double	sc_mult(t_p3 a, t_p3 b);
 
+t_ray	get_ray(t_camera camera, double x, double y);
+t_p2	ray_trace(t_ray ray, t_sphere sphere);
+
+t_p2		init_p2(double x, double y);
+t_p3		init_p3(double x, double y, double z);
+t_ray		init_ray(t_p3 pos, t_p3 dir);
+t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z);
+t_sphere	init_sphere(t_p3 pos, double r);
+t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+
 #endif

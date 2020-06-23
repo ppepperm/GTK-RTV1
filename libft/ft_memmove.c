@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linal.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/21 21:16:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/21 21:16:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/04 18:40:37 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/12 18:33:30 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "libft.h"
 
-t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_p3 ret;
+	char		*d;
+	const char	*s;
 
-	ret.x = k1*a.x + k2*b.x;
-	ret.y = k1*a.y + k2*b.y;
-	ret.z = k1*a.z + k2*b.z;
-	return (ret);
-}
-
-double	sc_mult(t_p3 a, t_p3 b)
-{
-	return (a.x*b.x + a.y*b.y + a.z*b.z);
+	d = dst;
+	s = src;
+	if (dst == src)
+		return (dst);
+	if (dst <= src)
+	{
+		while (len--)
+		{
+			*d++ = *s++;
+		}
+	}
+	else
+	{
+		d += len;
+		s += len;
+		while (len--)
+		{
+			*--d = *--s;
+		}
+	}
+	return (dst);
 }

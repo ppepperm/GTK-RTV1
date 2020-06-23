@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linal.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/21 21:16:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/21 21:16:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/05 14:15:00 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/12 18:38:06 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "libft.h"
 
-t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_p3 ret;
+	const char *ret;
 
-	ret.x = k1*a.x + k2*b.x;
-	ret.y = k1*a.y + k2*b.y;
-	ret.z = k1*a.z + k2*b.z;
-	return (ret);
-}
-
-double	sc_mult(t_p3 a, t_p3 b)
-{
-	return (a.x*b.x + a.y*b.y + a.z*b.z);
+	ret = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			ret = s;
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char*)s);
+	return ((char*)ret);
 }

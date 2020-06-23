@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linal.c                                            :+:      :+:    :+:   */
+/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/21 21:16:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/21 21:16:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/13 18:16:27 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/15 16:08:14 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "libft.h"
 
-t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2)
+void	ft_lstpushback(t_list **head, t_list *node)
 {
-	t_p3 ret;
+	t_list *save;
 
-	ret.x = k1*a.x + k2*b.x;
-	ret.y = k1*a.y + k2*b.y;
-	ret.z = k1*a.z + k2*b.z;
-	return (ret);
-}
-
-double	sc_mult(t_p3 a, t_p3 b)
-{
-	return (a.x*b.x + a.y*b.y + a.z*b.z);
+	if (!*head)
+		*head = node;
+	else
+	{
+		save = *head;
+		while (save->next)
+			save = save->next;
+		save->next = node;
+	}
 }

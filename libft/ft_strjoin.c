@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linal.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/21 21:16:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/21 21:16:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/06 12:00:32 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/12 18:36:37 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "libft.h"
 
-t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_p3 ret;
+	int		len1;
+	int		len2;
+	char	*tmp;
+	char	*ret;
 
-	ret.x = k1*a.x + k2*b.x;
-	ret.y = k1*a.y + k2*b.y;
-	ret.z = k1*a.z + k2*b.z;
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!(tmp = (char*)malloc(sizeof(char) * (len1 + len2 + 1))))
+		return (NULL);
+	ret = tmp;
+	while (len1--)
+	{
+		*tmp = *s1++;
+		tmp++;
+	}
+	while (len2--)
+	{
+		*tmp = *s2++;
+		tmp++;
+	}
+	*tmp = 0;
 	return (ret);
-}
-
-double	sc_mult(t_p3 a, t_p3 b)
-{
-	return (a.x*b.x + a.y*b.y + a.z*b.z);
 }

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linal.c                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/21 21:16:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/21 21:16:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/07 17:45:41 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/12 18:32:37 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "libft.h"
 
-t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	t_p3 ret;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	ret.x = k1*a.x + k2*b.x;
-	ret.y = k1*a.y + k2*b.y;
-	ret.z = k1*a.z + k2*b.z;
-	return (ret);
-}
-
-double	sc_mult(t_p3 a, t_p3 b)
-{
-	return (a.x*b.x + a.y*b.y + a.z*b.z);
+	d = dst;
+	s = src;
+	while (n)
+	{
+		*d = *s;
+		d++;
+		if (*s == (unsigned char)c)
+			return ((void*)d);
+		s++;
+		n--;
+	}
+	return (NULL);
 }
