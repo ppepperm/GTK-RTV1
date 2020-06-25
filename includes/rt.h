@@ -20,9 +20,9 @@
 # include <stdio.h>
 
 # define W_H		800.0
-# define W_W		800.0
+# define W_W		1000.0
 # define V_W		1.0
-# define V_H		1.0
+# define V_H		0.8
 # define C_Z		2.0
 
 typedef struct		s_p2

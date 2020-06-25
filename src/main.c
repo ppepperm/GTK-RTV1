@@ -36,7 +36,7 @@ int main( void)
 	win_tex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
 
 	camera = init_camera(init_p3(0, 0, 0), init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
-	sphere = init_sphere(init_p3(0, 3 , 15), 1);
+	sphere = init_sphere(init_p3(2, 1 , 15), 1);
 	SDL_LockTexture(win_tex, NULL, &tmp, &pitch);
 	win_buff = (unsigned char *)tmp;
 	i = 0;
