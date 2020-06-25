@@ -23,7 +23,8 @@
 # define W_W		1080.0
 # define V_W		1.08
 # define V_H		0.72
-# define C_Z		2.0
+# define C_Z		1.0
+# define T_SPHERE	1
 
 typedef struct		s_p2
 {
@@ -65,6 +66,20 @@ typedef struct		s_rgb
 	unsigned char	b;
 	unsigned char	a;
 }					t_rgb;
+
+typedef struct 		s_object
+{
+	void			*data;
+	unsigned char	type;
+	t_rgb			colour;
+	s_object		*next;
+}					t_object;
+
+typedef struct 		s_scene
+{
+	t_camera		camera;
+	t_object		*objects;
+}					t_scene;
 
 t_p3	lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double	sc_mult(t_p3 a, t_p3 b);
