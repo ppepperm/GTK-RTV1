@@ -36,12 +36,7 @@ int main( void)
 	win_tex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
 
 	camera = init_camera(init_p3(0, 0, 0), init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
-	sphere = init_sphere(init_p3(0, 0 , 4), 3);
-
-	//ray = init_ray(camera.pos, init_p3(0, 0, 1));
-	//roots = ray_trace(ray, sphere);
-	//printf("%f %f\n",roots.x, roots.y);
-
+	sphere = init_sphere(init_p3(0, 3 , 15), 1);
 	SDL_LockTexture(win_tex, NULL, &tmp, &pitch);
 	win_buff = (unsigned char *)tmp;
 	i = 0;
@@ -55,11 +50,6 @@ int main( void)
 			roots = roots;
 			if (roots.x >= 0 && roots.y >= 0)
 			{
-				//ft_putstr("dot ");
-				/*ft_putnbr(i);
-				ft_putchar(' ');
-				ft_putnbr(j);
-				ft_putchar('\n');*/
 				win_buff[i * 4 + 0 + j * pitch] = 0xff;
 				win_buff[i * 4 + 1 + j * pitch] = 0x0;
 				win_buff[i * 4 + 2 + j * pitch] = 0x0;
