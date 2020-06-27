@@ -90,3 +90,14 @@ void *return_plane(char** nums)
 	plane->d = ft_atoi(nums[4]);
 	return ((void*)plane);
 }
+
+void *return_cone(char** nums)
+{
+	t_cone *cone;
+
+	cone = (t_cone*)malloc(sizeof(t_cone));
+	cone->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
+	cone->r = ft_atoi(nums[4]);
+	cone->c = ft_atoi(nums[5]);
+	return ((void*)cone);
+}

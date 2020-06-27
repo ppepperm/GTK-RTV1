@@ -34,6 +34,12 @@ static void	read_obj(int fd, t_scene *scene)
 			object->data = return_plane(nums);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
 		}
+		else if(!ft_strcmp(nums[0], "cone"))
+		{
+			object->type = T_CONE;
+			object->data = return_cone(nums);
+			object->colour = init_rgb(ft_atoi(nums[6]), ft_atoi(nums[7]), ft_atoi(nums[8]), 255);
+		}
 		object->next = scene->objects;
 		scene->objects = object;
 		free_nums(nums);

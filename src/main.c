@@ -21,7 +21,6 @@ int main( void)
 	unsigned char	*win_buff;
 	void			*tmp;
 	int 			pitch;
-	//t_sphere		*iter_s;
 	t_scene			scene;
 
 	SDL_Init( SDL_INIT_VIDEO );
@@ -31,20 +30,7 @@ int main( void)
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer);
 	win_tex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
-
 	scene = read_scene("scene");
-	/*while (scene.objects)
-	{
-		if (scene.objects->type == T_SPHERE)
-		{
-			iter_s = (t_sphere*)scene.objects->data;
-			printf("%f %f %f %f %d %d %d\n", iter_s->pos.x, iter_s->pos.y, iter_s->pos.z, iter_s->r, (int)scene.objects->colour.r,
-				   (int)scene.objects->colour.g, (int)scene.objects->colour.b);
-
-		}
-		scene.objects = scene.objects->next;
-	}*/
-
 	SDL_LockTexture(win_tex, NULL, &tmp, &pitch);
 	win_buff = (unsigned char *)tmp;
 	draw_scene(scene, win_buff, pitch);
