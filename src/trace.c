@@ -72,7 +72,7 @@ t_p2		intersect_cone(t_ray ray, t_cone cone)
 	c = cone.r/cone.c;
 	k.x = (ray.dir.x*ray.dir.x + ray.dir.z*ray.dir.z - ray.dir.y*ray.dir.y*c*c);
 	k.y = 2*(ray.dir.x*t_pos.x + ray.dir.z*t_pos.z - ray.dir.y*t_pos.y*c*c);
-	k.z = (t_pos.x*t_pos.x + t_pos.z*t_pos.z + t_pos.y*t_pos.y*c*c);
+	k.z = (t_pos.x*t_pos.x + t_pos.z*t_pos.z - t_pos.y*t_pos.y*c*c);
 	d = k.y * k.y - 4 * k.x * k.z;
 	if (d >= 0)
 	{
