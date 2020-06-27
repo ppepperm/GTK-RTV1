@@ -70,3 +70,23 @@ t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char
 	ret.a = a;
 	return (ret);
 }
+
+void *return_sphere(char** nums)
+{
+	t_sphere *sphere;
+
+	sphere = (t_sphere*)malloc(sizeof(t_sphere));
+	sphere->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
+	sphere->r = ft_atoi(nums[4]);
+	return ((void*)sphere);
+}
+
+void *return_plane(char** nums)
+{
+	t_plane *plane;
+
+	plane = (t_plane*)malloc(sizeof(t_plane));
+	plane->dir = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
+	plane->d = ft_atoi(nums[4]);
+	return ((void*)plane);
+}
