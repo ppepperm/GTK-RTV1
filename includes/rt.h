@@ -27,6 +27,7 @@
 # define T_SPHERE	1
 # define T_PLANE	2
 # define T_CONE		3
+# define T_CYLINDER	4
 
 typedef struct 		s_i2
 {
@@ -72,6 +73,12 @@ typedef struct		s_cone
 	double c;
 }					t_cone;
 
+typedef struct		s_cylinder
+{
+	t_p3 pos;
+	double r;
+}					t_cylinder;
+
 typedef struct		s_camera
 {
 	t_p3 pos;
@@ -87,6 +94,13 @@ typedef struct		s_rgb
 	unsigned char	b;
 	unsigned char	a;
 }					t_rgb;
+
+typedef struct		s_transform
+{
+	t_p3 x_dir;
+	t_p3 y_dir;
+	t_p3 z_dir;
+}					t_transform;
 
 typedef struct 		s_object
 {
@@ -110,6 +124,7 @@ t_ray		get_ray(t_camera camera, double x, double y);
 t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
 t_p2		intersect_plane(t_ray ray, t_plane plane);
 t_p2		intersect_cone(t_ray ray, t_cone cone);
+t_p2		intersect_cylinder(t_ray ray, t_cylinder cylinder);
 void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
 
 t_scene		read_scene(char *fname);
@@ -125,5 +140,6 @@ t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char
 void		*return_sphere(char** nums);
 void		*return_plane(char** nums);
 void		*return_cone(char** nums);
+void		*return_cylinder(char** nums);
 
 #endif

@@ -60,7 +60,7 @@ t_p2			intersect_plane(t_ray ray, t_plane plane)
 	return (roots);
 }
 
-t_p2		intersect_cone(t_ray ray, t_cone cone)
+t_p2			intersect_cone(t_ray ray, t_cone cone)
 {
 	t_p2 roots;
 	t_p3 k;
@@ -80,9 +80,31 @@ t_p2		intersect_cone(t_ray ray, t_cone cone)
 		roots.y = (-k.y + sqrt(d))/(2*k.x);
 	}
 	else
-	{
 		roots = init_p2(-1, -1);
+	return (roots);
+}
+
+t_p2			intersect_cylinder(t_ray ray, t_cylinder cylinder)
+{
+	t_p2 roots;
+	t_p3 k;
+	t_p3 t_pos;
+	double d;
+
+	t_pos = lin_comb(ray.pos, 1, cylinder.pos, -1);
+	k.x = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z;
+	k.y = 2 * (t_pos.x * ray.dir.x + t_pos.z * ray.dir.z);
+	k.z = t_pos.x * t_pos.x + t_pos.z * t_pos.z - cylinder.r * cylinder.r;
+	d = k.y * k.y - 4 * k.x * k.z;
+	if (d >= 0)
+	{
+		roots.x = (-k.y - sqrt(d))/(2*k.x);
+		roots.y = (-k.y + sqrt(d))/(2*k.x);
+
 	}
+	else
+		roots = init_p2(-1, -1);
+	//printf("%f %f\n",roots.x, d);
 	return (roots);
 }
 
@@ -103,6 +125,8 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 			new_roots = intersect_plane(ray, *((t_plane*)scene.objects->data));
 		if (scene.objects->type == T_CONE)
 			new_roots = intersect_cone(ray, *((t_cone *) scene.objects->data));
+		if (scene.objects->type == T_CYLINDER)
+			new_roots = intersect_cylinder(ray, *((t_cylinder*) scene.objects->data));
 
 		if(new_roots.x >= 0 && new_roots.y >= 0)
 		{

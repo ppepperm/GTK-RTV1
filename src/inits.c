@@ -101,3 +101,14 @@ void *return_cone(char** nums)
 	cone->c = ft_atoi(nums[5]);
 	return ((void*)cone);
 }
+
+void *return_cylinder(char** nums)
+{
+	t_cylinder *cylinder;
+
+	cylinder = (t_cylinder*)malloc(sizeof(t_cylinder));
+	cylinder->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
+	cylinder->r = ft_atoi(nums[4]);
+	//printf("%f %f %f %f\n", cylinder->pos.x, cylinder->pos.y, cylinder->pos.z, cylinder->r);
+	return ((void*)cylinder);
+}
