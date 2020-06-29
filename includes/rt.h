@@ -48,6 +48,14 @@ typedef struct		s_p3
 	double			z;
 }					t_p3;
 
+typedef struct 		s_q
+{
+	double			s;
+	double 			i;
+	double 			j;
+	double 			k;
+}					t_q;
+
 typedef struct		s_ray
 {
 	t_p3 pos;
@@ -119,6 +127,7 @@ typedef struct 		s_scene
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
+void		normalize(t_p3 *vec);
 t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_ray		get_ray(t_camera camera, double x, double y);
@@ -134,6 +143,7 @@ void		free_nums(char **nums);
 
 t_p2		init_p2(double x, double y);
 t_p3		init_p3(double x, double y, double z);
+t_q			init_q(double s, double i, double j, double k);
 t_ray		init_ray(t_p3 pos, t_p3 dir);
 t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z);
 t_sphere	init_sphere(t_p3 pos, double r);
@@ -142,5 +152,12 @@ void		*return_sphere(char** nums);
 void		*return_plane(char** nums);
 void		*return_cone(char** nums);
 void		*return_cylinder(char** nums);
+
+t_q		init_rotor(t_p3 axis, double angle);
+t_q		q_inverse(t_q base);
+t_q		q_multiply(t_q q, t_q p);
+t_p3	rotate(t_p3 dot, t_p3 axis, double angle);
+
+
 
 #endif

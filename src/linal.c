@@ -59,10 +59,6 @@ t_ray ray_transform(t_ray ray, t_transform t, t_p3 pos)
 	(t.x_dir.x*t.y_dir.y - t.x_dir.y*t.y_dir.x));
 	inv.z_dir = lin_comb(inv.z_dir, 1/det, init_p3(0, 0, 0), 0);
 
-	/*printf(" %f %f %f\n %f %f %f\n %f %f %f", inv.x_dir.x, inv.y_dir.x , inv.z_dir.x,\
-	inv.x_dir.y, inv.y_dir.y , inv.z_dir.y,\
-	inv.x_dir.z, inv.y_dir.z , inv.z_dir.z);*/
-
 	ray.pos = lin_comb(ray.pos, 1, pos, -1);
 	new_ray.pos = lin_comb(inv.x_dir, ray.pos.x, inv.y_dir, ray.pos.y);
 	new_ray.pos = lin_comb(new_ray.pos, 1, inv.z_dir, ray.pos.z);
@@ -70,4 +66,14 @@ t_ray ray_transform(t_ray ray, t_transform t, t_p3 pos)
 	new_ray.dir = lin_comb(new_ray.dir, 1, inv.z_dir, ray.pos.z);
 
 	return (new_ray);
+}
+
+void	normalize(t_p3 *vec)
+{
+	double abs;
+
+	abs = sqrt(vec->x*vec->x + vec->y*vec->y + vec->z*vec->z);
+	vec->x /= abs;
+	vec->y /= abs;
+	vec->z /= abs;
 }

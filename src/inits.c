@@ -31,6 +31,17 @@ t_p3		init_p3(double x, double y, double z)
 	return (ret);
 }
 
+t_q init_q(double s, double i, double j, double k)
+{
+	t_q ret;
+
+	ret.s = s;
+	ret.i = i;
+	ret.j = j;
+	ret.k = k;
+	return ret;
+}
+
 t_ray		init_ray(t_p3 pos, t_p3 dir)
 {
 	t_ray ret;
@@ -109,6 +120,5 @@ void *return_cylinder(char** nums)
 	cylinder = (t_cylinder*)malloc(sizeof(t_cylinder));
 	cylinder->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
 	cylinder->r = ft_atoi(nums[4]);
-	//printf("%f %f %f %f\n", cylinder->pos.x, cylinder->pos.y, cylinder->pos.z, cylinder->r);
 	return ((void*)cylinder);
 }
