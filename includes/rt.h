@@ -119,6 +119,7 @@ typedef struct 		s_scene
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
+t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_ray		get_ray(t_camera camera, double x, double y);
 t_p2		intersect_sphere(t_ray ray, t_sphere sphere);

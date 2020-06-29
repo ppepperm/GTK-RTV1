@@ -55,7 +55,7 @@ t_p2			intersect_plane(t_ray ray, t_plane plane)
 	den = sc_mult(ray.dir, plane.dir);
 	if (den == 0)
 		return (init_p2(-1, -1));
-	num =-plane.d - sc_mult(ray.pos, plane.dir);
+	num =plane.d - sc_mult(ray.pos, plane.dir);
 	roots = init_p2(num/den, num/den);
 	return (roots);
 }

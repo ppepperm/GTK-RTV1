@@ -35,7 +35,6 @@ int main( void)
 	win_buff = (unsigned char *)tmp;
 	draw_scene(scene, win_buff, pitch);
 	SDL_UnlockTexture(win_tex);
-
 	while (!(SDL_PollEvent(&event) && event.type == SDL_QUIT))
 	{
 		SDL_RenderCopy(renderer, win_tex, NULL, NULL);
