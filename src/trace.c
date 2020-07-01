@@ -111,11 +111,13 @@ t_p2			intersect_cylinder(t_ray ray, t_cylinder cylinder)
 
 static t_rgb	trace_ray(t_ray ray, t_scene scene)
 {
-	t_rgb colour;
-	t_p2 roots;
-	t_p2 new_roots;
+	t_rgb       colour;
+	t_p2        roots;
+	t_p2        new_roots;
+	t_object    *current;
 
 	colour = init_rgb(255, 255, 255, 255);
+	current = NULL;
 	roots = init_p2(1000000, 1000000);
 	while (scene.objects)
 	{
@@ -134,10 +136,30 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 			{
 				roots = new_roots;
 				colour = scene.objects->colour;
+				current = scene.objects;
 			}
 		}
 		scene.objects = scene.objects->next;
 	}
+	if (!current)
+	    return (colour);
+	if (current->type == T_SPHERE)
+    {
+	    t_p3 inter;
+	    inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
+	    t_p3 norm;
+	    norm = return_norm_sphere(*((t_sphere*)current->data), inter);
+	    t_p3 light = init_p3(1, 1, -1);
+	    normalize(&light);
+	    double cosa;
+	    cosa = sc_mult(norm, light);
+	    if (cosa <0)
+	        cosa = 0;
+	    colour.r = (unsigned char)(colour.r*cosa);
+        colour.g = (unsigned char)(colour.g*cosa);
+        colour.b = (unsigned char)(colour.b*cosa);
+    }
+
 	return colour;
 }
 

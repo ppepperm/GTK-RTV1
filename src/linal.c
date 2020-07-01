@@ -77,3 +77,12 @@ void	normalize(t_p3 *vec)
 	vec->y /= abs;
 	vec->z /= abs;
 }
+
+t_p3    return_norm_sphere(t_sphere sphere, t_p3 inter)
+{
+    t_p3 ret;
+
+    ret = lin_comb(inter, 1, sphere.pos, -1);
+    normalize(&ret);
+    return (ret);
+}

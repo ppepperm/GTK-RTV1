@@ -129,6 +129,7 @@ double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
 void		normalize(t_p3 *vec);
 t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
+t_p3        return_norm_sphere(t_sphere sphere, t_p3 inter);
 
 t_ray		get_ray(t_camera camera, double x, double y);
 t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
