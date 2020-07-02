@@ -28,6 +28,8 @@
 # define T_PLANE	2
 # define T_CONE		3
 # define T_CYLINDER	4
+# define L_DOT      1
+# define L_DIR      2
 
 typedef struct 		s_i2
 {
@@ -130,6 +132,7 @@ typedef struct 		s_scene
 {
 	t_camera		camera;
 	t_object		*objects;
+	t_light         *lights;
 }					t_scene;
 
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
