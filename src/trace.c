@@ -126,13 +126,13 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 		if (scene.objects->type == T_PLANE)
 			new_roots = intersect_plane(ray, *((t_plane*)scene.objects->data));
 		if (scene.objects->type == T_CONE)
-			new_roots = intersect_cone(ray, *((t_cone *) scene.objects->data));
+			new_roots = intersect_cone(ray, *((t_cone*)scene.objects->data));
 		if (scene.objects->type == T_CYLINDER)
-			new_roots = intersect_cylinder(ray, *((t_cylinder*) scene.objects->data));
+			new_roots = intersect_cylinder(ray, *((t_cylinder*)scene.objects->data));
 
 		if(new_roots.x >= 0 && new_roots.y >= 0)
 		{
-			if (min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
+			if(min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
 			{
 				roots = new_roots;
 				colour = scene.objects->colour;
@@ -141,21 +141,74 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 		}
 		scene.objects = scene.objects->next;
 	}
-	if (!current)
+	if(!current)
 	    return (colour);
-	if (current->type == T_SPHERE)
+	if(current->type == T_SPHERE)
     {
 	    t_p3 inter;
 	    inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
 	    t_p3 norm;
 	    norm = return_norm_sphere(*((t_sphere*)current->data), inter);
-	    t_p3 light = init_p3(1, 1, -1);
+	    t_p3 light = init_p3(1, -2, 1);
 	    normalize(&light);
 	    double cosa;
-	    cosa = sc_mult(norm, light);
+	    cosa = -sc_mult(norm, light);
 	    if (cosa <0)
 	        cosa = 0;
+	    cosa = (0.5 + cosa)/1.5;
 	    colour.r = (unsigned char)(colour.r*cosa);
+        colour.g = (unsigned char)(colour.g*cosa);
+        colour.b = (unsigned char)(colour.b*cosa);
+    }
+	else if(current->type == T_PLANE)
+    {
+        t_p3 norm;
+        norm = return_norm_plane(*((t_plane*)current->data));
+        normalize(&norm);
+        t_p3 light = init_p3(1, -2, 1);
+        normalize(&light);
+        double cosa;
+        cosa = -sc_mult(norm, light);
+        if(cosa <0)
+            cosa = 0;
+        cosa = (0.5 + cosa)/1.5;
+        colour.r = (unsigned char)(colour.r*cosa);
+        colour.g = (unsigned char)(colour.g*cosa);
+        colour.b = (unsigned char)(colour.b*cosa);
+    }
+	else if(current->type == T_CYLINDER)
+    {
+        t_p3 inter;
+        inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
+        t_p3 norm;
+        norm = return_norm_cylinder(*((t_cylinder*)current->data), inter);
+        normalize(&norm);
+        t_p3 light = init_p3(1, -2, 1);
+        normalize(&light);
+        double cosa;
+        cosa = -sc_mult(norm, light);
+        if(cosa <0)
+            cosa = 0;
+        cosa = (0.5 + cosa)/1.5;
+        colour.r = (unsigned char)(colour.r*cosa);
+        colour.g = (unsigned char)(colour.g*cosa);
+        colour.b = (unsigned char)(colour.b*cosa);
+    }
+	else if(current->type == T_CONE)
+    {
+        t_p3 inter;
+        inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
+        t_p3 norm;
+        norm = return_norm_cone(*((t_cone*)current->data), inter);
+        normalize(&norm);
+        t_p3 light = init_p3(1, -2, 1);
+        normalize(&light);
+        double cosa;
+        cosa = -sc_mult(norm, light);
+        if(cosa <0)
+            cosa = 0;
+        cosa = (0.5 + cosa)/1.5;
+        colour.r = (unsigned char)(colour.r*cosa);
         colour.g = (unsigned char)(colour.g*cosa);
         colour.b = (unsigned char)(colour.b*cosa);
     }

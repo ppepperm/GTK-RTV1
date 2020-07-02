@@ -43,17 +43,14 @@ t_ray ray_transform(t_ray ray, t_transform t, t_p3 pos)
 	det = t.x_dir.x*(t.y_dir.y * t.z_dir.z - t.y_dir.z * t.z_dir.y) -\
 	t.y_dir.x*(t.x_dir.y * t.z_dir.z - t.x_dir.z * t.z_dir.y) +\
 	t.z_dir.x*(t.x_dir.y * t.y_dir.z - t.x_dir.z * t.y_dir.y);
-
 	inv.x_dir = init_p3((t.y_dir.y*t.z_dir.z - t.y_dir.z*t.z_dir.y),\
 	-(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.z_dir.y),\
 	(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.y_dir.y));
 	inv.x_dir = lin_comb(inv.x_dir, 1/det, init_p3(0, 0, 0), 0);
-
 	inv.y_dir = init_p3(-(t.y_dir.x*t.z_dir.z - t.y_dir.z*t.z_dir.x),\
 	(t.x_dir.x*t.z_dir.z - t.x_dir.z*t.z_dir.x),\
 	-(t.x_dir.x*t.y_dir.z - t.x_dir.z*t.y_dir.x));
 	inv.y_dir = lin_comb(inv.y_dir, 1/det, init_p3(0, 0, 0), 0);
-
 	inv.z_dir = init_p3((t.y_dir.x*t.z_dir.y - t.y_dir.y*t.z_dir.x),\
 	-(t.x_dir.x*t.z_dir.y - t.x_dir.y*t.z_dir.x),\
 	(t.x_dir.x*t.y_dir.y - t.x_dir.y*t.y_dir.x));
@@ -84,5 +81,34 @@ t_p3    return_norm_sphere(t_sphere sphere, t_p3 inter)
 
     ret = lin_comb(inter, 1, sphere.pos, -1);
     normalize(&ret);
+    return (ret);
+}
+
+t_p3    return_norm_plane(t_plane plane)
+{
+    return (plane.dir);
+}
+
+t_p3    return_norm_cylinder(t_cylinder cylinder, t_p3 inter)
+{
+    t_p3 ret;
+
+    ret = lin_comb(inter, 1, cylinder.pos, -1);
+    ret.y = 0;
+    return (ret);
+}
+
+t_p3    return_norm_cone(t_cone cone, t_p3 inter)
+{
+    t_p3 ret;
+    double y;
+
+    ret = lin_comb(inter, 1, cone.pos, -1);
+    y = sqrt(ret.x*ret.x + ret.z*ret.z);
+    y = y*cone.r/cone.c;
+    if (ret.y < 0)
+        ret.y = y;
+    else
+        ret.y = -y;
     return (ret);
 }

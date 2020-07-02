@@ -118,6 +118,14 @@ typedef struct 		s_object
 	struct s_object	*next;
 }					t_object;
 
+typedef struct      s_light
+{
+    unsigned char   type;
+    t_p3            data;
+    double          i;
+    struct s_light  *next;
+}                   t_light;
+
 typedef struct 		s_scene
 {
 	t_camera		camera;
@@ -130,6 +138,9 @@ double		min(double a, double b);
 void		normalize(t_p3 *vec);
 t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
 t_p3        return_norm_sphere(t_sphere sphere, t_p3 inter);
+t_p3        return_norm_plane(t_plane plane);
+t_p3        return_norm_cylinder(t_cylinder cylinder, t_p3 inter);
+t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
 t_ray		get_ray(t_camera camera, double x, double y);
 t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
@@ -158,7 +169,5 @@ t_q		init_rotor(t_p3 axis, double angle);
 t_q		q_inverse(t_q base);
 t_q		q_multiply(t_q q, t_q p);
 t_p3	rotate(t_p3 dot, t_p3 axis, double angle);
-
-
 
 #endif
