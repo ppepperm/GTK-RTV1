@@ -63,18 +63,19 @@ static void	read_obj(int fd, t_scene *scene)
 		    light = (t_light*)malloc(sizeof(t_light));
 		    light->type = L_DOT;
 		    light->data = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-		    light->i = ft_atoi(nums[4]);
+		    light->i = ft_atoi(nums[4])/10.0;
 		    light->next = scene->lights;
 		    scene->lights = light;
         }
         else if(!ft_strcmp(nums[0], "dir_source"))
         {
             light = (t_light*)malloc(sizeof(t_light));
-            light->type = L_DOT;
+            light->type = L_DIR;
             light->data = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-            light->i = ft_atoi(nums[4]);
+            light->i = ft_atoi(nums[4])/10.0;
             light->next = scene->lights;
             scene->lights = light;
+
         }
 		free_nums(nums);
 		free(str);

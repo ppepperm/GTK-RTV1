@@ -173,4 +173,8 @@ t_q		q_inverse(t_q base);
 t_q		q_multiply(t_q q, t_q p);
 t_p3	rotate(t_p3 dot, t_p3 axis, double angle);
 
+t_rgb   colour_mult(t_rgb base, double k);
+double  get_light(t_scene scene, t_p3 inter, t_p3 norm);
+double  get_light_p(t_scene scene, t_p3 inter, t_p3 norm);
+
 #endif
