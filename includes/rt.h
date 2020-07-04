@@ -143,6 +143,7 @@ t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
 void		normalize(t_p3 *vec);
+t_transform i_transform(t_transform transform)
 t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
 t_p3        return_norm_sphere(t_sphere sphere, t_p3 inter);
 t_p3        return_norm_plane(t_plane plane);
@@ -165,6 +166,7 @@ t_p3		init_p3(double x, double y, double z);
 t_q			init_q(double s, double i, double j, double k);
 t_ray		init_ray(t_p3 pos, t_p3 dir);
 t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z);
+t_transform init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir);
 t_sphere	init_sphere(t_p3 pos, double r);
 t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 void		*return_sphere(char** nums);

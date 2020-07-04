@@ -62,6 +62,16 @@ t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z)
 	return (camera);
 }
 
+t_transform init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir)
+{
+    t_transform ret;
+
+    ret.x_dir = x_dir;
+    ret.y_dir = y_dir;
+    ret.z_dir = z_dir;
+    return (ret);
+}
+
 t_sphere	init_sphere(t_p3 pos, double r)
 {
 	t_sphere ret;

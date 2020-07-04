@@ -34,6 +34,29 @@ double min(double a, double b)
 	return (a);
 }
 
+t_transform     i_transform(t_transform transform)
+{
+    t_transform inv;
+    double	  det;
+
+    det = t.x_dir.x*(t.y_dir.y * t.z_dir.z - t.y_dir.z * t.z_dir.y) -\
+	t.y_dir.x*(t.x_dir.y * t.z_dir.z - t.x_dir.z * t.z_dir.y) +\
+	t.z_dir.x*(t.x_dir.y * t.y_dir.z - t.x_dir.z * t.y_dir.y);
+    inv.x_dir = init_p3((t.y_dir.y*t.z_dir.z - t.y_dir.z*t.z_dir.y),\
+	-(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.z_dir.y),\
+	(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.y_dir.y));
+    inv.x_dir = lin_comb(inv.x_dir, 1/det, init_p3(0, 0, 0), 0);
+    inv.y_dir = init_p3(-(t.y_dir.x*t.z_dir.z - t.y_dir.z*t.z_dir.x),\
+	(t.x_dir.x*t.z_dir.z - t.x_dir.z*t.z_dir.x),\
+	-(t.x_dir.x*t.y_dir.z - t.x_dir.z*t.y_dir.x));
+    inv.y_dir = lin_comb(inv.y_dir, 1/det, init_p3(0, 0, 0), 0);
+    inv.z_dir = init_p3((t.y_dir.x*t.z_dir.y - t.y_dir.y*t.z_dir.x),\
+	-(t.x_dir.x*t.z_dir.y - t.x_dir.y*t.z_dir.x),\
+	(t.x_dir.x*t.y_dir.y - t.x_dir.y*t.y_dir.x));
+    inv.z_dir = lin_comb(inv.z_dir, 1/det, init_p3(0, 0, 0), 0);
+    return (inv);
+}
+
 t_ray ray_transform(t_ray ray, t_transform t, t_p3 pos)
 {
 	t_ray new_ray;
