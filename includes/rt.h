@@ -118,6 +118,9 @@ typedef struct 		s_object
 	unsigned char	type;
 	t_rgb			colour;
 	struct s_object	*next;
+	t_transform     transform;
+	t_transform     i_transform;
+	t_p3            pos;
 }					t_object;
 
 typedef struct      s_light
