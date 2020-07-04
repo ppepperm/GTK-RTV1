@@ -142,6 +142,8 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 	}
 	if(!current)
 	    return (colour);
+    if (current && current == scene.chosen)
+        return (init_rgb(255, 255, 0, 255));
 	if(current->type == T_SPHERE)
     {
 	    t_p3 norm;
@@ -171,7 +173,6 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
         normalize(&norm);
         colour = colour_mult(colour, get_light(scene,lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)), norm));
     }
-
 	return colour;
 }
 

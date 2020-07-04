@@ -133,6 +133,7 @@ typedef struct 		s_scene
 	t_camera		camera;
 	t_object		*objects;
 	t_light         *lights;
+	t_object        *chosen;
 }					t_scene;
 
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);

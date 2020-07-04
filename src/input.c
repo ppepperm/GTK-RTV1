@@ -91,6 +91,7 @@ t_scene		read_scene(char *fname)
 	scene.camera = init_camera(init_p3(0, 0, 0), init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
 	scene.objects = NULL;
 	scene.lights = NULL;
+	scene.chosen = NULL;
 	read_obj(fd, &scene);
 	return scene;
 }

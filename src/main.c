@@ -31,6 +31,7 @@ int main( void)
 	SDL_Renderer *renderer;
 	SDL_Texture *win_tex;
 	t_scene			scene;
+	t_i2            mouse;
 
 	SDL_Init( SDL_INIT_VIDEO );
 	window = SDL_CreateWindow( "RTv1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN );
@@ -45,72 +46,57 @@ int main( void)
 		if (event.type == SDL_KEYDOWN)
 		{
 			if (event.key.keysym.scancode == SDL_SCANCODE_W)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.z_dir, 0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.z_dir, 1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_S)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.z_dir, -0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.z_dir, -1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_A)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.x_dir, -0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.x_dir, -1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_D)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.x_dir, 0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.x_dir, 1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_LCTRL)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.y_dir, -0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.y_dir, -1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_LSHIFT)
-			{
-				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.y_dir, 0.5);
-				draw_to_texture(scene, win_tex);
-			}
+				scene.camera.pos = lin_comb(scene.camera.pos, 1, scene.camera.y_dir, 1);
 			else if (event.key.keysym.scancode == SDL_SCANCODE_LEFT)
 			{
-				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.y_dir, -1);
-				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.y_dir, -1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.y_dir, -2);
+				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.y_dir, -2);
 			}
 			else if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
 			{
-				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.y_dir, 1);
-				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.y_dir, 1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.y_dir, 2);
+				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.y_dir, 2);
 			}
 			else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
 			{
-				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.x_dir, -1);
-				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.x_dir, -1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.x_dir, -2);
+				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.x_dir, -2);
 			}
 			else if (event.key.keysym.scancode == SDL_SCANCODE_DOWN)
 			{
-				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.x_dir, 1);
-				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.x_dir, 1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.x_dir, 2);
+				scene.camera.z_dir = rotate(scene.camera.z_dir, scene.camera.x_dir, 2);
 			}
 			else if (event.key.keysym.scancode == SDL_SCANCODE_Q)
 			{
-				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.z_dir, 1);
-				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.z_dir, 1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.z_dir, 2);
+				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.z_dir, 2);
 			}
 			else if (event.key.keysym.scancode == SDL_SCANCODE_E)
 			{
-				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.z_dir, -1);
-				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.z_dir, -1);
-				draw_to_texture(scene, win_tex);
+				scene.camera.x_dir = rotate(scene.camera.x_dir, scene.camera.z_dir, -2);
+				scene.camera.y_dir = rotate(scene.camera.y_dir, scene.camera.z_dir, -2);
 			}
+            draw_to_texture(scene, win_tex);
 		}
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+        {
+            SDL_GetMouseState( &mouse.x, &mouse.y);
+            scene.chosen = return_chosen(scene, mouse.x, mouse.y);
+            printf("%p \n", scene.chosen);
+           // ft_putnbr(scene.chosen->type);
+            draw_to_texture(scene, win_tex);
+        }
 		SDL_RenderCopy(renderer, win_tex, NULL, NULL);
 		SDL_RenderPresent(renderer);
 	}
