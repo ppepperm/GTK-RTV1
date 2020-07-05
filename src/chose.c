@@ -29,9 +29,9 @@ t_object    *return_chosen(t_scene scene, double x, double y)
         if (scene.objects->type == T_PLANE)
             new_roots = intersect_plane(ray, *(scene.objects));
         if (scene.objects->type == T_CONE)
-            new_roots = intersect_cone(ray, *((t_cone*)scene.objects->data));
+            new_roots = intersect_cone(ray, *(scene.objects));
         if (scene.objects->type == T_CYLINDER)
-            new_roots = intersect_cylinder(ray, *((t_cylinder*)scene.objects->data));
+            new_roots = intersect_cylinder(ray, *(scene.objects));
 
         if(new_roots.x >= 0 && new_roots.y >= 0)
         {

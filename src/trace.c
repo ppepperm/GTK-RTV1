@@ -29,6 +29,8 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 	t_p2        roots;
 	t_p2        new_roots;
 	t_object    *current;
+    t_p3        norm;
+    t_p3        inter;
 
 	colour = init_rgb(255, 255, 255, 255);
 	current = NULL;
@@ -40,9 +42,9 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 		if (scene.objects->type == T_PLANE)
 			new_roots = intersect_plane(ray, *(scene.objects));
 		if (scene.objects->type == T_CONE)
-			new_roots = intersect_cone(ray, *((t_cone*)scene.objects->data));
+            new_roots = intersect_cone(ray, *(scene.objects));
 		if (scene.objects->type == T_CYLINDER)
-			new_roots = intersect_cylinder(ray, *((t_cylinder*)scene.objects->data));
+			new_roots = intersect_cylinder(ray, *(scene.objects));
 		if(new_roots.x >= 0 && new_roots.y >= 0)
 		{
 			if(min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
@@ -58,34 +60,37 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 	    return (colour);
     if (current && current == scene.chosen)
         return (init_rgb(255, 255, 0, 255));
+    inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
 	if(current->type == T_SPHERE)
     {
-	    t_p3 norm;
-	    norm = return_norm_sphere(*((t_sphere*)current->data), lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)));
+	    norm = transform_pos(inter, current->i_t, current->pos);
+	    norm = transform_dir(norm, current->t);
         normalize(&norm);
-	    colour = colour_mult(colour, get_light(scene,lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)), norm));
+	    colour = colour_mult(colour, get_light(scene, inter, norm));
     }
 	else if(current->type == T_PLANE)
     {
-        t_p3 norm;
         norm = return_norm_plane(*((t_plane*)current->data));
+        norm = transform_dir(norm, current->t);
         normalize(&norm);
-        colour = colour_mult(colour, get_light_p(scene,lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)), norm));
+        colour = colour_mult(colour, get_light_p(scene, inter, norm));
 
     }
 	else if(current->type == T_CYLINDER)
     {
-        t_p3 norm;
-        norm = return_norm_cylinder(*((t_cylinder*)current->data), lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)));
+        norm = transform_pos(inter, current->i_t, current->pos);
+        norm.y = 0;
+        norm = transform_dir(norm, current->t);
         normalize(&norm);
-        colour = colour_mult(colour, get_light(scene,lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)), norm));
+        colour = colour_mult(colour, get_light(scene, inter, norm));
     }
 	else if(current->type == T_CONE)
     {
-        t_p3 norm;
-        norm = return_norm_cone(*((t_cone*)current->data), lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)));
+        inter = transform_pos(inter, current->i_t, current->pos);
+        norm = return_norm_cone(*((t_cone*)current->data), inter);
+        norm = transform_dir(norm, current->t);
         normalize(&norm);
-        colour = colour_mult(colour, get_light(scene,lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y)), norm));
+        colour = colour_mult(colour, get_light(scene, inter, norm));
     }
 	return colour;
 }

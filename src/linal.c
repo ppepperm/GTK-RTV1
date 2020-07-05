@@ -72,7 +72,7 @@ t_p3    return_norm_cone(t_cone cone, t_p3 inter)
     t_p3 ret;
     double y;
 
-    ret = lin_comb(inter, 1, cone.pos, -1);
+    ret = inter;
     y = sqrt(ret.x*ret.x + ret.z*ret.z);
     y = y*cone.r/cone.c;
     if (ret.y < 0)
