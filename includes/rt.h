@@ -143,18 +143,12 @@ t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
 void		normalize(t_p3 *vec);
-t_transform i_transform(t_transform transform)
-t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos);
 t_p3        return_norm_sphere(t_sphere sphere, t_p3 inter);
 t_p3        return_norm_plane(t_plane plane);
 t_p3        return_norm_cylinder(t_cylinder cylinder, t_p3 inter);
 t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
 t_ray		get_ray(t_camera camera, double x, double y);
-t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
-t_p2		intersect_plane(t_ray ray, t_plane plane);
-t_p2		intersect_cone(t_ray ray, t_cone cone);
-t_p2		intersect_cylinder(t_ray ray, t_cylinder cylinder);
 void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
 
 t_scene		read_scene(char *fname);
@@ -182,6 +176,16 @@ t_p3	    rotate(t_p3 dot, t_p3 axis, double angle);
 t_rgb       colour_mult(t_rgb base, double k);
 double      get_light(t_scene scene, t_p3 inter, t_p3 norm);
 double      get_light_p(t_scene scene, t_p3 inter, t_p3 norm);
+
+t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
+t_p2		intersect_plane(t_ray ray, t_plane plane);
+t_p2		intersect_cone(t_ray ray, t_cone cone);
+t_p2		intersect_cylinder(t_ray ray, t_cylinder cylinder);
+
+t_transform i_transform(t_transform transform);
+t_p3        transform_pos(t_p3 pos, t_transform t, t_p3 t_pos);
+t_p3        transform_dir(t_p3 dir, t_transform t);
+t_ray       ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_object    *return_chosen(t_scene scene, double x, double y);
 

@@ -93,8 +93,6 @@ int main( void)
         {
             SDL_GetMouseState( &mouse.x, &mouse.y);
             scene.chosen = return_chosen(scene, mouse.x, mouse.y);
-            printf("%p \n", scene.chosen);
-           // ft_putnbr(scene.chosen->type);
             draw_to_texture(scene, win_tex);
         }
 		SDL_RenderCopy(renderer, win_tex, NULL, NULL);
