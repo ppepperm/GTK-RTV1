@@ -118,8 +118,8 @@ typedef struct 		s_object
 	unsigned char	type;
 	t_rgb			colour;
 	struct s_object	*next;
-	t_transform     transform;
-	t_transform     i_transform;
+	t_transform     t;
+	t_transform     i_t;
 	t_p3            pos;
 }					t_object;
 
@@ -177,8 +177,9 @@ t_rgb       colour_mult(t_rgb base, double k);
 double      get_light(t_scene scene, t_p3 inter, t_p3 norm);
 double      get_light_p(t_scene scene, t_p3 inter, t_p3 norm);
 
-t_p2		intersect_sphere(t_ray ray, t_sphere sphere);
-t_p2		intersect_plane(t_ray ray, t_plane plane);
+t_p2		intersect_sphere(t_ray ray, t_object object);
+//t_p2		intersect_plane(t_ray ray, t_plane plane);
+t_p2		intersect_plane(t_ray ray, t_object object);
 t_p2		intersect_cone(t_ray ray, t_cone cone);
 t_p2		intersect_cylinder(t_ray ray, t_cylinder cylinder);
 

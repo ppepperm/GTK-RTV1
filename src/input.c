@@ -28,7 +28,8 @@ static void	read_obj(int fd, t_scene *scene)
 			object->type = T_SPHERE;
 			object->data = return_sphere(nums);
 			object->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-			object->transform = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 1, 0));
+			object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+			object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
             object->next = scene->objects;
             scene->objects = object;
@@ -38,8 +39,9 @@ static void	read_obj(int fd, t_scene *scene)
             object = (t_object*)malloc(sizeof(t_object));
 			object->type = T_PLANE;
 			object->data = return_plane(nums);
-            object->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-            object->transform = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->pos = init_p3(0, 0, 0);
+            object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
             object->next = scene->objects;
             scene->objects = object;
@@ -50,7 +52,8 @@ static void	read_obj(int fd, t_scene *scene)
 			object->type = T_CONE;
 			object->data = return_cone(nums);
             object->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-            object->transform = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[6]), ft_atoi(nums[7]), ft_atoi(nums[8]), 255);
             object->next = scene->objects;
             scene->objects = object;
@@ -61,7 +64,8 @@ static void	read_obj(int fd, t_scene *scene)
 			object->type = T_CYLINDER;
 			object->data = return_cylinder(nums);
             object->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-            object->transform = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
+            object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
             object->next = scene->objects;
             scene->objects = object;

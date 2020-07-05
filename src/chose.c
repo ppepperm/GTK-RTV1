@@ -25,9 +25,9 @@ t_object    *return_chosen(t_scene scene, double x, double y)
     while (scene.objects)
     {
         if (scene.objects->type == T_SPHERE)
-            new_roots = intersect_sphere(ray, *((t_sphere*)scene.objects->data));
+            new_roots = intersect_sphere(ray, *(scene.objects));
         if (scene.objects->type == T_PLANE)
-            new_roots = intersect_plane(ray, *((t_plane*)scene.objects->data));
+            new_roots = intersect_plane(ray, *(scene.objects));
         if (scene.objects->type == T_CONE)
             new_roots = intersect_cone(ray, *((t_cone*)scene.objects->data));
         if (scene.objects->type == T_CYLINDER)

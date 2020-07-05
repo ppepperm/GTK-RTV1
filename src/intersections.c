@@ -12,41 +12,37 @@
 
 #include "../includes/rt.h"
 
-t_p2			intersect_sphere(t_ray ray, t_sphere sphere)
+t_p2			intersect_sphere(t_ray ray, t_object object)
 {
-    t_p2 roots;
     t_p3 k;
-    t_p3 co;
+    t_sphere *sphere;
     double d;
 
-    co = lin_comb(ray.pos, 1, sphere.pos, -1);
+    sphere = (t_sphere*)object.data;
+    ray = ray_transform(ray, object.i_t, object.pos);
     k.x = sc_mult(ray.dir, ray.dir);
-    k.y = 2*sc_mult(ray.dir, co);
-    k.z = sc_mult(co, co) - sphere.r * sphere.r;
-
+    k.y = 2*sc_mult(ray.dir, ray.pos);
+    k.z = sc_mult(ray.pos, ray.pos) - sphere->r * sphere->r;
     d = k.y * k.y - 4 * k.x * k.z;
     if (d >= 0)
-    {
-        roots.x = (-k.y - sqrt(d))/(2*k.x);
-        roots.y = (-k.y + sqrt(d))/(2*k.x);
-    }
+        return(init_p2((-k.y - sqrt(d))/(2*k.x), (-k.y + sqrt(d))/(2*k.x)));
     else
-        roots = init_p2(-1, -1);
-    return (roots);
+        return ( init_p2(-1, -1));
 }
 
-t_p2			intersect_plane(t_ray ray, t_plane plane)
+t_p2			intersect_plane(t_ray ray, t_object object)
 {
-    t_p2 roots;
+    t_plane *plane;
     double den;
     double num;
 
-    den = sc_mult(ray.dir, plane.dir);
+    plane = (t_plane*)object.data;
+    ray = ray_transform(ray, object.i_t, object.pos);
+    den = sc_mult(ray.dir, plane->dir);
     if (den == 0)
         return (init_p2(-1, -1));
-    num =plane.d - sc_mult(ray.pos, plane.dir);
-    roots = init_p2(num/den, num/den);
-    return (roots);
+    num =plane->d - sc_mult(ray.pos, plane->dir);
+    return (init_p2(num/den, num/den));
 }
 
 t_p2			intersect_cone(t_ray ray, t_cone cone)

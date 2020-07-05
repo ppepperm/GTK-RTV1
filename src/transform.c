@@ -17,6 +17,7 @@ t_transform     i_transform(t_transform t)
     t_transform inv;
     double	  det;
 
+
     det = t.x_dir.x*(t.y_dir.y * t.z_dir.z - t.y_dir.z * t.z_dir.y) -\
 	t.y_dir.x*(t.x_dir.y * t.z_dir.z - t.x_dir.z * t.z_dir.y) +\
 	t.z_dir.x*(t.x_dir.y * t.y_dir.z - t.x_dir.z * t.y_dir.y);
