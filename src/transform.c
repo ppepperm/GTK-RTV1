@@ -22,7 +22,7 @@ t_transform     i_transform(t_transform t)
 	t.z_dir.x*(t.x_dir.y * t.y_dir.z - t.x_dir.z * t.y_dir.y);
     inv.x_dir = init_p3((t.y_dir.y*t.z_dir.z - t.y_dir.z*t.z_dir.y),\
 	-(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.z_dir.y),\
-	(t.x_dir.y*t.z_dir.z - t.x_dir.z*t.y_dir.y));
+	(t.x_dir.y*t.y_dir.z - t.x_dir.z*t.y_dir.y));
     inv.x_dir = lin_comb(inv.x_dir, 1/det, init_p3(0, 0, 0), 0);
     inv.y_dir = init_p3(-(t.y_dir.x*t.z_dir.z - t.y_dir.z*t.z_dir.x),\
 	(t.x_dir.x*t.z_dir.z - t.x_dir.z*t.z_dir.x),\
