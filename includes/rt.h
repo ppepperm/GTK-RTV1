@@ -189,4 +189,7 @@ t_ray       ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_object    *return_chosen(t_scene scene, double x, double y);
 
+void        camera_control(SDL_Event event, t_scene *scene);
+void        object_control(SDL_Event event, t_object *object);
+
 #endif

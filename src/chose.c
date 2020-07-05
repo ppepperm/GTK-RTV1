@@ -21,7 +21,7 @@ t_object    *return_chosen(t_scene scene, double x, double y)
 
     ray = get_ray(scene.camera, x - W_W/2, W_H/2 - y);
     current = NULL;
-    roots = init_p2(1000000, 1000000);
+    roots = init_p2(2000000, 2000000);
     while (scene.objects)
     {
         if (scene.objects->type == T_SPHERE)
