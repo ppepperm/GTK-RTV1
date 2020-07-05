@@ -86,8 +86,8 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
     }
 	else if(current->type == T_CONE)
     {
-        inter = transform_pos(inter, current->i_t, current->pos);
-        norm = return_norm_cone(*((t_cone*)current->data), inter);
+        norm = return_norm_cone(*((t_cone*)current->data),\
+        transform_pos(inter, current->i_t, current->pos));
         norm = transform_dir(norm, current->t);
         normalize(&norm);
         colour = colour_mult(colour, get_light(scene, inter, norm));
