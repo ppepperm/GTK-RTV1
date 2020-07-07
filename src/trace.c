@@ -20,6 +20,7 @@ t_ray			get_ray(t_camera camera, double x, double y)
 	ray.pos = camera.pos;
 	tmp = lin_comb(camera.x_dir, x/1000, camera.y_dir, y/1000);
 	ray.dir = lin_comb(tmp, 1, camera.z_dir, C_Z);
+	normalize(&ray.dir);
 	return (ray);
 }
 
