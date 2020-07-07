@@ -29,8 +29,6 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 	t_p2        roots;
 	t_p2        new_roots;
 	t_object    *current;
-    t_p3        norm;
-    t_p3        inter;
 
 	colour = init_rgb(255, 255, 255, 255);
 	current = NULL;
@@ -53,38 +51,7 @@ static t_rgb	trace_ray(t_ray ray, t_scene scene)
 	    return (colour);
     if (current && current == scene.chosen)
         return (init_rgb(255, 255, 0, 255));
-    inter = lin_comb(ray.pos, 1, ray.dir, min(roots.x, roots.y));
-	if(current->type == T_SPHERE)
-    {
-	    norm = transform_pos(inter, current->i_t, current->pos);
-	    norm = transform_dir(norm, current->t);
-        normalize(&norm);
-	    colour = colour_mult(colour, get_light(scene, inter, norm));
-    }
-	else if(current->type == T_PLANE)
-    {
-        norm = return_norm_plane(*((t_plane*)current->data));
-        norm = transform_dir(norm, current->t);
-        normalize(&norm);
-        colour = colour_mult(colour, get_light_p(scene, inter, norm));
-
-    }
-	else if(current->type == T_CYLINDER)
-    {
-        norm = transform_pos(inter, current->i_t, current->pos);
-        norm.y = 0;
-        norm = transform_dir(norm, current->t);
-        normalize(&norm);
-        colour = colour_mult(colour, get_light(scene, inter, norm));
-    }
-	else if(current->type == T_CONE)
-    {
-        norm = return_norm_cone(*((t_cone*)current->data),\
-        transform_pos(inter, current->i_t, current->pos));
-        norm = transform_dir(norm, current->t);
-        normalize(&norm);
-        colour = colour_mult(colour, get_light(scene, inter, norm));
-    }
+    colour = colour_mult(colour, current->light_funk(scene.lights, *current, ray, min(roots.x, roots.y)));
 	return colour;
 }
 

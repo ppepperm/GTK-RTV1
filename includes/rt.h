@@ -112,18 +112,6 @@ typedef struct		s_transform
 	t_p3 z_dir;
 }					t_transform;
 
-typedef struct 		s_object
-{
-	void			*data;
-	unsigned char	type;
-	t_rgb			colour;
-	struct s_object	*next;
-	t_transform     t;
-	t_transform     i_t;
-	t_p3            pos;
-	t_p2            (*intersect) (t_ray , struct s_object);
-}					t_object;
-
 typedef struct      s_light
 {
     unsigned char   type;
@@ -131,6 +119,19 @@ typedef struct      s_light
     double          i;
     struct s_light  *next;
 }                   t_light;
+
+typedef struct 		s_object
+{
+	void			*data;
+	unsigned char	type;
+	t_rgb			colour;
+	t_transform     t;
+	t_transform     i_t;
+	t_p3            pos;
+	t_p2            (*intersect) (t_ray, struct s_object);
+	double          (*light_funk) (t_light*, struct s_object, t_ray, double);
+    struct s_object	*next;
+}					t_object;
 
 typedef struct 		s_scene
 {
@@ -177,8 +178,12 @@ t_q		    q_multiply(t_q q, t_q p);
 t_p3	    rotate(t_p3 dot, t_p3 axis, double angle);
 
 t_rgb       colour_mult(t_rgb base, double k);
-double      get_light(t_scene scene, t_p3 inter, t_p3 norm);
-double      get_light_p(t_scene scene, t_p3 inter, t_p3 norm);
+double      get_light(t_light *lights, t_p3 inter, t_p3 norm);
+double      get_light_p(t_light *lights, t_p3 inter, t_p3 norm);
+double      sphere_light(t_light *lights, t_object object, t_ray ray, double root);
+double      plane_light(t_light *lights, t_object object, t_ray ray, double root);
+double      cylinder_light(t_light *lights, t_object object, t_ray ray, double root);
+double      cone_light(t_light *lights, t_object object, t_ray ray, double root);
 
 t_p2		intersect_sphere(t_ray ray, t_object object);
 t_p2		intersect_plane(t_ray ray, t_object object);
