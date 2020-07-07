@@ -44,27 +44,9 @@ void	normalize(t_p3 *vec)
 	vec->z /= abs;
 }
 
-t_p3    return_norm_sphere(t_sphere sphere, t_p3 inter)
-{
-    t_p3 ret;
-
-    ret = lin_comb(inter, 1, sphere.pos, -1);
-    normalize(&ret);
-    return (ret);
-}
-
 t_p3    return_norm_plane(t_plane plane)
 {
     return (plane.dir);
-}
-
-t_p3    return_norm_cylinder(t_cylinder cylinder, t_p3 inter)
-{
-    t_p3 ret;
-
-    ret = lin_comb(inter, 1, cylinder.pos, -1);
-    ret.y = 0;
-    return (ret);
 }
 
 t_p3    return_norm_cone(t_cone cone, t_p3 inter)

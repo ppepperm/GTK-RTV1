@@ -54,12 +54,7 @@ double  get_light(t_light *lights, t_p3 inter, t_p3 norm, t_ray ray)
         cosa = -sc_mult(r, ray.dir);
         if (cosa < 0)
             cosa = 0;
-        int k = 0;
-        while (k <= 4)
-        {
-            cosa *= cosa;
-            k++;
-        }
+        cosa = pow(cosa, ray.pos.x);
         i += cosa*lights->i;
         lights = lights->next;
     }
@@ -83,19 +78,14 @@ double  get_light_p(t_light *lights, t_p3 inter, t_p3 norm, t_ray ray)
         normalize(&light);
         cosa = -sc_mult(norm, light);
         if (cosa <0)
-            cosa  *= 1;
+            cosa  *= -1;
         i += cosa*lights->i;
         r = lin_comb(norm, 2*cosa, light, 1);
         normalize(&r);
         cosa = -sc_mult(r, ray.dir);
         if (cosa < 0)
             cosa = 0;
-        int k = 0;
-        while (k <= 4)
-        {
-            cosa *= cosa;
-            k++;
-        }
+        cosa = pow(cosa, ray.pos.x);
         i += cosa*lights->i;
         lights = lights->next;
     }
@@ -111,6 +101,7 @@ double      sphere_light(t_light *lights, t_object object, t_ray ray, double roo
     norm = transform_pos(inter, object.i_t, object.pos);
     norm = transform_dir(norm, object.t);
     normalize(&norm);
+    ray.pos.x = object.reflect;
     return (get_light(lights, inter, norm, ray));
 }
 
@@ -123,6 +114,7 @@ double      plane_light(t_light *lights, t_object object, t_ray ray, double root
     norm = ((t_plane*)(object.data))->dir;
     norm = transform_dir(norm, object.t);
     normalize(&norm);
+    ray.pos.x = object.reflect;
     return (get_light_p(lights, inter, norm, ray));
 }
 
@@ -136,6 +128,7 @@ double      cylinder_light(t_light *lights, t_object object, t_ray ray, double r
     norm.y = 0;
     norm = transform_dir(norm, object.t);
     normalize(&norm);
+    ray.pos.x = object.reflect;
     return (get_light(lights, inter, norm, ray));
 }
 
@@ -150,5 +143,6 @@ double      cone_light(t_light *lights, t_object object, t_ray ray, double root)
     norm = return_norm_cone(*((t_cone*)object.data), new_inter);
     norm = transform_dir(norm, object.t);
     normalize(&norm);
+    ray.pos.x = object.reflect;
     return (get_light(lights, inter, norm, ray));
 }

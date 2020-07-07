@@ -124,6 +124,7 @@ typedef struct 		s_object
 {
 	void			*data;
 	unsigned char	type;
+	double          reflect;
 	t_rgb			colour;
 	t_transform     t;
 	t_transform     i_t;
@@ -147,9 +148,7 @@ t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
 void		normalize(t_p3 *vec);
-t_p3        return_norm_sphere(t_sphere sphere, t_p3 inter);
 t_p3        return_norm_plane(t_plane plane);
-t_p3        return_norm_cylinder(t_cylinder cylinder, t_p3 inter);
 t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
 t_ray		get_ray(t_camera camera, double x, double y);
