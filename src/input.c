@@ -31,6 +31,7 @@ static void	read_obj(int fd, t_scene *scene)
 			object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
 			object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
+			object->intersect = intersect_sphere;
             object->next = scene->objects;
             scene->objects = object;
 		}
@@ -43,6 +44,7 @@ static void	read_obj(int fd, t_scene *scene)
             object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
             object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
+            object->intersect = intersect_plane;
             object->next = scene->objects;
             scene->objects = object;
 		}
@@ -55,6 +57,7 @@ static void	read_obj(int fd, t_scene *scene)
             object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
             object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[6]), ft_atoi(nums[7]), ft_atoi(nums[8]), 255);
+            object->intersect = intersect_cone;
             object->next = scene->objects;
             scene->objects = object;
 		}
@@ -67,6 +70,7 @@ static void	read_obj(int fd, t_scene *scene)
             object->t = init_transform(init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
             object->i_t = i_transform(object->t);
 			object->colour = init_rgb(ft_atoi(nums[5]), ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
+            object->intersect = intersect_cylinder;
             object->next = scene->objects;
             scene->objects = object;
 		}

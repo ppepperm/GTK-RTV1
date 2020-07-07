@@ -121,6 +121,7 @@ typedef struct 		s_object
 	t_transform     t;
 	t_transform     i_t;
 	t_p3            pos;
+	t_p2            (*intersect) (t_ray , struct s_object);
 }					t_object;
 
 typedef struct      s_light
@@ -138,6 +139,8 @@ typedef struct 		s_scene
 	t_light         *lights;
 	t_object        *chosen;
 }					t_scene;
+
+
 
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
