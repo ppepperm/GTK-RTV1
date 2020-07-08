@@ -108,16 +108,34 @@ double          get_intersection(t_ray ray, t_scene scene, t_object **current, t
     return (min(roots.x, roots.y));
 }
 
-int             check_shadow(t_ray shadow_ray, t_object *objects)
+int             check_shadow(t_object *objects, t_light light, t_p3 inter)
 {
     t_p2        roots;
+    t_ray       shadow_ray;
 
-    while (objects)
+    if (light.type == L_DIR)
     {
-        roots = objects->intersect(shadow_ray, *(objects));
-        if(roots.x > 0.1 || roots.y > 0.1)
-            return (1);
-        objects = objects->next;
+        shadow_ray.pos = inter;
+        shadow_ray.dir = lin_comb(light.data, -1, init_p3(0, 0, 0), 0);
+        while (objects)
+        {
+            roots = objects->intersect(shadow_ray, *(objects));
+            if (roots.x > 0.01 || roots.y > 0.01)
+                return (1);
+            objects = objects->next;
+        }
+    }
+    else if (light.type == L_DOT)
+    {
+        shadow_ray.pos = light.data;
+        shadow_ray.dir = lin_comb(inter, 1, light.data, -1);
+        while (objects)
+        {
+            roots = objects->intersect(shadow_ray, *(objects));
+            if ((roots.x > 0.01 && roots.x < 0.99) || (roots.y > 0.01 && roots.y < 0.99))
+                return (1);
+            objects = objects->next;
+        }
     }
     return (0);
 

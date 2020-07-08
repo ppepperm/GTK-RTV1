@@ -188,7 +188,7 @@ t_p2		intersect_plane(t_ray ray, t_object object);
 t_p2		intersect_cone(t_ray ray, t_object object);
 t_p2		intersect_cylinder(t_ray ray, t_object object);
 double      get_intersection(t_ray ray, t_scene scene, t_object **current, t_rgb *colour);
-int         check_shadow(t_ray shadow_ray, t_object *objects);
+int         check_shadow(t_object *objects, t_light light, t_p3 inter);
 
 t_transform i_transform(t_transform transform);
 t_p3        transform_pos(t_p3 pos, t_transform t, t_p3 t_pos);

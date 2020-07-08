@@ -33,7 +33,6 @@ t_rgb   colour_mult(t_rgb base, double k)
 double  get_light(t_object *objects ,t_light *lights, t_p3 inter, t_p3 norm, t_ray ray)
 {
     t_p3 light;
-    t_ray shadow_ray;
     double i;
     double cosa;
     t_p3   r;
@@ -46,9 +45,7 @@ double  get_light(t_object *objects ,t_light *lights, t_p3 inter, t_p3 norm, t_r
         else if(lights->type == L_DOT)
             light = lin_comb(inter , 1, lights->data, -1);
         normalize(&light);
-        shadow_ray.pos = inter;
-        shadow_ray.dir = lin_comb(light, -1, init_p3(0, 0, 0), 0);
-        if (check_shadow(shadow_ray, objects))
+        if (check_shadow(objects, *lights, inter))
         {
             lights = lights->next;
             continue;
