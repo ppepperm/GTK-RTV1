@@ -27,32 +27,16 @@ t_ray			get_ray(t_camera camera, double x, double y)
 static t_rgb	trace_ray(t_ray ray, t_scene scene)
 {
 	t_rgb       colour;
-	t_p2        roots;
-	t_p2        new_roots;
+	double      root;
 	t_object    *current;
 
-	colour = init_rgb(255, 255, 255, 255);
-	current = NULL;
-	roots = init_p2(1000000, 1000000);
-	while (scene.objects)
-	{
-		new_roots = scene.objects->intersect(ray, *(scene.objects));
-		if(new_roots.x >= 0 && new_roots.y >= 0)
-		{
-			if(min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
-			{
-				roots = new_roots;
-				colour = scene.objects->colour;
-				current = scene.objects;
-			}
-		}
-		scene.objects = scene.objects->next;
-	}
+    root = get_intersection(ray, scene, &current, &colour);
 	if(!current)
 	    return (colour);
     if (current && current == scene.chosen)
         return (init_rgb(255, 255, 0, 255));
-    colour = colour_mult(colour, current->light_funk(scene.lights, *current, ray, min(roots.x, roots.y)));
+
+    colour = colour_mult(colour, current->light_funk(scene.objects, scene.lights, *current, ray, root));
 	return colour;
 }
 

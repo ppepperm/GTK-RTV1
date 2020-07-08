@@ -82,3 +82,43 @@ t_p2			intersect_cylinder(t_ray ray, t_object object)
     else
         return ( init_p2(-1, -1));
 }
+
+double          get_intersection(t_ray ray, t_scene scene, t_object **current, t_rgb *colour)
+{
+    t_p2        roots;
+    t_p2        new_roots;
+
+    *colour = init_rgb(255, 255, 255, 255);
+    *current = NULL;
+    roots = init_p2(3000000, 3000000);
+    while (scene.objects)
+    {
+        new_roots = scene.objects->intersect(ray, *(scene.objects));
+        if(new_roots.x >= 0 && new_roots.y >= 0)
+        {
+            if(min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
+            {
+                roots = new_roots;
+                *colour = scene.objects->colour;
+                *current = scene.objects;
+            }
+        }
+        scene.objects = scene.objects->next;
+    }
+    return (min(roots.x, roots.y));
+}
+
+int             check_shadow(t_ray shadow_ray, t_object *objects)
+{
+    t_p2        roots;
+
+    while (objects)
+    {
+        roots = objects->intersect(shadow_ray, *(objects));
+        if(roots.x > 0.1 || roots.y > 0.1)
+            return (1);
+        objects = objects->next;
+    }
+    return (0);
+
+}

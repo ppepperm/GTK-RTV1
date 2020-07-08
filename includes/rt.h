@@ -130,7 +130,7 @@ typedef struct 		s_object
 	t_transform     i_t;
 	t_p3            pos;
 	t_p2            (*intersect) (t_ray, struct s_object);
-	double          (*light_funk) (t_light*, struct s_object, t_ray, double);
+	double          (*light_funk) (struct s_object	*objects, t_light*, struct s_object, t_ray, double);
     struct s_object	*next;
 }					t_object;
 
@@ -177,17 +177,18 @@ t_q		    q_multiply(t_q q, t_q p);
 t_p3	    rotate(t_p3 dot, t_p3 axis, double angle);
 
 t_rgb       colour_mult(t_rgb base, double k);
-double      get_light(t_light *lights, t_p3 inter, t_p3 norm, t_ray ray);
-double      get_light_p(t_light *lights, t_p3 inter, t_p3 norm, t_ray ray);
-double      sphere_light(t_light *lights, t_object object, t_ray ray, double root);
-double      plane_light(t_light *lights, t_object object, t_ray ray, double root);
-double      cylinder_light(t_light *lights, t_object object, t_ray ray, double root);
-double      cone_light(t_light *lights, t_object object, t_ray ray, double root);
+double      get_light(t_object *objects , t_light *lights, t_p3 inter, t_p3 norm, t_ray ray);
+double      sphere_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
+double      plane_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
+double      cylinder_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
+double      cone_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
 
 t_p2		intersect_sphere(t_ray ray, t_object object);
 t_p2		intersect_plane(t_ray ray, t_object object);
 t_p2		intersect_cone(t_ray ray, t_object object);
 t_p2		intersect_cylinder(t_ray ray, t_object object);
+double      get_intersection(t_ray ray, t_scene scene, t_object **current, t_rgb *colour);
+int         check_shadow(t_ray shadow_ray, t_object *objects);
 
 t_transform i_transform(t_transform transform);
 t_p3        transform_pos(t_p3 pos, t_transform t, t_p3 t_pos);
