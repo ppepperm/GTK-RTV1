@@ -141,6 +141,12 @@ typedef struct 		s_scene
 	t_object        *chosen;
 }					t_scene;
 
+typedef struct		s_p_data
+{
+	t_scene			scene;
+	unsigned char	*win_buff;
+	int				pitch;
+}					t_p_data;
 
 
 t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
