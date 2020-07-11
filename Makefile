@@ -15,8 +15,8 @@ SRC :=	src/inits.c src/linal.c src/main.c src/trace.c src/input.c src/free.c\
 src/qaternion.c src/light.c src/chose.c src/transform.c src/intersections.c src/controls.c
 OBJ := $(SRC:%.c=%.o)
 CFLAGS := -Wall -Wextra -Werror -I includes
-LIB_FLAG :=  -L libft/ -lft `sdl2-config --libs --cflags` -O0
-LINUX_FLAG := -L libft/ -lft `sdl2-config --libs --cflags` -O0  -lm
+LIB_FLAG :=  -L libft/ -lft `sdl2-config --libs --cflags` -O0 -lpthread
+LINUX_FLAG := -L libft/ -lft `sdl2-config --libs --cflags` -O0  -lm -lpthread
 INCLUDES := includes SDL2
 
 all: $(NAME)
