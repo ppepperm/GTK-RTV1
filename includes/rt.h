@@ -18,6 +18,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <pthread.h>
 
 # define W_H		720.0
 # define W_W		1080.0
