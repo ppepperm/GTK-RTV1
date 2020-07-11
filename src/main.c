@@ -48,7 +48,7 @@ int main( void)
 		    if (!(scene.chosen))
 			    camera_control(event, &scene);
 		    else
-                object_control(event, scene.chosen);
+                object_control(event, scene, scene.chosen);
             draw_to_texture(scene, win_tex);
 		}
 		if (event.type == SDL_MOUSEBUTTONDOWN)

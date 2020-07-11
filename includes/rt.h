@@ -21,8 +21,6 @@
 
 # define W_H		720.0
 # define W_W		1080.0
-# define V_W		1.08
-# define V_H		0.72
 # define C_Z		1.0
 # define T_SPHERE	1
 # define T_PLANE	2
@@ -198,6 +196,6 @@ t_ray       ray_transform(t_ray ray, t_transform t, t_p3 pos);
 t_object    *return_chosen(t_scene scene, double x, double y);
 
 void        camera_control(SDL_Event event, t_scene *scene);
-void        object_control(SDL_Event event, t_object *object);
+void        object_control(SDL_Event event, t_scene scene, t_object *object);
 
 #endif

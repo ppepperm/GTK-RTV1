@@ -120,7 +120,7 @@ int             check_shadow(t_object *objects, t_light light, t_p3 inter)
         while (objects)
         {
             roots = objects->intersect(shadow_ray, *(objects));
-            if (roots.x > 0.01 || roots.y > 0.01)
+            if (roots.x > 0.0001 || roots.y > 0.0001)
                 return (1);
             objects = objects->next;
         }
@@ -132,7 +132,7 @@ int             check_shadow(t_object *objects, t_light light, t_p3 inter)
         while (objects)
         {
             roots = objects->intersect(shadow_ray, *(objects));
-            if ((roots.x > 0.01 && roots.x < 0.99) || (roots.y > 0.01 && roots.y < 0.99))
+            if ((roots.x > 0.0001 && roots.x < 0.9999) || (roots.y > 0.0001 && roots.y < 0.9999))
                 return (1);
             objects = objects->next;
         }
