@@ -146,6 +146,7 @@ typedef struct		s_p_data
 	t_scene			scene;
 	unsigned char	*win_buff;
 	int				pitch;
+	int				coll;
 }					t_p_data;
 
 
@@ -157,6 +158,7 @@ t_p3        return_norm_plane(t_plane plane);
 t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
 t_ray		get_ray(t_camera camera, double x, double y);
+t_rgb		trace_ray(t_ray ray, t_scene scene);
 void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
 
 t_scene		read_scene(char *fname);
@@ -204,5 +206,7 @@ t_object    *return_chosen(t_scene scene, double x, double y);
 
 void        camera_control(SDL_Event event, t_scene *scene);
 void        object_control(SDL_Event event, t_scene scene, t_object *object);
+
+void		*thread_trace(void *input);
 
 #endif
