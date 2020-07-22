@@ -35,7 +35,6 @@ t_rgb	trace_ray(t_ray ray, t_scene scene)
 	    return (colour);
     if (current && current == scene.chosen)
         return (init_rgb(255, 255, 0, 255));
-
     colour = colour_mult(colour, current->light_funk(scene.objects, scene.lights, *current, ray, root));
 	return colour;
 }
