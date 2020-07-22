@@ -31,7 +31,7 @@ t_p3		init_p3(double x, double y, double z)
 	return (ret);
 }
 
-t_q init_q(double s, double i, double j, double k)
+t_q			init_q(double s, double i, double j, double k)
 {
 	t_q ret;
 
@@ -39,7 +39,7 @@ t_q init_q(double s, double i, double j, double k)
 	ret.i = i;
 	ret.j = j;
 	ret.k = k;
-	return ret;
+	return (ret);
 }
 
 t_ray		init_ray(t_p3 pos, t_p3 dir)
@@ -62,14 +62,14 @@ t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z)
 	return (camera);
 }
 
-t_transform init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir)
+t_transform	init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir)
 {
-    t_transform ret;
+	t_transform ret;
 
-    ret.x_dir = x_dir;
-    ret.y_dir = y_dir;
-    ret.z_dir = z_dir;
-    return (ret);
+	ret.x_dir = x_dir;
+	ret.y_dir = y_dir;
+	ret.z_dir = z_dir;
+	return (ret);
 }
 
 t_sphere	init_sphere(t_p3 pos, double r)
@@ -81,7 +81,8 @@ t_sphere	init_sphere(t_p3 pos, double r)
 	return (ret);
 }
 
-t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+t_rgb		init_rgb(unsigned char r, unsigned char g,\
+unsigned char b, unsigned char a)
 {
 	t_rgb ret;
 
@@ -92,7 +93,7 @@ t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char
 	return (ret);
 }
 
-void *return_sphere(char** nums)
+void		*return_sphere(char **nums)
 {
 	t_sphere *sphere;
 
@@ -102,7 +103,7 @@ void *return_sphere(char** nums)
 	return ((void*)sphere);
 }
 
-void *return_plane(char** nums)
+void		*return_plane(char **nums)
 {
 	t_plane *plane;
 
@@ -112,7 +113,7 @@ void *return_plane(char** nums)
 	return ((void*)plane);
 }
 
-void *return_cone(char** nums)
+void		*return_cone(char **nums)
 {
 	t_cone *cone;
 
@@ -123,12 +124,13 @@ void *return_cone(char** nums)
 	return ((void*)cone);
 }
 
-void *return_cylinder(char** nums)
+void		*return_cylinder(char **nums)
 {
 	t_cylinder *cylinder;
 
 	cylinder = (t_cylinder*)malloc(sizeof(t_cylinder));
-	cylinder->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
+	cylinder->pos = init_p3(ft_atoi(nums[1]),\
+	ft_atoi(nums[2]), ft_atoi(nums[3]));
 	cylinder->r = ft_atoi(nums[4]);
 	return ((void*)cylinder);
 }

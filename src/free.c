@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-void free_nums(char **nums)
+void	free_nums(char **nums)
 {
 	int i;
 
