@@ -14,11 +14,11 @@
 
 t_ray			get_ray(t_camera camera, double x, double y)
 {
-	t_ray ray;
-	t_p3 tmp;
+	t_ray	ray;
+	t_p3	tmp;
 
 	ray.pos = camera.pos;
-	tmp = lin_comb(camera.x_dir, x/1000, camera.y_dir, y/1000);
+	tmp = lin_comb(camera.x_dir, x / 1000, camera.y_dir, y / 1000);
 	ray.dir = lin_comb(tmp, 1, camera.z_dir, C_Z);
 	normalize(&ray.dir);
 	return (ray);
@@ -26,18 +26,17 @@ t_ray			get_ray(t_camera camera, double x, double y)
 
 t_rgb	trace_ray(t_ray ray, t_scene scene)
 {
-	t_rgb       colour;
-	double      root;
-	t_object    *current;
+	t_rgb		colour;
+	double		root;
+	t_object	*current;
 
-    root = get_intersection(ray, scene, &current, &colour);
-	if(!current)
-	    return (colour);
-    if (current && current == scene.chosen)
-        return (init_rgb(255, 255, 0, 255));
-
-    colour = colour_mult(colour, current->light_funk(scene.objects, scene.lights, *current, ray, root));
-	return colour;
+	root = get_intersection(ray, scene, &current, &colour);
+	if (!current)
+		return (colour);
+	if (current && current == scene.chosen)
+		return (init_rgb(255, 255, 0, 255));
+	colour = colour_mult(colour, current->light_funk(scene.objects, scene.lights, *current, ray, root));
+	return (colour);
 }
 
 void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
@@ -47,9 +46,8 @@ void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 	pthread_t		*threads;
 	pthread_attr_t	attr;
 
-
-	data = (t_p_data*)malloc(sizeof(t_p_data)*((int)W_W));
-	threads = (pthread_t*)malloc(sizeof(pthread_t)*((int)W_W));
+	data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
+	threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
 	pthread_attr_init(&attr);
 	count.x = 0;
 	while (count.x < W_W)

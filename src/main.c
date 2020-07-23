@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/22 13:11:10 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/22 13:11:12 by ppepperm         ###   ########.fr       */
+/*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
+/*   Updated: 2020/07/23 13:12:19 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void draw_to_texture(t_scene scene, SDL_Texture *win_tex)
+void	draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 {
 	unsigned char	*win_buff;
 	void			*tmp;
-	int 			pitch;
+	int				pitch;
 
 	SDL_LockTexture(win_tex, NULL, &tmp, &pitch);
 	win_buff = (unsigned char *)tmp;
@@ -24,17 +24,18 @@ void draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 	SDL_UnlockTexture(win_tex);
 }
 
-int main( void)
+int		main(void)
 {
-	SDL_Window      *window = NULL;
-	SDL_Event       event;
-	SDL_Renderer    *renderer;
-	SDL_Texture     *win_tex;
+	SDL_Window		*window;
+	SDL_Event		event;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*win_tex;
 	t_scene			scene;
-	t_i2            mouse;
+	t_i2			mouse;
 
-	SDL_Init( SDL_INIT_VIDEO );
-	window = SDL_CreateWindow( "RTv1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN );
+	window = NULL;
+	SDL_Init(SDL_INIT_VIDEO);
+	window = SDL_CreateWindow("RTv1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(renderer);
@@ -45,25 +46,23 @@ int main( void)
 	{
 		if (event.type == SDL_KEYDOWN)
 		{
-		    if (!(scene.chosen))
-			    camera_control(event, &scene);
-		    else
-                object_control(event, scene, scene.chosen);
-            draw_to_texture(scene, win_tex);
+			if (!(scene.chosen))
+				camera_control(event, &scene);
+			else
+				object_control(event, scene, scene.chosen);
+				draw_to_texture(scene, win_tex);
 		}
 		if (event.type == SDL_MOUSEBUTTONDOWN)
-        {
-            SDL_GetMouseState( &mouse.x, &mouse.y);
-            scene.chosen = return_chosen(scene, mouse.x, mouse.y);
-            draw_to_texture(scene, win_tex);
-        }
+		{
+			SDL_GetMouseState(&mouse.x, &mouse.y);
+			scene.chosen = return_chosen(scene, mouse.x, mouse.y);
+			draw_to_texture(scene, win_tex);
+		}
 		SDL_RenderCopy(renderer, win_tex, NULL, NULL);
 		SDL_RenderPresent(renderer);
 	}
-
-	SDL_DestroyWindow( window );
+	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-
-	return 0;
+	return (0);
 }

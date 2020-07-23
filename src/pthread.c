@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-void *thread_trace(void *input)
+void	*thread_trace(void *input)
 {
 	t_p_data	*data;
 	t_ray		ray;
@@ -21,9 +21,9 @@ void *thread_trace(void *input)
 
 	data = (t_p_data*)input;
 	row = 0;
-	while(row < W_H)
+	while (row < W_H)
 	{
-		ray = get_ray(data->scene.camera, data->coll - W_W/2, W_H/2 - row);
+		ray = get_ray(data->scene.camera, data->coll - W_W / 2, W_H / 2 - row);
 		colour = trace_ray(ray, data->scene);
 		data->win_buff[data->coll * 4 + 0 + row * data->pitch] = colour.b;
 		data->win_buff[data->coll * 4 + 1 + row * data->pitch] = colour.g;
