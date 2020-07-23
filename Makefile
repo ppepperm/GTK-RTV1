@@ -31,7 +31,7 @@ $(SDL):
 		gcc -c $(CFLAGS) -I $(INCLUDES) $SSRC -o
 		@echo $(SSRC:src/%.c = %)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(SDL)
 		@make -C libft
 		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LINUX_FLAG)
 		@echo "DONE"

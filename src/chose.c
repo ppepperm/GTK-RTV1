@@ -24,14 +24,7 @@ t_object		*return_chosen(t_scene scene, double x, double y)
 	roots = init_p2(2000000, 2000000);
 	while (scene.objects)
 	{
-		if (scene.objects->type == T_SPHERE)
-			new_roots = intersect_sphere(ray, *(scene.objects));
-		if (scene.objects->type == T_PLANE)
-			new_roots = intersect_plane(ray, *(scene.objects));
-		if (scene.objects->type == T_CONE)
-			new_roots = intersect_cone(ray, *(scene.objects));
-		if (scene.objects->type == T_CYLINDER)
-			new_roots = intersect_cylinder(ray, *(scene.objects));
+		new_roots = scene.objects->intersect(ray, *(scene.objects));
 		if (new_roots.x >= 0 && new_roots.y >= 0)
 		{
 			if (min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
