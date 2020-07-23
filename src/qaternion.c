@@ -12,7 +12,18 @@
 
 #include "../includes/rt.h"
 
-t_q init_rotor(t_p3 axis, double angle)
+t_q			init_q(double s, double i, double j, double k)
+{
+	t_q ret;
+
+	ret.s = s;
+	ret.i = i;
+	ret.j = j;
+	ret.k = k;
+	return (ret);
+}
+
+t_q		init_rotor(t_p3 axis, double angle)
 {
 	t_q rotor;
 
@@ -25,7 +36,7 @@ t_q init_rotor(t_p3 axis, double angle)
 	return (rotor);
 }
 
-t_q q_inverse(t_q base)
+t_q		q_inverse(t_q base)
 {
 	t_q inverse;
 
@@ -36,21 +47,21 @@ t_q q_inverse(t_q base)
 	return (inverse);
 }
 
-t_q q_multiply(t_q q, t_q p)
+t_q		q_multiply(t_q q, t_q p)
 {
 	t_q result;
 
-	result.s = q.s * p.s -q.i * p.i - q.j * p.j - q.k * p.k;
+	result.s = q.s * p.s - q.i * p.i - q.j * p.j - q.k * p.k;
 	result.i = q.s * p.i + q.i * p.s + q.j * p.k - q.k * p.j;
 	result.j = q.s * p.j + q.j * p.s - q.i * p.k + q.k * p.i;
 	result.k = q.s * p.k + q.k * p.s + q.i * p.j - q.j * p.i;
-	return result;
+	return (result);
 }
 
 t_p3	rotate(t_p3 dot, t_p3 axis, double angle)
 {
 	t_p3	ret;
-	t_q 	q_dot;
+	t_q		q_dot;
 	t_q		rot;
 
 	rot = init_rotor(axis, angle);

@@ -157,6 +157,7 @@ void		normalize(t_p3 *vec);
 t_p3        return_norm_plane(t_plane plane);
 t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
+t_ray		init_ray(t_p3 pos, t_p3 dir);
 t_ray		get_ray(t_camera camera, double x, double y);
 t_rgb		trace_ray(t_ray ray, t_scene scene);
 void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
@@ -167,17 +168,16 @@ void		free_nums(char **nums);
 
 t_p2		init_p2(double x, double y);
 t_p3		init_p3(double x, double y, double z);
-t_q			init_q(double s, double i, double j, double k);
-t_ray		init_ray(t_p3 pos, t_p3 dir);
 t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z);
 t_transform init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir);
-t_sphere	init_sphere(t_p3 pos, double r);
 t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+
 void		*return_sphere(char** nums);
 void		*return_plane(char** nums);
 void		*return_cone(char** nums);
 void		*return_cylinder(char** nums);
 
+t_q			init_q(double s, double i, double j, double k);
 t_q		    init_rotor(t_p3 axis, double angle);
 t_q		    q_inverse(t_q base);
 t_q		    q_multiply(t_q q, t_q p);
