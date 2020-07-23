@@ -12,6 +12,15 @@
 
 #include "../includes/rt.h"
 
+t_ray		init_ray(t_p3 pos, t_p3 dir)
+{
+	t_ray ret;
+
+	ret.dir = dir;
+	ret.pos = pos;
+	return (ret);
+}
+
 t_ray			get_ray(t_camera camera, double x, double y)
 {
 	t_ray	ray;

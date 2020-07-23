@@ -12,6 +12,17 @@
 
 #include "../includes/rt.h"
 
+t_q			init_q(double s, double i, double j, double k)
+{
+	t_q ret;
+
+	ret.s = s;
+	ret.i = i;
+	ret.j = j;
+	ret.k = k;
+	return (ret);
+}
+
 t_q		init_rotor(t_p3 axis, double angle)
 {
 	t_q rotor;

@@ -61,6 +61,7 @@ int		main(void)
 		SDL_RenderCopy(renderer, win_tex, NULL, NULL);
 		SDL_RenderPresent(renderer);
 	}
+	//freee(scene)
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
