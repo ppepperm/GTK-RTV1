@@ -209,4 +209,12 @@ void        object_control(SDL_Event event, t_scene scene, t_object *object);
 
 void		*thread_trace(void *input);
 
+int			push_sphere(t_scene *scene, char **nums);
+int			push_plane(t_scene *scene, char **nums);
+int			push_cone(t_scene *scene, char **nums);
+int			push_cylinder(t_scene *scene, char **nums);
+
+int			push_dot(t_scene *scene, char **nums);
+int			push_dir(t_scene *scene, char **nums);
+
 #endif
