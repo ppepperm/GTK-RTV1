@@ -13,7 +13,7 @@
 NAME= RTv1
 SRC :=	src/inits.c src/linal.c src/main.c src/trace.c src/input.c src/free.c\
 src/qaternion.c src/light.c src/chose.c src/transform.c src/intersections.c src/controls.c src/pthread.c\
-src/returns.c src/objects.c src/lights.c
+src/returns.c src/objects.c src/lights.c src/valid.c
 OBJ := $(SRC:%.c=%.o)
 CFLAGS := -Wall -Wextra -Werror -I includes
 LIB_FLAG :=  -L libft/ -lft `./SDL2-2.0.12/sdl2-config --libs --cflags` -O0
