@@ -40,6 +40,7 @@ int		main(void)
 	SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(renderer);
 	win_tex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
+	validation("scene");
 	scene = read_scene("scene");
 	draw_to_texture(scene, win_tex);
 	while (!(SDL_PollEvent(&event) && event.type == SDL_QUIT))

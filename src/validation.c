@@ -12,8 +12,9 @@
 
 #include "../includes/rt.h"
 
-void	ft_error(void)
+void	ft_error(char *l)
 {
+	free(l);
 	write(1, "invalid file\n", 13);
 	exit(EXIT_FAILURE);
 }
@@ -26,7 +27,7 @@ void	check_name(char *l, int *i, char *name)
 		tmp[*i] = l[*i];
 	tmp[*i] = '\0';
 	if (ft_strcmp(tmp, name))
-		ft_error();
+		ft_error(l);
 }
 
 void	check_arg(char *l, int *i, int num)
@@ -39,10 +40,10 @@ void	check_arg(char *l, int *i, int num)
 		if (l[*i] == ';')
 			tz++;
 		else if ((l[*i] < '0' || l[*i] > '9') && l[*i] != '-' && l[*i] != ' ')
-			ft_error();
+			ft_error(l);
 	}
 	if (tz < num)
-		ft_error();
+		ft_error(l);
 }
 
 void	check_line(char *l, char *name, int num)
@@ -67,13 +68,19 @@ void	parser(char *l)
 	else if (l[0] == 'p')
 		check_line(l, "plane", 8);
 	else
-		ft_error();
+		ft_error(l);
 }
 
-void	validation(int fd)
+void	validation(char *fname)
 {
 	char *l;
+	int fd;
 
+	fd = open(fname, O_RDWR);
 	while (get_next_line(fd, &l))
+	{
 		parser(l);
+		free(l);
+	}
+	close(fd);
 }

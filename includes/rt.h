@@ -217,4 +217,6 @@ int			push_cylinder(t_scene *scene, char **nums);
 int			push_dot(t_scene *scene, char **nums);
 int			push_dir(t_scene *scene, char **nums);
 
+void		validation(char *fname);
+
 #endif
