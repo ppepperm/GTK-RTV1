@@ -63,6 +63,12 @@ typedef struct		s_ray
 	t_p3 dir;
 }					t_ray;
 
+typedef struct		s_light_arg
+{
+	t_p3 norm;
+	t_p3 inter;
+}					t_light_arg;
+
 typedef struct		s_sphere
 {
 	t_p3 pos;
@@ -129,7 +135,8 @@ typedef struct 		s_object
 	t_transform     i_t;
 	t_p3            pos;
 	t_p2            (*intersect) (t_ray, struct s_object);
-	double          (*light_funk) (struct s_object	*objects, t_light*, struct s_object, t_ray, double);
+	double          (*light_funk) (t_light*, struct s_object, t_ray, double);
+	struct s_object	*head;
     struct s_object	*next;
 }					t_object;
 
@@ -172,6 +179,7 @@ t_camera	init_camera(t_p3 pos, t_p3 x, t_p3 y, t_p3 z);
 t_transform init_transform(t_p3 x_dir, t_p3 y_dir, t_p3 z_dir);
 t_rgb		init_rgb(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
+void		ft_error(char *l);
 void		*return_sphere(char** nums);
 void		*return_plane(char** nums);
 void		*return_cone(char** nums);
@@ -184,11 +192,11 @@ t_q		    q_multiply(t_q q, t_q p);
 t_p3	    rotate(t_p3 dot, t_p3 axis, double angle);
 
 t_rgb       colour_mult(t_rgb base, double k);
-double      get_light(t_object *objects , t_light *lights, t_p3 inter, t_p3 norm, t_ray ray);
-double      sphere_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
-double      plane_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
-double      cylinder_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
-double      cone_light(t_object *objects, t_light *lights, t_object object, t_ray ray, double root);
+double      get_light(t_object *objects , t_light *lights, t_light_arg arg, t_ray ray);
+double      sphere_light(t_light *lights, t_object object, t_ray ray, double root);
+double      plane_light(t_light *lights, t_object object, t_ray ray, double root);
+double      cylinder_light(t_light *lights, t_object object, t_ray ray, double root);
+double      cone_light(t_light *lights, t_object object, t_ray ray, double root);
 
 t_p2		intersect_sphere(t_ray ray, t_object object);
 t_p2		intersect_plane(t_ray ray, t_object object);

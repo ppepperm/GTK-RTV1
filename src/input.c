@@ -12,6 +12,18 @@
 
 #include "../includes/rt.h"
 
+static void	remember_head(t_scene scene)
+{
+	t_object *head;
+
+	head = scene.objects;
+	while (scene.objects)
+	{
+		scene.objects->head = head;
+		scene.objects = scene.objects->next;
+	}
+}
+
 static void	read_obj(int fd, t_scene *scene)
 {
 	char		*str;
@@ -49,5 +61,6 @@ t_scene		read_scene(char *fname)
 	scene.lights = NULL;
 	scene.chosen = NULL;
 	read_obj(fd, &scene);
+	remember_head(scene);
 	return (scene);
 }

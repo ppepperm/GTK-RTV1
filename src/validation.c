@@ -12,13 +12,6 @@
 
 #include "../includes/rt.h"
 
-void	ft_error(char *l)
-{
-	free(l);
-	write(1, "invalid file\n", 13);
-	exit(EXIT_FAILURE);
-}
-
 void	check_name(char *l, int *i, char *name)
 {
 	char tmp[21];
@@ -73,8 +66,8 @@ void	parser(char *l)
 
 void	validation(char *fname)
 {
-	char *l;
-	int fd;
+	char	*l;
+	int		fd;
 
 	fd = open(fname, O_RDWR);
 	while (get_next_line(fd, &l))
