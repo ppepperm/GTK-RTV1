@@ -12,25 +12,8 @@
 
 #include "../includes/rt.h"
 
-t_rgb		colour_mult(t_rgb base, double k)
-{
-	double r;
-	double g;
-	double b;
-
-	r = base.r * k;
-	if (r > 255)
-		r = 255;
-	g = base.g * k;
-	if (g > 255)
-		g = 255;
-	b = base.b * k;
-	if (b > 255)
-		b = 255;
-	return (init_rgb((unsigned char)r, (unsigned char)g, (unsigned char)b, 255));
-}
-
-double		get_light(t_object *objects, t_light *lights, t_light_arg arg, t_ray ray)
+double		get_light(t_object *objects,
+		t_light *lights, t_light_arg arg, t_ray ray)
 {
 	t_p3	light;
 	double	i;
@@ -40,33 +23,25 @@ double		get_light(t_object *objects, t_light *lights, t_light_arg arg, t_ray ray
 	i = 0.2;
 	while (lights)
 	{
-		if (lights->type == L_DIR)
-			light = lights->data;
-		else if (lights->type == L_DOT)
-			light = lin_comb(arg.inter, 1, lights->data, -1);
-		normalize(&light);
+		prep_light(lights, &light, arg);
 		if (check_shadow(objects, *lights, arg.inter))
 		{
 			lights = lights->next;
 			continue;
 		}
 		cosa = -sc_mult(arg.norm, light);
-		if (cosa < 0)
-			cosa = 0;
-		i += cosa * lights->i;
+		inc_i(cosa, lights, &i, 1);
 		r = lin_comb(arg.norm, 2 * cosa, light, 1);
 		normalize(&r);
 		cosa = -sc_mult(r, ray.dir);
-		if (cosa < 0)
-			cosa = 0;
-		cosa = pow(cosa, ray.pos.x);
-		i += cosa * lights->i;
+		inc_i(cosa, lights, &i, ray.pos.x);
 		lights = lights->next;
 	}
 	return (i);
 }
 
-double		sphere_light(t_light *lights, t_object object, t_ray ray, double root)
+double		sphere_light(t_light *lights,
+		t_object object, t_ray ray, double root)
 {
 	t_p3		inter;
 	t_p3		norm;
@@ -82,7 +57,8 @@ double		sphere_light(t_light *lights, t_object object, t_ray ray, double root)
 	return (get_light(object.head, lights, arg, ray));
 }
 
-double		plane_light(t_light *lights, t_object object, t_ray ray, double root)
+double		plane_light(t_light *lights,
+		t_object object, t_ray ray, double root)
 {
 	t_p3		norm;
 	t_p3		inter;
@@ -98,7 +74,8 @@ double		plane_light(t_light *lights, t_object object, t_ray ray, double root)
 	return (get_light(object.head, lights, arg, ray));
 }
 
-double		cylinder_light(t_light *lights, t_object object, t_ray ray, double root)
+double		cylinder_light(t_light *lights,
+		t_object object, t_ray ray, double root)
 {
 	t_p3		norm;
 	t_p3		inter;

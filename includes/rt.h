@@ -222,6 +222,9 @@ int			push_plane(t_scene *scene, char **nums);
 int			push_cone(t_scene *scene, char **nums);
 int			push_cylinder(t_scene *scene, char **nums);
 
+void		inc_i(double cosa, t_light *lights, double *i, double pw);
+t_rgb		colour_mult(t_rgb base, double k);
+void		prep_light(t_light *lights, t_p3 *light, t_light_arg arg);
 int			push_dot(t_scene *scene, char **nums);
 int			push_dir(t_scene *scene, char **nums);
 

@@ -23,7 +23,7 @@ t_q			init_q(double s, double i, double j, double k)
 	return (ret);
 }
 
-t_q		init_rotor(t_p3 axis, double angle)
+t_q			init_rotor(t_p3 axis, double angle)
 {
 	t_q rotor;
 
@@ -36,7 +36,7 @@ t_q		init_rotor(t_p3 axis, double angle)
 	return (rotor);
 }
 
-t_q		q_inverse(t_q base)
+t_q			q_inverse(t_q base)
 {
 	t_q inverse;
 
@@ -47,7 +47,7 @@ t_q		q_inverse(t_q base)
 	return (inverse);
 }
 
-t_q		q_multiply(t_q q, t_q p)
+t_q			q_multiply(t_q q, t_q p)
 {
 	t_q result;
 
@@ -58,7 +58,7 @@ t_q		q_multiply(t_q q, t_q p)
 	return (result);
 }
 
-t_p3	rotate(t_p3 dot, t_p3 axis, double angle)
+t_p3		rotate(t_p3 dot, t_p3 axis, double angle)
 {
 	t_p3	ret;
 	t_q		q_dot;
