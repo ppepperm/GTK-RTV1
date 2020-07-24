@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-t_ray		init_ray(t_p3 pos, t_p3 dir)
+t_ray			init_ray(t_p3 pos, t_p3 dir)
 {
 	t_ray ret;
 
@@ -33,7 +33,7 @@ t_ray			get_ray(t_camera camera, double x, double y)
 	return (ray);
 }
 
-t_rgb	trace_ray(t_ray ray, t_scene scene)
+t_rgb			trace_ray(t_ray ray, t_scene scene)
 {
 	t_rgb		colour;
 	double		root;
@@ -44,7 +44,8 @@ t_rgb	trace_ray(t_ray ray, t_scene scene)
 		return (colour);
 	if (current && current == scene.chosen)
 		return (init_rgb(255, 255, 0, 255));
-	colour = colour_mult(colour, current->light_funk(scene.lights, *current, ray, root));
+	colour = colour_mult(colour,\
+	current->light_funk(scene.lights, *current, ray, root));
 	return (colour);
 }
 
@@ -55,9 +56,7 @@ void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 	pthread_t		*threads;
 	pthread_attr_t	attr;
 
-	data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
-	threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
-	pthread_attr_init(&attr);
+	init_threads(&data, &threads, &attr);
 	count.x = 0;
 	while (count.x < W_W)
 	{
@@ -65,7 +64,8 @@ void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 		data[count.x].win_buff = win_buff;
 		data[count.x].pitch = pitch;
 		data[count.x].coll = count.x;
-		pthread_create(&(threads[count.x]), &attr, thread_trace, (void *)(&data[count.x]));
+		pthread_create(&(threads[count.x]),\
+		&attr, thread_trace, (void *)(&data[count.x]));
 		count.x++;
 	}
 	count.x = 0;

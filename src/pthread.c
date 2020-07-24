@@ -12,6 +12,13 @@
 
 #include "../includes/rt.h"
 
+void	init_threads(t_p_data **data, pthread_t **threads, pthread_attr_t *attr)
+{
+	*data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
+	*threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
+	pthread_attr_init(attr);
+}
+
 void	*thread_trace(void *input)
 {
 	t_p_data	*data;

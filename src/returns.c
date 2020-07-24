@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-void	ft_error(char *l)
+void		ft_error(char *l)
 {
 	free(l);
 	write(1, "invalid file\n", 13);

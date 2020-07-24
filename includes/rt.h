@@ -215,6 +215,8 @@ t_object    *return_chosen(t_scene scene, double x, double y);
 void        camera_control(SDL_Event event, t_scene *scene);
 void        object_control(SDL_Event event, t_scene scene, t_object *object);
 
+void		init_threads(t_p_data **data,
+			pthread_t **threads, pthread_attr_t *attr);
 void		*thread_trace(void *input);
 
 int			push_sphere(t_scene *scene, char **nums);
