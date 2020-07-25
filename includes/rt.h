@@ -148,6 +148,14 @@ typedef struct 		s_scene
 	t_object        *chosen;
 }					t_scene;
 
+typedef struct		s_sdl_sequence
+{
+	SDL_Window		*window;
+	SDL_Event		event;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*win_tex;
+}					t_sdl_sequence;
+
 typedef struct		s_p_data
 {
 	t_scene			scene;
@@ -161,11 +169,12 @@ t_p3		lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double		sc_mult(t_p3 a, t_p3 b);
 double		min(double a, double b);
 void		normalize(t_p3 *vec);
-t_p3        return_norm_plane(t_plane plane);
 t_p3        return_norm_cone(t_cone cone, t_p3 inter);
 
 t_ray		init_ray(t_p3 pos, t_p3 dir);
 t_ray		get_ray(t_camera camera, double x, double y);
+double      get_intersection(t_ray ray, t_scene scene,
+			t_object **current, t_rgb *colour);
 t_rgb		trace_ray(t_ray ray, t_scene scene);
 void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
 
@@ -202,7 +211,6 @@ t_p2		intersect_sphere(t_ray ray, t_object object);
 t_p2		intersect_plane(t_ray ray, t_object object);
 t_p2		intersect_cone(t_ray ray, t_object object);
 t_p2		intersect_cylinder(t_ray ray, t_object object);
-double      get_intersection(t_ray ray, t_scene scene, t_object **current, t_rgb *colour);
 int         check_shadow(t_object *objects, t_light light, t_p3 inter);
 
 t_transform i_transform(t_transform transform);
@@ -212,8 +220,14 @@ t_ray       ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_object    *return_chosen(t_scene scene, double x, double y);
 
+void		init_sdl_sequence(t_sdl_sequence *sq);
+void		camera_movement(SDL_Event event, t_scene *s);
+void		camera_rotation(SDL_Event event, t_scene *s);
+void		object_movement(SDL_Event event, t_scene *s, t_object *object);
+void		object_rotation(SDL_Event event, t_scene *s, t_object *object);
+
 void        camera_control(SDL_Event event, t_scene *scene);
-void        object_control(SDL_Event event, t_scene scene, t_object *object);
+void        object_control(SDL_Event event, t_scene *scene, t_object *object);
 
 void		init_threads(t_p_data **data,
 			pthread_t **threads, pthread_attr_t *attr);

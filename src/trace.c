@@ -33,6 +33,32 @@ t_ray			get_ray(t_camera camera, double x, double y)
 	return (ray);
 }
 
+double			get_intersection(t_ray ray,
+		t_scene scene, t_object **current, t_rgb *colour)
+{
+	t_p2	roots;
+	t_p2	new_roots;
+
+	*colour = init_rgb(255, 255, 255, 255);
+	*current = NULL;
+	roots = init_p2(3000000, 3000000);
+	while (scene.objects)
+	{
+		new_roots = scene.objects->intersect(ray, *(scene.objects));
+		if (new_roots.x >= 0 && new_roots.y >= 0)
+		{
+			if (min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
+			{
+				roots = new_roots;
+				*colour = scene.objects->colour;
+				*current = scene.objects;
+			}
+		}
+		scene.objects = scene.objects->next;
+	}
+	return (min(roots.x, roots.y));
+}
+
 t_rgb			trace_ray(t_ray ray, t_scene scene)
 {
 	t_rgb		colour;

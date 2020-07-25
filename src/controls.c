@@ -14,99 +14,44 @@
 
 void	camera_control(SDL_Event event, t_scene *scene)
 {
-	if (event.key.keysym.scancode == SDL_SCANCODE_W)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.z_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_S)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.z_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_A)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.x_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_D)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.x_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LCTRL)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.y_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LSHIFT)
-		scene->camera.pos = lin_comb(scene->camera.pos, 1, scene->camera.y_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+	camera_movement(event, scene);
+	camera_rotation(event, scene);
+	if (event.key.keysym.scancode == SDL_SCANCODE_Q)
 	{
-		scene->camera.x_dir = rotate(scene->camera.x_dir, scene->camera.y_dir, -2);
-		scene->camera.z_dir = rotate(scene->camera.z_dir, scene->camera.y_dir, -2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
-	{
-		scene->camera.x_dir = rotate(scene->camera.x_dir, scene->camera.y_dir, 2);
-		scene->camera.z_dir = rotate(scene->camera.z_dir, scene->camera.y_dir, 2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
-	{
-		scene->camera.y_dir = rotate(scene->camera.y_dir, scene->camera.x_dir, -2);
-		scene->camera.z_dir = rotate(scene->camera.z_dir, scene->camera.x_dir, -2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_DOWN)
-	{
-		scene->camera.y_dir = rotate(scene->camera.y_dir, scene->camera.x_dir, 2);
-		scene->camera.z_dir = rotate(scene->camera.z_dir, scene->camera.x_dir, 2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_Q)
-	{
-		scene->camera.x_dir = rotate(scene->camera.x_dir, scene->camera.z_dir, 2);
-		scene->camera.y_dir = rotate(scene->camera.y_dir, scene->camera.z_dir, 2);
+		scene->camera.x_dir = rotate(scene->camera.x_dir,\
+		scene->camera.z_dir, 2);
+		scene->camera.y_dir = rotate(scene->camera.y_dir,\
+		scene->camera.z_dir, 2);
 	}
 	else if (event.key.keysym.scancode == SDL_SCANCODE_E)
 	{
-		scene->camera.x_dir = rotate(scene->camera.x_dir, scene->camera.z_dir, -2);
-		scene->camera.y_dir = rotate(scene->camera.y_dir, scene->camera.z_dir, -2);
+		scene->camera.x_dir = rotate(scene->camera.x_dir,\
+		scene->camera.z_dir, -2);
+		scene->camera.y_dir = rotate(scene->camera.y_dir,\
+		scene->camera.z_dir, -2);
 	}
 }
 
-void	object_control(SDL_Event event, t_scene scene, t_object *object)
+void	object_control(SDL_Event event, t_scene *scene, t_object *object)
 {
-	if (event.key.keysym.scancode == SDL_SCANCODE_W)
-		object->pos = lin_comb(object->pos, 1, scene.camera.z_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_S)
-		object->pos = lin_comb(object->pos, 1, scene.camera.z_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_A)
-		object->pos = lin_comb(object->pos, 1, scene.camera.x_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_D)
-		object->pos = lin_comb(object->pos, 1, scene.camera.x_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LCTRL)
-		object->pos = lin_comb(object->pos, 1, scene.camera.y_dir, -1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LSHIFT)
-		object->pos = lin_comb(object->pos, 1, scene.camera.y_dir, 1);
-	else if (event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+	object_movement(event, scene, scene->chosen);
+	object_rotation(event, scene, scene->chosen);
+	if (event.key.keysym.scancode == SDL_SCANCODE_E)
 	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.y_dir, 2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.y_dir, 2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.y_dir, 2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
-	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.y_dir, -2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.y_dir, -2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.y_dir, -2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_DOWN)
-	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.x_dir, -2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.x_dir, -2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.x_dir, -2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
-	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.x_dir, 2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.x_dir, 2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.x_dir, 2);
-	}
-	else if (event.key.keysym.scancode == SDL_SCANCODE_E)
-	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.z_dir, -2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.z_dir, -2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.z_dir, -2);
+		object->t.x_dir = rotate(object->t.x_dir, scene->camera.z_dir, -2);
+		object->t.y_dir = rotate(object->t.y_dir, scene->camera.z_dir, -2);
+		object->t.z_dir = rotate(object->t.z_dir, scene->camera.z_dir, -2);
 	}
 	else if (event.key.keysym.scancode == SDL_SCANCODE_Q)
 	{
-		object->t.x_dir = rotate(object->t.x_dir, scene.camera.z_dir, 2);
-		object->t.y_dir = rotate(object->t.y_dir, scene.camera.z_dir, 2);
-		object->t.z_dir = rotate(object->t.z_dir, scene.camera.z_dir, 2);
+		object->t.x_dir = rotate(object->t.x_dir, scene->camera.z_dir, 2);
+		object->t.y_dir = rotate(object->t.y_dir, scene->camera.z_dir, 2);
+		object->t.z_dir = rotate(object->t.z_dir, scene->camera.z_dir, 2);
 	}
-		object->i_t = i_transform(object->t);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_F)
+	{
+		scene->chosen = NULL;
+		return ;
+	}
+	object->i_t = i_transform(object->t);
 }

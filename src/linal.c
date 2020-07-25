@@ -44,11 +44,6 @@ void	normalize(t_p3 *vec)
 	vec->z /= abs;
 }
 
-t_p3	return_norm_plane(t_plane plane)
-{
-	return (plane.dir);
-}
-
 t_p3	return_norm_cone(t_cone cone, t_p3 inter)
 {
 	t_p3	ret;
