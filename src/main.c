@@ -24,16 +24,18 @@ void	draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 	SDL_UnlockTexture(win_tex);
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_sdl_sequence	sq;
 	t_scene			scene;
 	t_i2			mouse;
 
+	if (argc != 2)
+		ft_error(NULL);
+	validation(argv[1]);
+	scene = read_scene(argv[1]);
 	SDL_Init(SDL_INIT_VIDEO);
 	init_sdl_sequence(&sq);
-	validation("scene");
-	scene = read_scene("scene");
 	draw_to_texture(scene, sq.win_tex);
 	while (!(SDL_PollEvent(&(sq.event)) && sq.event.type == SDL_QUIT))
 	{
@@ -56,9 +58,10 @@ int		main(void)
 		SDL_RenderCopy(sq.renderer, sq.win_tex, NULL, NULL);
 		SDL_RenderPresent(sq.renderer);
 	}
-	//freee(scene)
-	SDL_DestroyWindow(sq.window);
+	free_scene(&scene);
+	SDL_DestroyTexture(sq.win_tex);
 	SDL_DestroyRenderer(sq.renderer);
+	SDL_DestroyWindow(sq.window);
 	SDL_Quit();
 	return (0);
 }

@@ -14,7 +14,8 @@
 
 void		ft_error(char *l)
 {
-	free(l);
+	if (l)
+		free(l);
 	write(1, "invalid file\n", 13);
 	exit(EXIT_FAILURE);
 }

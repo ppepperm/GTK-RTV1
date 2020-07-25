@@ -69,7 +69,10 @@ void	validation(char *fname)
 	char	*l;
 	int		fd;
 
+	l = NULL;
 	fd = open(fname, O_RDWR);
+	if (fd < 0)
+		ft_error(l);
 	while (get_next_line(fd, &l))
 	{
 		parser(l);

@@ -181,6 +181,7 @@ void		draw_scene(t_scene scene, unsigned char *win_buff, int pitch);
 t_scene		read_scene(char *fname);
 
 void		free_nums(char **nums);
+void		free_scene(t_scene *scene);
 
 t_p2		init_p2(double x, double y);
 t_p3		init_p3(double x, double y, double z);
