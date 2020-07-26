@@ -55,3 +55,26 @@ void	object_control(SDL_Event event, t_scene *scene, t_object *object)
 	}
 	object->i_t = i_transform(object->t);
 }
+
+int		control(SDL_Event event, t_scene *scene, SDL_Texture *win_tex)
+{
+	t_i2	mouse;
+
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (!(scene->chosen))
+			camera_control(event, scene);
+		else
+			object_control(event, scene, scene->chosen);
+		if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+			return (0);
+		draw_to_texture(*scene, win_tex);
+	}
+	if (event.type == SDL_MOUSEBUTTONDOWN)
+	{
+		SDL_GetMouseState(&mouse.x, &mouse.y);
+		scene->chosen = return_chosen(*scene, mouse.x, mouse.y);
+		draw_to_texture(*scene, win_tex);
+	}
+	return (1);
+}

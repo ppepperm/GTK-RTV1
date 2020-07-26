@@ -12,17 +12,6 @@
 
 #include "../includes/rt.h"
 
-void		init_sdl_sequence(t_sdl_sequence *sq)
-{
-	sq->window = SDL_CreateWindow("RTv1", SDL_WINDOWPOS_UNDEFINED,\
-	SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
-	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
-	SDL_RenderClear(sq->renderer);
-	sq->win_tex = SDL_CreateTexture(sq->renderer,\
-	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
-}
-
 void		camera_movement(SDL_Event event, t_scene *s)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_W)

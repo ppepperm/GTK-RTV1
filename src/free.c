@@ -45,3 +45,11 @@ void	free_scene(t_scene *scene)
 		scene->lights = l_ptr;
 	}
 }
+
+void	end_sdl(t_sdl_sequence sq)
+{
+	SDL_DestroyTexture(sq.win_tex);
+	SDL_DestroyRenderer(sq.renderer);
+	SDL_DestroyWindow(sq.window);
+	SDL_Quit();
+}

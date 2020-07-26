@@ -12,7 +12,18 @@
 
 #include "../includes/rt.h"
 
-void	draw_to_texture(t_scene scene, SDL_Texture *win_tex)
+void		init_sdl_sequence(t_sdl_sequence *sq)
+{
+	sq->window = SDL_CreateWindow("RTv1", SDL_WINDOWPOS_UNDEFINED,\
+	SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
+	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
+	SDL_RenderClear(sq->renderer);
+	sq->win_tex = SDL_CreateTexture(sq->renderer,\
+	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
+}
+
+void		draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 {
 	unsigned char	*win_buff;
 	void			*tmp;
@@ -24,11 +35,10 @@ void	draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 	SDL_UnlockTexture(win_tex);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_sdl_sequence	sq;
 	t_scene			scene;
-	t_i2			mouse;
 
 	if (argc != 2)
 		ft_error(NULL);
@@ -39,29 +49,12 @@ int		main(int argc, char **argv)
 	draw_to_texture(scene, sq.win_tex);
 	while (!(SDL_PollEvent(&(sq.event)) && sq.event.type == SDL_QUIT))
 	{
-		if (sq.event.type == SDL_KEYDOWN)
-		{
-			if (!(scene.chosen))
-				camera_control(sq.event, &scene);
-			else
-				object_control(sq.event, &scene, scene.chosen);
-			if (sq.event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
-				break ;
-			draw_to_texture(scene, sq.win_tex);
-		}
-		if (sq.event.type == SDL_MOUSEBUTTONDOWN)
-		{
-			SDL_GetMouseState(&mouse.x, &mouse.y);
-			scene.chosen = return_chosen(scene, mouse.x, mouse.y);
-			draw_to_texture(scene, sq.win_tex);
-		}
+		if (!control(sq.event, &scene, sq.win_tex))
+			break ;
 		SDL_RenderCopy(sq.renderer, sq.win_tex, NULL, NULL);
 		SDL_RenderPresent(sq.renderer);
 	}
 	free_scene(&scene);
-	SDL_DestroyTexture(sq.win_tex);
-	SDL_DestroyRenderer(sq.renderer);
-	SDL_DestroyWindow(sq.window);
-	SDL_Quit();
+	end_sdl(sq);
 	return (0);
 }
