@@ -75,7 +75,7 @@ t_rgb			trace_ray(t_ray ray, t_scene scene)
 	return (colour);
 }
 
-void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
+int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 {
 	t_i2			count;
 	t_p_data		*data;
@@ -83,6 +83,8 @@ void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 	pthread_attr_t	attr;
 
 	init_threads(&data, &threads, &attr);
+	if (!data || !threads)
+		return (0);
 	count.x = 0;
 	while (count.x < W_W)
 	{
@@ -94,12 +96,6 @@ void			draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 		&attr, thread_trace, (void *)(&data[count.x]));
 		count.x++;
 	}
-	count.x = 0;
-	while (count.x < W_W)
-	{
-		pthread_join(threads[count.x], NULL);
-		count.x++;
-	}
-	free(data);
-	free(threads);
+	collect_threads(threads, data);
+	return (1);
 }

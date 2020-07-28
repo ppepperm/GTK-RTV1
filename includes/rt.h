@@ -164,7 +164,7 @@ typedef struct		s_p_data
 	int				coll;
 }					t_p_data;
 
-void				draw_to_texture(t_scene scene, SDL_Texture *win_tex);
+int					draw_to_texture(t_scene scene, SDL_Texture *win_tex);
 
 t_p3				lin_comb(t_p3 a, double k1, t_p3 b, double k2);
 double				sc_mult(t_p3 a, t_p3 b);
@@ -177,14 +177,16 @@ t_ray				get_ray(t_camera camera, double x, double y);
 double				get_intersection(t_ray ray, t_scene scene,
 					t_object **current, t_rgb *colour);
 t_rgb				trace_ray(t_ray ray, t_scene scene);
-void				draw_scene(t_scene scene,
+int					draw_scene(t_scene scene,
 					unsigned char *win_buff, int pitch);
 
 t_scene				read_scene(char *fname);
 
 void				free_nums(char **nums);
 void				free_scene(t_scene *scene);
+void				read_malloc_exit(t_scene *scene);
 void				end_sdl(t_sdl_sequence sq);
+void				draw_exit(t_scene *scene, t_sdl_sequence sq);
 
 t_p2				init_p2(double x, double y);
 t_p3				init_p3(double x, double y, double z);
@@ -246,6 +248,8 @@ int					control(SDL_Event event,
 void				init_threads(t_p_data **data,
 					pthread_t **threads, pthread_attr_t *attr);
 void				*thread_trace(void *input);
+void				collect_threads(pthread_t *threads,
+					t_p_data *data);
 
 int					push_sphere(t_scene *scene, char **nums);
 int					push_plane(t_scene *scene, char **nums);

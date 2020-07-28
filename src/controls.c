@@ -68,13 +68,15 @@ int		control(SDL_Event event, t_scene *scene, SDL_Texture *win_tex)
 			object_control(event, scene, scene->chosen);
 		if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 			return (0);
-		draw_to_texture(*scene, win_tex);
+		if (!draw_to_texture(*scene, win_tex))
+			return (-1);
 	}
 	if (event.type == SDL_MOUSEBUTTONDOWN)
 	{
 		SDL_GetMouseState(&mouse.x, &mouse.y);
 		scene->chosen = return_chosen(*scene, mouse.x, mouse.y);
-		draw_to_texture(*scene, win_tex);
+		if (!draw_to_texture(*scene, win_tex))
+			return (-1);
 	}
 	return (1);
 }

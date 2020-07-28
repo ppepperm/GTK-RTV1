@@ -26,26 +26,30 @@ static void	remember_head(t_scene scene)
 
 static void	read_obj(int fd, t_scene *scene)
 {
+	int			error;
 	char		*str;
 	char		**nums;
 
+	error = 1;
 	while (get_next_line(fd, &str))
 	{
 		nums = ft_strsplit(str, ';');
 		if (!ft_strcmp(nums[0], "sphere"))
-			push_sphere(scene, nums);
+			error &= push_sphere(scene, nums);
 		else if (!ft_strcmp(nums[0], "plane"))
-			push_plane(scene, nums);
+			error &= push_plane(scene, nums);
 		else if (!ft_strcmp(nums[0], "cone"))
-			push_cone(scene, nums);
+			error &= push_cone(scene, nums);
 		else if (!ft_strcmp(nums[0], "cylinder"))
-			push_cylinder(scene, nums);
+			error &= push_cylinder(scene, nums);
 		else if (!ft_strcmp(nums[0], "dot_source"))
-			push_dot(scene, nums);
+			error &= push_dot(scene, nums);
 		else if (!ft_strcmp(nums[0], "dir_source"))
-			push_dir(scene, nums);
+			error &= push_dir(scene, nums);
 		free_nums(nums);
 		free(str);
+		if (!error)
+			read_malloc_exit(scene);
 	}
 }
 

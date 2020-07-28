@@ -24,7 +24,8 @@ void		*return_sphere(char **nums)
 {
 	t_sphere *sphere;
 
-	sphere = (t_sphere*)malloc(sizeof(t_sphere));
+	if (!(sphere = (t_sphere*)malloc(sizeof(t_sphere))))
+		return (NULL);
 	sphere->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
 	sphere->r = ft_atoi(nums[4]);
 	return ((void*)sphere);
@@ -34,7 +35,8 @@ void		*return_plane(char **nums)
 {
 	t_plane *plane;
 
-	plane = (t_plane*)malloc(sizeof(t_plane));
+	if (!(plane = (t_plane*)malloc(sizeof(t_plane))))
+		return (NULL);
 	plane->dir = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
 	plane->d = ft_atoi(nums[4]);
 	return ((void*)plane);
@@ -44,7 +46,8 @@ void		*return_cone(char **nums)
 {
 	t_cone *cone;
 
-	cone = (t_cone*)malloc(sizeof(t_cone));
+	if (!(cone = (t_cone*)malloc(sizeof(t_cone))))
+		return (NULL);
 	cone->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
 	cone->r = ft_atoi(nums[4]);
 	cone->c = ft_atoi(nums[5]);
@@ -55,7 +58,8 @@ void		*return_cylinder(char **nums)
 {
 	t_cylinder *cylinder;
 
-	cylinder = (t_cylinder*)malloc(sizeof(t_cylinder));
+	if (!(cylinder = (t_cylinder*)malloc(sizeof(t_cylinder))))
+		return (NULL);
 	cylinder->pos = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));
 	cylinder->r = ft_atoi(nums[4]);

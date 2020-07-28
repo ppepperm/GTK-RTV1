@@ -16,9 +16,14 @@ int	push_sphere(t_scene *scene, char **nums)
 {
 	t_object	*object;
 
-	object = (t_object*)malloc(sizeof(t_object));
+	if (!(object = (t_object*)malloc(sizeof(t_object))))
+		return (0);
 	object->type = T_SPHERE;
-	object->data = return_sphere(nums);
+	if (!(object->data = return_sphere(nums)))
+	{
+		free(object);
+		return (0);
+	}
 	object->pos = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));
 	object->t = init_transform(init_p3(1, 0, 0),\
@@ -38,9 +43,14 @@ int	push_plane(t_scene *scene, char **nums)
 {
 	t_object	*object;
 
-	object = (t_object*)malloc(sizeof(t_object));
+	if (!(object = (t_object*)malloc(sizeof(t_object))))
+		return (0);
 	object->type = T_PLANE;
-	object->data = return_plane(nums);
+	if (!(object->data = return_plane(nums)))
+	{
+		free(object);
+		return (0);
+	}
 	object->pos = init_p3(0, 0, 0);
 	object->t = init_transform(init_p3(1, 0, 0),\
 	init_p3(0, 1, 0), init_p3(0, 0, 1));
@@ -59,9 +69,14 @@ int	push_cone(t_scene *scene, char **nums)
 {
 	t_object	*object;
 
-	object = (t_object*)malloc(sizeof(t_object));
+	if (!(object = (t_object*)malloc(sizeof(t_object))))
+		return (0);
 	object->type = T_CONE;
-	object->data = return_cone(nums);
+	if (!(object->data = return_cone(nums)))
+	{
+		free(object);
+		return (0);
+	}
 	object->pos = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));
 	object->t = init_transform(init_p3(1, 0, 0),\
@@ -81,9 +96,14 @@ int	push_cylinder(t_scene *scene, char **nums)
 {
 	t_object	*object;
 
-	object = (t_object*)malloc(sizeof(t_object));
+	if (!(object = (t_object*)malloc(sizeof(t_object))))
+		return (0);
 	object->type = T_CYLINDER;
-	object->data = return_cylinder(nums);
+	if (!(object->data = return_cylinder(nums)))
+	{
+		free(object);
+		return (0);
+	}
 	object->pos = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));
 	object->t = init_transform(init_p3(1, 0, 0),\

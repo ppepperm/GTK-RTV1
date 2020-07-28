@@ -52,7 +52,8 @@ int			push_dot(t_scene *scene, char **nums)
 {
 	t_light *light;
 
-	light = (t_light*)malloc(sizeof(t_light));
+	if (!(light = (t_light*)malloc(sizeof(t_light))))
+		return (0);
 	light->type = L_DOT;
 	light->data = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));
@@ -66,7 +67,8 @@ int			push_dir(t_scene *scene, char **nums)
 {
 	t_light *light;
 
-	light = (t_light*)malloc(sizeof(t_light));
+	if (!(light = (t_light*)malloc(sizeof(t_light))))
+		return (0);
 	light->type = L_DIR;
 	light->data = init_p3(ft_atoi(nums[1]),\
 	ft_atoi(nums[2]), ft_atoi(nums[3]));

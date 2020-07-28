@@ -46,10 +46,28 @@ void	free_scene(t_scene *scene)
 	}
 }
 
+void	read_malloc_exit(t_scene *scene)
+{
+	free_scene(scene);
+	ft_putstr("malloc error while reading\n");
+	exit(EXIT_FAILURE);
+}
+
 void	end_sdl(t_sdl_sequence sq)
 {
-	SDL_DestroyTexture(sq.win_tex);
-	SDL_DestroyRenderer(sq.renderer);
-	SDL_DestroyWindow(sq.window);
+	if (sq.win_tex)
+		SDL_DestroyTexture(sq.win_tex);
+	if (sq.renderer)
+		SDL_DestroyRenderer(sq.renderer);
+	if (sq.window)
+		SDL_DestroyWindow(sq.window);
 	SDL_Quit();
+}
+
+void	draw_exit(t_scene *scene, t_sdl_sequence sq)
+{
+	free_scene(scene);
+	end_sdl(sq);
+	ft_putstr("malloc error while drawing\n");
+	exit(EXIT_FAILURE);
 }

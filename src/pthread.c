@@ -14,8 +14,17 @@
 
 void	init_threads(t_p_data **data, pthread_t **threads, pthread_attr_t *attr)
 {
+	*data = NULL;
+	*threads = NULL;
 	*data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
 	*threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
+	if (!(*data) || !(*threads))
+	{
+		if (*data)
+			free(*data);
+		if (*threads)
+			free(*threads);
+	}
 	pthread_attr_init(attr);
 }
 
@@ -39,4 +48,18 @@ void	*thread_trace(void *input)
 		row++;
 	}
 	pthread_exit(0);
+}
+
+void	collect_threads(pthread_t *threads, t_p_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < W_W)
+	{
+		pthread_join(threads[i], NULL);
+		i++;
+	}
+	free(data);
+	free(threads);
 }
