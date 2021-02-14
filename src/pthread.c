@@ -40,7 +40,7 @@ void	*thread_trace(void *input)
 	while (row < W_H)
 	{
 		ray = get_ray(data->scene.camera, data->coll - W_W / 2, W_H / 2 - row);
-		colour = trace_ray(ray, data->scene);
+		colour = trace_ray(ray, data->scene, 0);
 		data->win_buff[data->coll * 4 + 0 + row * data->pitch] = colour.b;
 		data->win_buff[data->coll * 4 + 1 + row * data->pitch] = colour.g;
 		data->win_buff[data->coll * 4 + 2 + row * data->pitch] = colour.r;

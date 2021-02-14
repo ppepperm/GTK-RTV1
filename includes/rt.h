@@ -27,8 +27,9 @@
 # define T_PLANE	2
 # define T_CONE		3
 # define T_CYLINDER	4
-# define L_DOT	  1
-# define L_DIR	  2
+# define L_DOT		1
+# define L_DIR		2
+# define DEPTH		3
 
 typedef struct		s_i2
 {
@@ -136,6 +137,7 @@ typedef struct		s_object
 	t_p3			pos;
 	t_p2			(*intersect) (t_ray, struct s_object);
 	double			(*light_funk) (t_light*, struct s_object, t_ray, double);
+	t_p3			(*norm_funk) (struct s_object, t_ray, double);
 	struct s_object	*head;
 	struct s_object	*next;
 }					t_object;
@@ -176,7 +178,7 @@ t_ray				init_ray(t_p3 pos, t_p3 dir);
 t_ray				get_ray(t_camera camera, double x, double y);
 double				get_intersection(t_ray ray, t_scene scene,
 					t_object **current, t_rgb *colour);
-t_rgb				trace_ray(t_ray ray, t_scene scene);
+t_rgb				trace_ray(t_ray ray, t_scene scene, int depth);
 int					draw_scene(t_scene scene,
 					unsigned char *win_buff, int pitch);
 
@@ -263,6 +265,11 @@ t_rgb				colour_mult(t_rgb base, double k);
 void				prep_light(t_light *lights, t_p3 *light, t_light_arg arg);
 int					push_dot(t_scene *scene, char **nums);
 int					push_dir(t_scene *scene, char **nums);
+
+t_p3				sphere_norm(t_object object, t_ray ray, double root);
+t_p3				plane_norm(t_object object, t_ray ray, double root);
+t_p3				cylinder_norm(t_object object, t_ray ray, double root);
+t_p3				cone_norm(t_object object, t_ray ray, double root);
 
 void				validation(char *fname);
 

@@ -48,9 +48,7 @@ double		sphere_light(t_light *lights,
 	t_light_arg	arg;
 
 	inter = lin_comb(ray.pos, 1, ray.dir, root);
-	norm = transform_pos(inter, object.i_t, object.pos);
-	norm = transform_dir(norm, object.t);
-	normalize(&norm);
+	norm = object.norm_funk(object, ray, root);
 	ray.pos.x = object.reflect;
 	arg.norm = norm;
 	arg.inter = inter;
@@ -65,9 +63,7 @@ double		plane_light(t_light *lights,
 	t_light_arg	arg;
 
 	inter = lin_comb(ray.pos, 1, ray.dir, root);
-	norm = ((t_plane*)(object.data))->dir;
-	norm = transform_dir(norm, object.t);
-	normalize(&norm);
+	norm = object.norm_funk(object, ray, root);
 	ray.pos.x = object.reflect;
 	arg.norm = norm;
 	arg.inter = inter;
@@ -82,10 +78,7 @@ double		cylinder_light(t_light *lights,
 	t_light_arg	arg;
 
 	inter = lin_comb(ray.pos, 1, ray.dir, root);
-	norm = transform_pos(inter, object.i_t, object.pos);
-	norm.y = 0;
-	norm = transform_dir(norm, object.t);
-	normalize(&norm);
+	norm = object.norm_funk(object, ray, root);
 	ray.pos.x = object.reflect;
 	arg.norm = norm;
 	arg.inter = inter;
@@ -96,14 +89,10 @@ double		cone_light(t_light *lights, t_object object, t_ray ray, double root)
 {
 	t_p3		norm;
 	t_p3		inter;
-	t_p3		new_inter;
 	t_light_arg	arg;
 
 	inter = lin_comb(ray.pos, 1, ray.dir, root);
-	new_inter = transform_pos(inter, object.i_t, object.pos);
-	norm = return_norm_cone(*((t_cone*)object.data), new_inter);
-	norm = transform_dir(norm, object.t);
-	normalize(&norm);
+	norm = object.norm_funk(object, ray, root);
 	ray.pos.x = object.reflect;
 	arg.norm = norm;
 	arg.inter = inter;

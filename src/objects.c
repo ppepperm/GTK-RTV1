@@ -34,6 +34,7 @@ int	push_sphere(t_scene *scene, char **nums)
 	object->reflect = ft_atoi(nums[8]);
 	object->intersect = intersect_sphere;
 	object->light_funk = sphere_light;
+	object->norm_funk = sphere_norm;
 	object->next = scene->objects;
 	scene->objects = object;
 	return (1);
@@ -60,6 +61,7 @@ int	push_plane(t_scene *scene, char **nums)
 	object->reflect = ft_atoi(nums[8]);
 	object->intersect = intersect_plane;
 	object->light_funk = plane_light;
+	object->norm_funk = plane_norm;
 	object->next = scene->objects;
 	scene->objects = object;
 	return (1);
@@ -87,6 +89,7 @@ int	push_cone(t_scene *scene, char **nums)
 	object->reflect = ft_atoi(nums[9]);
 	object->intersect = intersect_cone;
 	object->light_funk = cone_light;
+	object->norm_funk = cone_norm;
 	object->next = scene->objects;
 	scene->objects = object;
 	return (1);
@@ -114,6 +117,7 @@ int	push_cylinder(t_scene *scene, char **nums)
 	object->reflect = ft_atoi(nums[8]);
 	object->intersect = intersect_cylinder;
 	object->light_funk = cylinder_light;
+	object->norm_funk = cylinder_norm;
 	object->next = scene->objects;
 	scene->objects = object;
 	return (1);
