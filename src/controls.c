@@ -36,6 +36,7 @@ void	object_control(SDL_Event event, t_scene *scene, t_object *object)
 {
 	object_movement(event, scene, scene->chosen);
 	object_rotation(event, scene, scene->chosen);
+	object_shrink(event, scene->chosen);
 	if (event.key.keysym.scancode == SDL_SCANCODE_E)
 	{
 		object->t.x_dir = rotate(object->t.x_dir, scene->camera.z_dir, -2);

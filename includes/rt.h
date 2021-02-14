@@ -238,6 +238,8 @@ void				object_movement(SDL_Event event,
 					t_scene *s, t_object *object);
 void				object_rotation(SDL_Event event,
 					t_scene *s, t_object *object);
+void				object_shrink(SDL_Event event,
+                      t_object *object);
 
 void				camera_control(SDL_Event event, t_scene *scene);
 void				object_control(SDL_Event event,
