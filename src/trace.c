@@ -47,7 +47,7 @@ double			get_intersection(t_ray ray,
 		new_roots = scene.objects->intersect(ray, *(scene.objects));
 		if (new_roots.x >= 0 && new_roots.y >= 0)
 		{
-			if (min(roots.x, roots.y) > min(new_roots.x, new_roots.y))
+			if (min(roots.x, roots.y) > min(new_roots.x, new_roots.y) && min(new_roots.x, new_roots.y) >= 0.0001)
 			{
 				roots = new_roots;
 				*colour = scene.objects->colour;
@@ -65,6 +65,7 @@ t_ray			reflect(t_ray ray, t_p3 norm, double root)
 
 	ret.pos = lin_comb(ray.pos, 1, ray.dir, root);
 	ret.dir = lin_comb(norm, -2*sc_mult(norm, ray.dir), ray.dir, 1);
+	normalize(&(ret.dir));
 	return ret;
 }
 
@@ -84,7 +85,7 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	colour = colour_mult(colour,\
 	current->light_funk(scene.lights, *current, ray, root));
 
-	if (depth == DEPTH)
+	if (depth == 1)
 		return (colour);
 
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);

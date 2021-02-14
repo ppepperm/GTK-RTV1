@@ -20,7 +20,7 @@ double		get_light(t_object *objects,
 	double	cosa;
 	t_p3	r;
 
-	i = 0.2;
+	i = 0.5;
 	while (lights)
 	{
 		prep_light(lights, &light, arg);
