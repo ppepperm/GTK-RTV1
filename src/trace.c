@@ -85,7 +85,7 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	colour = colour_mult(colour,\
 	current->light_funk(scene.lights, *current, ray, root));
 
-	if (depth == 1)
+	if (depth == DEPTH)
 		return (colour);
 
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);
@@ -107,7 +107,7 @@ int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 	pthread_t		*threads;
 	pthread_attr_t	attr;
 
-	init_threads(&data, &threads, &attr);
+	init_threads(&data, &threads, &attrc);
 	if (!data || !threads)
 		return (0);
 	count.x = 0;
