@@ -51,15 +51,15 @@ void	check_line(char *l, char *name, int num)
 void	parser(char *l)
 {
 	if (l[0] == 's')
-		check_line(l, "sphere", 8);
+		check_line(l, "sphere", 9);
 	else if (l[0] == 'c' && l[1] == 'o')
-		check_line(l, "cone", 9);
+		check_line(l, "cone", 10);
 	else if (l[0] == 'c' && l[1] == 'y')
-		check_line(l, "cylinder", 8);
+		check_line(l, "cylinder", 9);
 	else if (l[0] == 'd')
 		check_line(l, "dot_source", 4);
 	else if (l[0] == 'p')
-		check_line(l, "plane", 8);
+		check_line(l, "plane", 9);
 	else
 		ft_error(l);
 }

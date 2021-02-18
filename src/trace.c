@@ -81,40 +81,24 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	if (!current)
 		return (colour);
     if (current && current == scene.chosen)
-        colour = init_rgb(255, 255, 0, 255);
-    if (current->type == T_SPHERE) {
-        t_p3 inter;
-        double alpha;
-        double beta;
-        inter = lin_comb(ray.pos, 1, ray.dir, root);
-        inter = transform_pos(inter, current->i_t, current->pos);
-        normalize(&inter);
-        alpha = acos(inter.x);
-        beta = atan2(inter.y, inter.z);
-        if (beta < 0)
-            beta += 3.14;
-        alpha = alpha * 10 / 3.14;
-        beta = beta * 10 / 3.14;
-        if ((int) alpha % 2 == (int) beta % 2) {
-            colour = init_rgb(250, 0, 0, 255);
-        } else {
-            colour = init_rgb(0, 0, 255, 255);
-        }
-    }
+		return (init_rgb(255, 0, 255, 255));
+
+    if (scene.effect == 1)
+        colour = checkers(current, root, ray);
 
 	colour = colour_mult(colour,\
 	current->light_funk(scene.lights, *current, ray, root));
 
-	if (depth == DEPTH)
+	if (depth == DEPTH || current->mirror == 0)
 		return (colour);
 
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);
 	reflected_colour = trace_ray(reflected, scene, depth + 1);
 
 	t_rgb ret;
-	ret.r = colour.r*0.6 + reflected_colour.r*0.4;
-	ret.g = colour.g*0.6 + reflected_colour.g*0.4;
-	ret.b = colour.b*0.6 + reflected_colour.b*0.4;
+	ret.r = colour.r*(1 - current->mirror) + reflected_colour.r*current->mirror;
+	ret.g = colour.g*(1 - current->mirror) + reflected_colour.g*current->mirror;
+	ret.b = colour.b*(1 - current->mirror) + reflected_colour.b*current->mirror;
 	ret.a = 255;
 
 	return (ret);

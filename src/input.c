@@ -64,6 +64,7 @@ t_scene		read_scene(char *fname)
 	scene.objects = NULL;
 	scene.lights = NULL;
 	scene.chosen = NULL;
+	scene.effect = 0;
 	read_obj(fd, &scene);
 	remember_head(scene);
 	return (scene);

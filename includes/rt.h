@@ -131,6 +131,7 @@ typedef struct		s_object
 	void			*data;
 	unsigned char	type;
 	double			reflect;
+	double			mirror;
 	t_rgb			colour;
 	t_transform		t;
 	t_transform		i_t;
@@ -148,6 +149,7 @@ typedef struct		s_scene
 	t_object		*objects;
 	t_light			*lights;
 	t_object		*chosen;
+	unsigned char	effect;
 }					t_scene;
 
 typedef struct		s_sdl_sequence
@@ -272,5 +274,6 @@ t_p3				cylinder_norm(t_object object, t_ray ray, double root);
 t_p3				cone_norm(t_object object, t_ray ray, double root);
 
 void				validation(char *fname);
+t_rgb				checkers(t_object *current, double root, t_ray ray);
 
 #endif

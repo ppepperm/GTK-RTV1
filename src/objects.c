@@ -32,6 +32,7 @@ int	push_sphere(t_scene *scene, char **nums)
 	object->colour = init_rgb(ft_atoi(nums[5]),\
 	ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
 	object->reflect = ft_atoi(nums[8]);
+	object->mirror = (double)ft_atoi(nums[9])/100;
 	object->intersect = intersect_sphere;
 	object->light_funk = sphere_light;
 	object->norm_funk = sphere_norm;
@@ -59,6 +60,7 @@ int	push_plane(t_scene *scene, char **nums)
 	object->colour = init_rgb(ft_atoi(nums[5]),\
 	ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
 	object->reflect = ft_atoi(nums[8]);
+	object->mirror = (double)ft_atoi(nums[9])/100;
 	object->intersect = intersect_plane;
 	object->light_funk = plane_light;
 	object->norm_funk = plane_norm;
@@ -87,6 +89,7 @@ int	push_cone(t_scene *scene, char **nums)
 	object->colour = init_rgb(ft_atoi(nums[6]),\
 	ft_atoi(nums[7]), ft_atoi(nums[8]), 255);
 	object->reflect = ft_atoi(nums[9]);
+	object->mirror = (double)ft_atoi(nums[10])/100;
 	object->intersect = intersect_cone;
 	object->light_funk = cone_light;
 	object->norm_funk = cone_norm;
@@ -115,6 +118,7 @@ int	push_cylinder(t_scene *scene, char **nums)
 	object->colour = init_rgb(ft_atoi(nums[5]),\
 	ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
 	object->reflect = ft_atoi(nums[8]);
+	object->mirror = (double)ft_atoi(nums[9])/100;
 	object->intersect = intersect_cylinder;
 	object->light_funk = cylinder_light;
 	object->norm_funk = cylinder_norm;
