@@ -66,14 +66,11 @@ t_rgb 	checkers(t_object *current, double root, t_ray ray)
 	else if (current->type == T_CYLINDER)
 	{
 		beta = inter.y;
-		alpha = atan2(inter.z, inter.x);
-		alpha = alpha * 10 / 3.14;
 		beta = beta / 5;
 		if (beta < 0)
 			beta = beta * -1 + 1;
-		if (alpha < 0)
-			alpha += 3.14/2;
-		if ((int) alpha % 2 == (int) beta % 2)
+
+		if ((int) beta % 2 == 1)
 			return (init_rgb(250, 0, 0, 255));
 		else
 			return (init_rgb(255, 255, 255, 255));
