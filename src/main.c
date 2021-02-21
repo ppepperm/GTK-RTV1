@@ -6,11 +6,24 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/21 13:07:00 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/21 16:04:41 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static void		show_help(t_sdl_sequence *sq)
+{
+	SDL_Rect rect;
+	rect.x = 1080;
+	rect.y = 1;
+	rect.w = 360;
+	rect.y = 720;
+	SDL_SetRenderDrawColor(sq->renderer, 255, 0, 0, 255);
+	SDL_RenderClear(sq->renderer);
+	SDL_RenderFillRect(sq->renderer, &rect);
+	SDL_RenderPresent(sq->renderer);
+}
 
 int			init_sdl_sequence(t_sdl_sequence *sq)
 {
@@ -19,11 +32,11 @@ int			init_sdl_sequence(t_sdl_sequence *sq)
 	sq->win_tex = NULL;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (0);
-	//show_help();
 	sq->window = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,\
 	SDL_WINDOWPOS_UNDEFINED, 1440, W_H, SDL_WINDOW_SHOWN);
 	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
+	show_help(sq);
 	SDL_RenderClear(sq->renderer);
 	sq->win_tex = SDL_CreateTexture(sq->renderer,\
 	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 1440, W_H);

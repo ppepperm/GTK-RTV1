@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/26 13:16:06 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/21 15:05:15 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/includes/libft.h"
 # include "../SDL2/SDL.h"
 # include <math.h>
+# include "../SDL2/SDL_ttf.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
