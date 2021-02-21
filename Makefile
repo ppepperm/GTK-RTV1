@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2020/05/26 19:42:03 by ppepperm         ###   ########.fr        #
+#    Updated: 2021/02/21 13:57:29 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ OBJ := $(SRC:%.c=%.o)
 CFLAGS := -Wall -Wextra -Werror -I includes
 LIB_FLAG :=  -L libft/ -lft `./SDL2-2.0.12/sdl2-config --libs --cflags` -O0
 LINUX_FLAG := -L libft/ -lft `./SDL2-2.0.12/sdl2-config --libs --cflags` -O0  -lm
-PATH_SDL := $(PWD)/SDL2-2.0.12
-SDL = $(PWD)/SDL2-2.0.12/sdl2-config
-INCLUDES := includes SDL2
+PATH_SDL := $(PWD)/frameworks
+SDL = $(PWD)/SDL2_ttf-2.0.15
+INCLUDES := includes frameworks/SDL2.framework/Versions/A/Headers frameworks/SDL2_ttf.framework/Versions/A/Headers frameworks/SDL2_image.framework/Versions/A/Headers frameworks/SDL2_mixer.framework/Headers frameworks/
 
 all: $(NAME)
 
