@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/23 13:12:19 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/21 13:07:00 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int			init_sdl_sequence(t_sdl_sequence *sq)
 	sq->win_tex = NULL;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (0);
-	sq->window = SDL_CreateWindow("RTv1", SDL_WINDOWPOS_UNDEFINED,\
-	SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
+	//show_help();
+	sq->window = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,\
+	SDL_WINDOWPOS_UNDEFINED, 1440, W_H, SDL_WINDOW_SHOWN);
 	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(sq->renderer);
 	sq->win_tex = SDL_CreateTexture(sq->renderer,\
-	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
+	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 1440, W_H);
 	if (!sq->window || !sq->renderer || !sq->win_tex)
 		return (0);
 	return (1);
