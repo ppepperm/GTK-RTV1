@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/21 16:04:41 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/21 16:51:13 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static void		show_help(t_sdl_sequence *sq)
 	rect.w = 360;
 	rect.y = 720;
 	SDL_SetRenderDrawColor(sq->renderer, 255, 0, 0, 255);
+	SDL_Color color = { 255, 255, 255, 255 };
+	TTF_Font *font = TTF_OpenFont("Arial.ttf", 14);
+    SDL_Surface *surf = TTF_RenderText_Blended(font, "Authors:\ngjigglyp\njablilbo\nsreyne\nppepperm\n", color);
+	SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_RenderClear(sq->renderer);
 	SDL_RenderFillRect(sq->renderer, &rect);
 	SDL_RenderPresent(sq->renderer);
