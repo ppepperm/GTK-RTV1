@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/26 13:16:06 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/22 23:32:47 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <stdbool.h>
 
 # define W_H		720.0
 # define W_W		1080.0
@@ -259,6 +260,7 @@ int					push_sphere(t_scene *scene, char **nums);
 int					push_plane(t_scene *scene, char **nums);
 int					push_cone(t_scene *scene, char **nums);
 int					push_cylinder(t_scene *scene, char **nums);
+int					ft_atoip(const char *str);
 
 void				inc_i(double cosa, t_light *lights, double *i, double pw);
 t_rgb				colour_mult(t_rgb base, double k);

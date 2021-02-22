@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 20:09:59 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/06/22 20:10:04 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:39:23 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 	pthread_t		*threads;
 	pthread_attr_t	attr;
 
-	init_threads(&data, &threads, &attrc);
+	init_threads(&data, &threads, &attr);
 	if (!data || !threads)
 		return (0);
 	count.x = 0;

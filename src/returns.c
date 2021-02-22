@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   returns.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:24:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/23 16:24:40 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/22 23:32:39 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ void		ft_error(char *l)
 void		*return_sphere(char **nums)
 {
 	t_sphere *sphere;
-
 	if (!(sphere = (t_sphere*)malloc(sizeof(t_sphere))))
 		return (NULL);
-	sphere->pos = init_p3(ft_atoi(nums[1]), ft_atoi(nums[2]), ft_atoi(nums[3]));
-	sphere->r = ft_atoi(nums[4]);
+	sphere->pos = init_p3(ft_atoip(nums[0]), ft_atoip(nums[1]), ft_atoip(nums[2]));
+	sphere->r = ft_atoip(nums[3]);
 	return ((void*)sphere);
 }
 

@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:57:58 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/23 16:58:01 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/22 23:26:50 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static int	ft_kost(int mult)
+{
+	if (mult < 0)
+		return (0);
+	return (-1);
+}
+
+int			ft_atoip(const char *str)
+{
+	long long mult;
+	long long nb;
+
+	mult = 1;
+	nb = 0;
+	while ((*str == ' ') || (*str == '\t') || (*str == '\v') || (*str == '\f')\
+			|| (*str == '\r') || (*str == '\n') || (((*str < '0') || (*str > '9')) && (*str != '-')))
+		str++;
+	if (*str == '-')
+	{
+		str++;
+		mult = -1;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str != '\0')
+	{
+		if ((*str < '0') || (*str > '9'))
+			return (nb * mult);
+		if (nb > nb * 10 + (*str - '0') && nb != 214748364)
+			return (ft_kost(mult));
+		nb = nb * 10 + (*str - '0');
+		str++;
+	}
+	return ((int)(nb * mult));
+}
 
 int	push_sphere(t_scene *scene, char **nums)
 {
@@ -24,14 +60,30 @@ int	push_sphere(t_scene *scene, char **nums)
 		free(object);
 		return (0);
 	}
-	object->pos = init_p3(ft_atoi(nums[1]),\
-	ft_atoi(nums[2]), ft_atoi(nums[3]));
+	printf("%s\n", nums[0]);
+	printf("%d\n", ft_atoip(nums[0]));
+	printf("%s\n", nums[1]);
+	printf("%d\n", ft_atoip(nums[1]));
+	printf("%s\n", nums[2]);
+	printf("%d\n", ft_atoip(nums[2]));
+	printf("%s\n", nums[3]);
+	printf("%d\n", ft_atoip(nums[3]));
+	printf("%s\n", nums[4]);
+	printf("%d\n", ft_atoip(nums[4]));
+	printf("%s\n", nums[5]);
+	printf("%d\n", ft_atoip(nums[5]));
+	printf("%s\n", nums[6]);
+	printf("%d\n", ft_atoip(nums[6]));
+	printf("%s\n", nums[7]);
+	printf("%d\n", ft_atoip(nums[7]));
+	object->pos = init_p3(ft_atoip(nums[0]),\
+	ft_atoip(nums[1]), ft_atoip(nums[2]));
 	object->t = init_transform(init_p3(1, 0, 0),\
 	init_p3(0, 1, 0), init_p3(0, 0, 1));
 	object->i_t = i_transform(object->t);
-	object->colour = init_rgb(ft_atoi(nums[5]),\
-	ft_atoi(nums[6]), ft_atoi(nums[7]), 255);
-	object->reflect = ft_atoi(nums[8]);
+	object->colour = init_rgb(ft_atoip(nums[4]),\
+	ft_atoip(nums[5]), ft_atoip(nums[6]), 255);
+	object->reflect = ft_atoip(nums[7]);
 	object->intersect = intersect_sphere;
 	object->light_funk = sphere_light;
 	object->norm_funk = sphere_norm;

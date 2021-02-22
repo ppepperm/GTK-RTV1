@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/23 13:12:19 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/22 16:33:43 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error(NULL);
-	validation(argv[1]);
+	// validation(argv[1]);
 	scene = read_scene(argv[1]);
 	if (!init_sdl_sequence(&sq))
 		init_exit(&scene, sq);
