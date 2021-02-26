@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 15:49:08 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/26 14:50:43 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:24:42 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static bool	chek_chek(char **str, char *xyz, int num)
 			return (false);
 		i++;
 	}
+	if (str[i + 1])
+		return (false);
 	return (true);
 }
 
@@ -51,7 +53,7 @@ static int	chek_obj(char *str, t_scene *scene)
 	error = 1;
 	nums = ft_strsplit(str, ',');
 
-	if (chek_chek(nums, "sphere", 7))
+	if (chek_chek(nums, "sphere", 8))
 		error &= push_sphere(scene, nums);
 	else if (chek_chek(nums, "plane", 7))
 		error &= push_plane(scene, nums);
