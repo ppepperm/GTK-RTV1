@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 15:49:08 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/26 14:22:02 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/02/26 14:50:43 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,21 @@ static void	remember_head(t_scene scene)
 	}
 }
 
-static bool	chek_chek(char *str, char *xyz)
+static bool	chek_chek(char **str, char *xyz, int num)
 {
 	char	*tmp;
+	int		i;
 
-	tmp = ft_strstr(str, xyz);
+	i = 0;
+	tmp = ft_strstr(str[0], xyz);
 	if (tmp == NULL)
 		return (false);
+	while (i < num)
+	{
+		if (!str[i + 1])
+			return (false);
+		i++;
+	}
 	return (true);
 }
 
@@ -43,17 +51,17 @@ static int	chek_obj(char *str, t_scene *scene)
 	error = 1;
 	nums = ft_strsplit(str, ',');
 
-	if (chek_chek(nums[0], "sphere"))
+	if (chek_chek(nums, "sphere", 7))
 		error &= push_sphere(scene, nums);
-	else if (chek_chek(nums[0], "plane"))
+	else if (chek_chek(nums, "plane", 7))
 		error &= push_plane(scene, nums);
-	else if (chek_chek(nums[0], "cone"))
+	else if (chek_chek(nums, "cone", 8))
 		error &= push_cone(scene, nums);
-	else if (chek_chek(nums[0], "cylinder"))
+	else if (chek_chek(nums, "cylinder", 7))
 		error &= push_cylinder(scene, nums);
-	else if (chek_chek(nums[0], "dot_source"))
+	else if (chek_chek(nums, "dot_source", 3))
 		error &= push_dot(scene, nums);
-	else if (chek_chek(nums[0], "dir_source"))
+	else if (chek_chek(nums, "dir_source", 3))
 		error &= push_dir(scene, nums);
 	if (!error)
 		read_malloc_exit(scene);
