@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 18:16:27 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/15 16:08:14 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/11/21 17:27:42 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/09/05 19:14:44 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstpushback(t_list **head, t_list *node)
+char	*ft_strjoinfree(char *s1, char *s2, char control)
 {
-	t_list *save;
+	char	*mem;
 
-	if (!*head)
-		*head = node;
-	else
-	{
-		save = *head;
-		while (save->next)
-			save = save->next;
-		save->next = node;
-	}
+	mem = ft_strjoin(s1, s2);
+	if (control == 'L' || control == 'B')
+		free(s1);
+	if (control == 'R' || control == 'B')
+		free(s2);
+	return (mem);
 }

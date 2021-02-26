@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 12:00:32 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/12 18:36:37 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:34:53 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/11 19:34:54 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len1;
-	int		len2;
-	char	*tmp;
-	char	*ret;
+	size_t	i;
+	char	*str;
 
+	i = 0;
 	if (!s1 || !s2)
+		return (0);
+	if (!(str = (char *)malloc((ft_strlen(s1) +
+		ft_strlen(s2) + 2) * sizeof(char))))
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	if (!(tmp = (char*)malloc(sizeof(char) * (len1 + len2 + 1))))
-		return (NULL);
-	ret = tmp;
-	while (len1--)
+	while (*s1)
 	{
-		*tmp = *s1++;
-		tmp++;
+		str[i] = *s1++;
+		i++;
 	}
-	while (len2--)
+	while (*s2)
 	{
-		*tmp = *s2++;
-		tmp++;
+		str[i] = *s2++;
+		i++;
 	}
-	*tmp = 0;
-	return (ret);
+	str[i] = '\0';
+	return (str);
 }

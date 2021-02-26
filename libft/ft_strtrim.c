@@ -3,59 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 12:58:37 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/13 17:59:18 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:25:31 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_kostil(void)
+int			spcs(char c)
 {
-	char *tmp;
-
-	tmp = (char*)malloc(sizeof(char));
-	*tmp = 0;
-	return (tmp);
+	if (c == ' ' || c == '\n' || c == '\t')
+		return (1);
+	return (0);
 }
 
-static char	get_ij(size_t *i, size_t *j, char const *s)
+char		*recrd(char *s1, char *s2, size_t tmp, size_t i)
 {
-	if (!ft_strlen(s))
-		return (0);
-	*j = ft_strlen(s) - 1;
-	while (s[*i] == ' ' || s[*i] == '\n' || s[*i] == '\t')
-		(*i)++;
-	if (*i >= *j)
-		return (0);
-	while (s[*j] == ' ' || s[*j] == '\n' || s[*j] == '\t')
-		(*j)--;
-	return ('a');
+	size_t	j;
+
+	j = 0;
+	while (tmp <= i)
+		s1[j++] = s2[tmp++];
+	s1[j] = '\0';
+	return (s1);
 }
 
 char		*ft_strtrim(char const *s)
 {
-	size_t	i;
-	size_t	j;
-	char	*tmp;
-	char	*ret;
+	int		i;
+	size_t	tmp;
+	char	*str;
 
 	i = 0;
-	j = 0;
 	if (!s)
 		return (NULL);
-	if (!get_ij(&i, &j, s))
-		return (ft_kostil());
-	tmp = (char*)malloc(sizeof(char) * (j - i + 2));
-	if (!(ret = tmp))
-		return (NULL);
-	while (i <= j)
+	while (spcs(s[i]) && s[i])
+		i++;
+	tmp = i;
+	if (s[i] != '\0')
 	{
-		*tmp = s[i++];
-		tmp++;
+		while (s[i])
+			i++;
+		i = i - 1;
+		while (spcs(s[i]) && i > -1)
+			i--;
 	}
-	*tmp = '\0';
-	return (ret);
+	if (!(str = (char *)malloc(((i - tmp) + 2) * sizeof(char))))
+		return (NULL);
+	if (i < 0)
+		return (str);
+	recrd(str, (char *)s, tmp, i);
+	return (str);
 }

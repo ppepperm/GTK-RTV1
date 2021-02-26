@@ -3,47 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 10:13:11 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/15 12:15:07 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:21:59 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_kost(int mult)
+int				nuls(char *sym)
 {
-	if (mult < 0)
-		return (0);
-	return (-1);
+	int	i;
+
+	i = 0;
+	while ((sym[i] == ' ') || (sym[i] == '\f') || (sym[i] == '\n') \
+			|| (sym[i] == '\r') || (sym[i] == '\t') || (sym[i] == '\v'))
+		i++;
+	return (i);
 }
 
-int			ft_atoi(const char *str)
+int				mins(char *sym, int i)
 {
-	long long mult;
-	long long nb;
+	if (sym[i] == '-')
+		return (-1);
+	return (1);
+}
 
-	mult = 1;
-	nb = 0;
-	while ((*str == ' ') || (*str == '\t') || (*str == '\v') || (*str == '\f')\
-			|| (*str == '\r') || (*str == '\n'))
-		str++;
-	if (*str == '-')
+int				ft_atoi(const char *str)
+{
+	int			i;
+	int			minus;
+	long long	nmb;
+	char		*sym;
+
+	nmb = 0;
+	sym = (char *)str;
+	i = nuls(sym);
+	minus = 1;
+	if (sym[i] == '-' || sym[i] == '+')
 	{
-		str++;
-		mult = -1;
+		minus = mins(sym, i);
+		i++;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str != '\0')
+	while (sym[i] >= '0' && sym[i] <= '9')
 	{
-		if ((*str < '0') || (*str > '9'))
-			return (nb * mult);
-		if (nb > nb * 10 + (*str - '0') && nb != 214748364)
-			return (ft_kost(mult));
-		nb = nb * 10 + (*str - '0');
-		str++;
+		nmb = nmb * 10 + ((int)sym[i] - 48);
+		if ((nmb * 10 + ((int)sym[i] - 48)) / 10 != nmb)
+			return (minus < 0) ? 0 : -1;
+		i++;
 	}
-	return ((int)(nb * mult));
+	return (minus * nmb);
 }

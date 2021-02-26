@@ -3,101 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 18:43:26 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/12 18:38:13 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:25:12 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	speclen(const char *str, char delim)
+int			ft_wds(char *s, char c)
 {
-	int i;
+	int		words;
 
-	i = 0;
-	while (*str != delim && *str)
+	words = 0;
+	while (*s)
 	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-static char		*ft_memcpyend(char *dst, const char *src, char delim)
-{
-	ft_memcpy(dst, src, speclen(src, delim));
-	*(dst + speclen(src, delim)) = 0;
-	return (dst);
-}
-
-static size_t	ft_count(const char *str, char delim)
-{
-	size_t	count;
-	int		slovo;
-	int		probel;
-
-	slovo = 0;
-	count = 0;
-	probel = 1;
-	while (*str)
-	{
-		if (*str != delim && probel)
+		while (*s == c)
+			s++;
+		if (*s)
 		{
-			probel = 0;
-			slovo = 1;
-			count++;
+			words++;
+			while (*s && *s != c)
+				s++;
 		}
-		if (*str == delim && slovo)
-		{
-			probel = 1;
-			slovo = 0;
-		}
-		str++;
 	}
-	return (count);
+	return (words);
 }
 
-static char		**ft_free(char **src, size_t size)
+char		*ft_leng(char *s, char c)
 {
-	size_t i;
+	char		*l;
 
-	i = 0;
-	while (i < size)
-	{
-		free(src[i]);
-		i++;
-	}
-	free(src);
-	return (NULL);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**tmp;
-	size_t	i;
-	int		flag;
-
-	if (!s || !c)
-		return (NULL);
-	flag = 1;
-	i = 0;
-	if (!(tmp = (char**)malloc(sizeof(char*) * (ft_count(s, c) + 1))))
-		return (NULL);
-	tmp[ft_count(s, c)] = 0;
-	while (*(s))
-	{
-		if (flag && *(s) != c)
-		{
-			if (!(tmp[i] = (char*)malloc(sizeof(char) * (speclen(s, c) + 1))))
-				return (ft_free(tmp, i + 1));
-			ft_memcpyend(tmp[i++], s, c);
-		}
-		flag = 0;
-		if (*(s) == c)
-			flag = 1;
+	l = s;
+	while (*s && *s != c)
 		s++;
+	*s = '\0';
+	return (ft_strdup(l));
+}
+
+void		free_me(char **str, int i)
+{
+	while (i >= 0)
+	{
+		ft_strdel(&(str[i]));
+		i--;
 	}
-	return (tmp);
+	free(*str);
+}
+
+char		**ft_split(char *s, char c, int arr)
+{
+	char	**str;
+	int		i;
+	char	*s1;
+
+	i = 0;
+	if ((str = (char **)ft_memalloc(sizeof(char *) * (arr + 1))))
+	{
+		while (i < arr)
+		{
+			while (*s == c)
+				s++;
+			if (*s)
+			{
+				if (!(s1 = ft_leng(s, c)))
+				{
+					free_me(str, i);
+					return (NULL);
+				}
+				str[i++] = s1;
+				s += (ft_strlen(s1) + 1);
+			}
+		}
+		str[i] = NULL;
+	}
+	return (str);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**str;
+	char	*s1;
+	int		arr;
+
+	if (!s || !(s1 = ft_strdup((char *)s)))
+		return (NULL);
+	arr = ft_wds(s1, c);
+	str = ft_split(s1, c, arr);
+	free(s1);
+	return (str);
 }

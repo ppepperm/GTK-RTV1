@@ -3,45 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 16:23:13 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/12 18:32:09 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:38:20 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_del(void *content, size_t content_size)
+void		del(void *content, size_t i)
 {
-	free(content);
-	content_size = content_size - content_size;
+	if (!content || !i)
+		return ;
+	ft_memdel(content);
+	i = 0;
 }
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*fres;
-	t_list	*first_node;
-	t_list	*node;
+	t_list *lstnew;
+	t_list *begin;
 
-	if (!lst || !f)
-		return (NULL);
-	fres = f(lst);
-	if (!(node = ft_lstnew(fres->content, fres->content_size)))
-		return (NULL);
-	lst = lst->next;
-	first_node = node;
+	if (!f || !lst)
+		return (0);
+	if (lst)
+	{
+		if (!(begin = ft_lstnew((f(lst))->content, (f(lst))->content_size)))
+			return (0);
+		lst = lst->next;
+		lstnew = begin;
+	}
 	while (lst)
 	{
-		fres = f(lst);
-		node->next = ft_lstnew(fres->content, fres->content_size);
-		if (!(node->next))
+		if (!(lstnew->next = ft_lstnew((f(lst))->content, \
+						(f(lst))->content_size)))
 		{
-			ft_lstdel(&first_node, ft_del);
+			ft_lstdel(&begin, &del);
 			return (NULL);
 		}
-		node = node->next;
 		lst = lst->next;
+		lstnew = lstnew->next;
 	}
-	return (first_node);
+	return (begin);
 }

@@ -6,14 +6,14 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/21 16:19:06 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/27 00:51:37 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# include "../libft/includes/libft.h"
+# include "../libft/libft.h"
 # include "../SDL2/SDL.h"
 # include <math.h>
 # include "../SDL2/SDL_ttf.h"

@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/26 13:08:02 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/26 22:46:19 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,11 @@ endif
 
 ifeq ($(UNAME_S), Linux)
 	CC = clang
-	COMP = $(CC) -g $(CGFLAGS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL_ttf -lfreetype
+	COMP = $(CC) -g $(CGFLAGS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL2_ttf -lfreetype
 	RECOMP = $(CC) -g $(INCLUDES) -c $< -o $@ $(HEADERS)
 else ifeq ($(UNAME_S), Darwin)
 	CC = gcc
-	COMP = $(CC) $(FLAGS) $(CGFLAGS) $(FRAMEWORKS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL_ttf -lfreetype
+	COMP = $(CC) $(FLAGS) $(CGFLAGS) $(FRAMEWORKS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL2_ttf -lfreetype
 	RECOMP = $(CC) $(FLAGS) $(INCLUDES) $(HEADERS) -c $< -o $@
 endif
 

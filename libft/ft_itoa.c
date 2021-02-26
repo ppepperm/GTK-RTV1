@@ -3,63 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 13:24:16 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/13 18:20:24 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/01/11 19:34:20 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_puttnbr(int nb, char *dst)
+void		fill(long long n, char *number, int len)
 {
-	if (nb / 10 == 0)
+	if (n == 0)
+		number[0] = '0';
+	number[len--] = '\0';
+	while (n > 0)
 	{
-		*dst = nb % 10 + '0';
-	}
-	else
-	{
-		ft_puttnbr(nb / 10, dst + 1);
-		*dst = nb % 10 + '0';
+		number[len] = n % 10 + '0';
+		n /= 10;
+		len--;
 	}
 }
 
-static void	ft_marginalint(char *dst)
+int			lengin(long long n)
 {
-	char *src;
+	int		len;
 
-	src = "-2147483648";
-	while (*src)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-	}
-}
-
-char		*ft_itoa(int n)
-{
-	char *tmp;
-	char *ret;
-
-	tmp = (char*)malloc(sizeof(char) * 12);
-	if (!tmp)
-		return (NULL);
-	ft_bzero(tmp, 12);
-	ret = tmp;
-	if (n == -2147483648)
-	{
-		ft_marginalint(tmp);
-		return (ret);
-	}
+	if (n == 0)
+		return (1);
+	len = 0;
 	if (n < 0)
 	{
-		n = n * -1;
-		*tmp = '-';
-		tmp++;
+		n *= -1;
+		len++;
 	}
-	ft_puttnbr(n, tmp);
-	ft_strrev(tmp);
-	return (ret);
+	while (n > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
+
+char		*ft_itoa(long long n)
+{
+	char	*number;
+	int		mins;
+	int		len;
+
+	mins = 0;
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
+	if (n < 0)
+	{
+		mins = 1;
+		n *= -1;
+	}
+	len = lengin(n);
+	number = ft_strnew(len + mins);
+	if (!number)
+		return (NULL);
+	if (mins == 1)
+	{
+		number[0] = '-';
+		len++;
+	}
+	fill(n, number, len);
+	return (number);
 }
