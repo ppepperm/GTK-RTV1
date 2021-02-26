@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 15:49:08 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/22 23:04:18 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/02/26 14:22:02 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,19 @@ static int	chek_obj(char *str, t_scene *scene)
 
 	error = 1;
 	nums = ft_strsplit(str, ',');
-	// printf("%s\n", nums[0]);
-	// printf("%s\n", nums[1]);
-	// printf("%s\n", nums[2]);
-	// printf("%s\n", nums[3]);
-	// printf("%s\n", nums[4]);
-	// printf("%s\n", nums[5]);
-	// printf("%s\n", nums[6]);
-	// printf("%s\n", nums[7]);
+
 	if (chek_chek(nums[0], "sphere"))
 		error &= push_sphere(scene, nums);
-	// else if (!ft_strcmp(nums[0], "plane"))
-	// 	error &= push_plane(scene, nums);
-	// else if (!ft_strcmp(nums[0], "cone"))
-	// 	error &= push_cone(scene, nums);
-	// else if (!ft_strcmp(nums[0], "cylinder"))
-	// 	error &= push_cylinder(scene, nums);
+	else if (chek_chek(nums[0], "plane"))
+		error &= push_plane(scene, nums);
+	else if (chek_chek(nums[0], "cone"))
+		error &= push_cone(scene, nums);
+	else if (chek_chek(nums[0], "cylinder"))
+		error &= push_cylinder(scene, nums);
 	else if (chek_chek(nums[0], "dot_source"))
 		error &= push_dot(scene, nums);
-	// else if (!ft_strcmp(nums[0], "dir_source"))
-	// 	error &= push_dir(scene, nums);
+	else if (chek_chek(nums[0], "dir_source"))
+		error &= push_dir(scene, nums);
 	if (!error)
 		read_malloc_exit(scene);
 	return (error);
@@ -80,10 +73,6 @@ static void	read_obj(int fd, t_scene *scene)
 	while (get_next_line(fd, &str))
 		tmp = ft_strjoin(tmp, str);
 	nums = ft_strsplit(tmp, ';');
-	printf("%s\n", nums[0]);
-	printf("%s\n", nums[1]);
-	printf("%s\n", nums[2]);
-	printf("%s\n", nums[3]);
 	while (nums[i] && nums[i + 1])
 	{
 		chek_obj(nums[i], scene);
