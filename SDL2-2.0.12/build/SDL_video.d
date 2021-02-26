@@ -1,8 +1,7 @@
-build/SDL_video.lo: \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_video.c \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../SDL_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi_overrides.h \
+build/SDL_video.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_video.c \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../SDL_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -19,30 +18,30 @@ build/SDL_video.lo: \
   include/SDL_power.h include/SDL_render.h include/SDL_sensor.h \
   include/SDL_shape.h include/SDL_system.h include/SDL_timer.h \
   include/SDL_version.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_sysvideo.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_vulkan_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vk_platform.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_core.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_macos.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_sysvideo.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_vulkan_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vk_platform.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_core.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_macos.h \
   include/SDL_vulkan.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_pixels_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_rect_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_events_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/../SDL_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/../video/SDL_sysvideo.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_clipboardevents_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_displayevents_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_dropevents_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_gesture_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_keyboard_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_mouse_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_touch_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/../../include/SDL_touch.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../events/SDL_windowevents_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../timer/SDL_timer_c.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../timer/../SDL_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_pixels_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_rect_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_events_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/../SDL_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/../video/SDL_sysvideo.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_clipboardevents_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_displayevents_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_dropevents_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_gesture_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_keyboard_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_mouse_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_touch_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/../../include/SDL_touch.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../events/SDL_windowevents_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../timer/SDL_timer_c.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../timer/../SDL_internal.h \
   include/SDL_syswm.h include/SDL_opengl.h include/SDL_opengl_glext.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoamessagebox.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/../../SDL_internal.h
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoamessagebox.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/../../SDL_internal.h

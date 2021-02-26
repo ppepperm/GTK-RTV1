@@ -1,8 +1,7 @@
-build/SDL_shape.lo: \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_shape.c \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../SDL_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi_overrides.h \
+build/SDL_shape.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_shape.c \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../SDL_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -19,11 +18,11 @@ build/SDL_shape.lo: \
   include/SDL_power.h include/SDL_render.h include/SDL_sensor.h \
   include/SDL_shape.h include/SDL_system.h include/SDL_timer.h \
   include/SDL_version.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_sysvideo.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_vulkan_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vk_platform.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_core.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_macos.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_sysvideo.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_vulkan_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vk_platform.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_core.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/./khronos/vulkan/vulkan_macos.h \
   include/SDL_vulkan.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_shape_internals.h
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_shape_internals.h

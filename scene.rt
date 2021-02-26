@@ -10,6 +10,22 @@ sphere:
 		color: 0, 100, 0,
 		reflect: 20,
 		mirror: 50;
+cone:
+		position: 10, 5, 40,
+		radius: 3,
+		color: 4, 30, 255,
+		reflect: 30,
+		mirror: 20;
+cylinder: 
+		position: -8, 0, 40,
+		radius: 5,
+		color: 255, 200, 0,
+		mirror: 20;
+plane:
+		position: 0, 1, 0,
+		dir: -2,
+		color: 0, 100, 255,
+		mirror: 10000000;
 dot_source:
 		position: 80, 20, -40,
 		intensity: 10;

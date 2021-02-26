@@ -1,5 +1,5 @@
 build/SDL_test_harness.lo: \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_harness.c \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_harness.c \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL_test.h include/SDL.h \
   include/SDL_main.h include/SDL_stdinc.h include/SDL_assert.h \

@@ -1,10 +1,10 @@
 # Makefile to build and install the SDL library
 
 top_builddir = .
-srcdir  = /goinfre/jabilbo/RTV1/SDL2-2.0.12
+srcdir  = /goinfre/jabilbo/RT/SDL2-2.0.12
 objects = build
 gen = gen
-prefix = /goinfre/jabilbo/RTV1/SDL2-2.0.12
+prefix = /goinfre/jabilbo/RT/SDL2-2.0.12
 exec_prefix = ${prefix}
 bindir	= ${exec_prefix}/bin
 libdir  = ${exec_prefix}/lib
@@ -19,9 +19,9 @@ distfile = $(distdir).tar.gz
 
 SHELL	= /bin/sh
 CC      = gcc
-INCLUDE = -Iinclude -I/goinfre/jabilbo/RTV1/SDL2-2.0.12/include -idirafter /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/khronos
+INCLUDE = -Iinclude -I/goinfre/jabilbo/RT/SDL2-2.0.12/include -idirafter /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/khronos
 CFLAGS  = -g -O3 -DUSING_GENERATED_CONFIG_H
-EXTRA_CFLAGS = -Iinclude -I/goinfre/jabilbo/RTV1/SDL2-2.0.12/include -idirafter /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/khronos  -mmmx -m3dnow -msse -msse2 -msse3 -Wall -fno-strict-aliasing -DTARGET_API_MAC_CARBON -DTARGET_API_MAC_OSX -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement -D_THREAD_SAFE
+EXTRA_CFLAGS = -Iinclude -I/goinfre/jabilbo/RT/SDL2-2.0.12/include -idirafter /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/khronos  -mmmx -m3dnow -msse -msse2 -msse3 -Wall -fno-strict-aliasing -DTARGET_API_MAC_CARBON -DTARGET_API_MAC_OSX -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement -D_THREAD_SAFE
 LDFLAGS = 
 EXTRA_LDFLAGS =  -lm -liconv  -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,CoreVideo -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,IOKit -Wl,-weak_framework,QuartzCore -Wl,-weak_framework,Metal
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -254,456 +254,456 @@ rpm: $(distfile)
 -include $(OBJECTS:.lo=.d)
 
 # Special dependency for SDL.c, since it depends on SDL_revision.h
-/goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL.c: update-revision
+/goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL.c: update-revision
 
-$(objects)/SDL.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL.c $(objects)/.created
+$(objects)/SDL.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_assert.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_assert.c $(objects)/.created
+$(objects)/SDL_assert.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_assert.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_dataqueue.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_dataqueue.c $(objects)/.created
+$(objects)/SDL_dataqueue.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_dataqueue.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_error.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_error.c $(objects)/.created
+$(objects)/SDL_error.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_error.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_hints.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_hints.c $(objects)/.created
+$(objects)/SDL_hints.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_hints.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_log.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_log.c $(objects)/.created
+$(objects)/SDL_log.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_log.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_atomic.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/atomic/SDL_atomic.c $(objects)/.created
+$(objects)/SDL_atomic.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/atomic/SDL_atomic.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_spinlock.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/atomic/SDL_spinlock.c $(objects)/.created
+$(objects)/SDL_spinlock.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/atomic/SDL_spinlock.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_audio.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_audio.c $(objects)/.created
+$(objects)/SDL_audio.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_audio.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_audiocvt.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_audiocvt.c $(objects)/.created
+$(objects)/SDL_audiocvt.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_audiocvt.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_audiodev.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_audiodev.c $(objects)/.created
+$(objects)/SDL_audiodev.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_audiodev.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_audiotypecvt.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_audiotypecvt.c $(objects)/.created
+$(objects)/SDL_audiotypecvt.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_audiotypecvt.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_mixer.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_mixer.c $(objects)/.created
+$(objects)/SDL_mixer.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_mixer.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_wave.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/SDL_wave.c $(objects)/.created
+$(objects)/SDL_wave.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/SDL_wave.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cpuinfo.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/cpuinfo/SDL_cpuinfo.c $(objects)/.created
+$(objects)/SDL_cpuinfo.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/cpuinfo/SDL_cpuinfo.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_dynapi.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/dynapi/SDL_dynapi.c $(objects)/.created
+$(objects)/SDL_dynapi.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/dynapi/SDL_dynapi.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_clipboardevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_clipboardevents.c $(objects)/.created
+$(objects)/SDL_clipboardevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_clipboardevents.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_displayevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_displayevents.c $(objects)/.created
+$(objects)/SDL_displayevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_displayevents.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_dropevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_dropevents.c $(objects)/.created
+$(objects)/SDL_dropevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_dropevents.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_events.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_events.c $(objects)/.created
+$(objects)/SDL_events.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_events.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_gesture.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_gesture.c $(objects)/.created
+$(objects)/SDL_gesture.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_gesture.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_keyboard.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_keyboard.c $(objects)/.created
+$(objects)/SDL_keyboard.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_keyboard.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_mouse.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_mouse.c $(objects)/.created
+$(objects)/SDL_mouse.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_mouse.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_quit.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_quit.c $(objects)/.created
+$(objects)/SDL_quit.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_quit.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_touch.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_touch.c $(objects)/.created
+$(objects)/SDL_touch.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_touch.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_windowevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/events/SDL_windowevents.c $(objects)/.created
+$(objects)/SDL_windowevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/events/SDL_windowevents.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_rwops.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/file/SDL_rwops.c $(objects)/.created
+$(objects)/SDL_rwops.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/file/SDL_rwops.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_haptic.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/haptic/SDL_haptic.c $(objects)/.created
+$(objects)/SDL_haptic.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/haptic/SDL_haptic.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_gamecontroller.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/joystick/SDL_gamecontroller.c $(objects)/.created
+$(objects)/SDL_gamecontroller.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/joystick/SDL_gamecontroller.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_joystick.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/joystick/SDL_joystick.c $(objects)/.created
+$(objects)/SDL_joystick.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/joystick/SDL_joystick.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_atan2.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_atan2.c $(objects)/.created
+$(objects)/e_atan2.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_atan2.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_exp.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_exp.c $(objects)/.created
+$(objects)/e_exp.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_exp.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_fmod.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_fmod.c $(objects)/.created
+$(objects)/e_fmod.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_fmod.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_log.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_log.c $(objects)/.created
+$(objects)/e_log.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_log.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_log10.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_log10.c $(objects)/.created
+$(objects)/e_log10.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_log10.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_pow.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_pow.c $(objects)/.created
+$(objects)/e_pow.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_pow.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_rem_pio2.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_rem_pio2.c $(objects)/.created
+$(objects)/e_rem_pio2.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_rem_pio2.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/e_sqrt.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/e_sqrt.c $(objects)/.created
+$(objects)/e_sqrt.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/e_sqrt.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/k_cos.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/k_cos.c $(objects)/.created
+$(objects)/k_cos.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/k_cos.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/k_rem_pio2.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/k_rem_pio2.c $(objects)/.created
+$(objects)/k_rem_pio2.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/k_rem_pio2.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/k_sin.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/k_sin.c $(objects)/.created
+$(objects)/k_sin.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/k_sin.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/k_tan.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/k_tan.c $(objects)/.created
+$(objects)/k_tan.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/k_tan.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_atan.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_atan.c $(objects)/.created
+$(objects)/s_atan.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_atan.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_copysign.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_copysign.c $(objects)/.created
+$(objects)/s_copysign.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_copysign.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_cos.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_cos.c $(objects)/.created
+$(objects)/s_cos.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_cos.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_fabs.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_fabs.c $(objects)/.created
+$(objects)/s_fabs.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_fabs.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_floor.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_floor.c $(objects)/.created
+$(objects)/s_floor.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_floor.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_scalbn.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_scalbn.c $(objects)/.created
+$(objects)/s_scalbn.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_scalbn.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_sin.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_sin.c $(objects)/.created
+$(objects)/s_sin.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_sin.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/s_tan.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/libm/s_tan.c $(objects)/.created
+$(objects)/s_tan.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/libm/s_tan.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_power.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/power/SDL_power.c $(objects)/.created
+$(objects)/SDL_power.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/power/SDL_power.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_d3dmath.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/SDL_d3dmath.c $(objects)/.created
+$(objects)/SDL_d3dmath.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/SDL_d3dmath.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/SDL_render.c $(objects)/.created
+$(objects)/SDL_render.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/SDL_render.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_yuv_sw.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/SDL_yuv_sw.c $(objects)/.created
+$(objects)/SDL_yuv_sw.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/SDL_yuv_sw.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_d3d.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/direct3d/SDL_render_d3d.c $(objects)/.created
+$(objects)/SDL_render_d3d.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/direct3d/SDL_render_d3d.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_shaders_d3d.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/direct3d/SDL_shaders_d3d.c $(objects)/.created
+$(objects)/SDL_shaders_d3d.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/direct3d/SDL_shaders_d3d.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_d3d11.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/direct3d11/SDL_render_d3d11.c $(objects)/.created
+$(objects)/SDL_render_d3d11.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/direct3d11/SDL_render_d3d11.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_shaders_d3d11.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/direct3d11/SDL_shaders_d3d11.c $(objects)/.created
+$(objects)/SDL_shaders_d3d11.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/direct3d11/SDL_shaders_d3d11.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_gl.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/opengl/SDL_render_gl.c $(objects)/.created
+$(objects)/SDL_render_gl.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/opengl/SDL_render_gl.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_shaders_gl.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/opengl/SDL_shaders_gl.c $(objects)/.created
+$(objects)/SDL_shaders_gl.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/opengl/SDL_shaders_gl.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_gles.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/opengles/SDL_render_gles.c $(objects)/.created
+$(objects)/SDL_render_gles.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/opengles/SDL_render_gles.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_gles2.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/opengles2/SDL_render_gles2.c $(objects)/.created
+$(objects)/SDL_render_gles2.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/opengles2/SDL_render_gles2.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_shaders_gles2.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/opengles2/SDL_shaders_gles2.c $(objects)/.created
+$(objects)/SDL_shaders_gles2.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/opengles2/SDL_shaders_gles2.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_psp.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/psp/SDL_render_psp.c $(objects)/.created
+$(objects)/SDL_render_psp.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/psp/SDL_render_psp.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blendfillrect.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_blendfillrect.c $(objects)/.created
+$(objects)/SDL_blendfillrect.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_blendfillrect.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blendline.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_blendline.c $(objects)/.created
+$(objects)/SDL_blendline.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_blendline.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blendpoint.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_blendpoint.c $(objects)/.created
+$(objects)/SDL_blendpoint.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_blendpoint.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_drawline.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_drawline.c $(objects)/.created
+$(objects)/SDL_drawline.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_drawline.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_drawpoint.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_drawpoint.c $(objects)/.created
+$(objects)/SDL_drawpoint.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_drawpoint.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_sw.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_render_sw.c $(objects)/.created
+$(objects)/SDL_render_sw.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_render_sw.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_rotate.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/software/SDL_rotate.c $(objects)/.created
+$(objects)/SDL_rotate.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/software/SDL_rotate.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sensor.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/sensor/SDL_sensor.c $(objects)/.created
+$(objects)/SDL_sensor.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/sensor/SDL_sensor.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_getenv.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_getenv.c $(objects)/.created
+$(objects)/SDL_getenv.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_getenv.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_iconv.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_iconv.c $(objects)/.created
+$(objects)/SDL_iconv.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_iconv.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_malloc.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_malloc.c $(objects)/.created
+$(objects)/SDL_malloc.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_malloc.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_qsort.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_qsort.c $(objects)/.created
+$(objects)/SDL_qsort.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_qsort.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_stdlib.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_stdlib.c $(objects)/.created
+$(objects)/SDL_stdlib.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_stdlib.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_string.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_string.c $(objects)/.created
+$(objects)/SDL_string.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_string.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_strtokr.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/stdlib/SDL_strtokr.c $(objects)/.created
+$(objects)/SDL_strtokr.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/stdlib/SDL_strtokr.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_thread.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/SDL_thread.c $(objects)/.created
+$(objects)/SDL_thread.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/SDL_thread.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_timer.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/timer/SDL_timer.c $(objects)/.created
+$(objects)/SDL_timer.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/timer/SDL_timer.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_RLEaccel.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_RLEaccel.c $(objects)/.created
+$(objects)/SDL_RLEaccel.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_RLEaccel.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit.c $(objects)/.created
+$(objects)/SDL_blit.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_0.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_0.c $(objects)/.created
+$(objects)/SDL_blit_0.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_0.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_1.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_1.c $(objects)/.created
+$(objects)/SDL_blit_1.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_1.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_A.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_A.c $(objects)/.created
+$(objects)/SDL_blit_A.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_A.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_N.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_N.c $(objects)/.created
+$(objects)/SDL_blit_N.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_N.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_auto.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_auto.c $(objects)/.created
+$(objects)/SDL_blit_auto.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_auto.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_copy.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_copy.c $(objects)/.created
+$(objects)/SDL_blit_copy.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_copy.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_blit_slow.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_blit_slow.c $(objects)/.created
+$(objects)/SDL_blit_slow.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_blit_slow.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_bmp.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_bmp.c $(objects)/.created
+$(objects)/SDL_bmp.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_bmp.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_clipboard.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_clipboard.c $(objects)/.created
+$(objects)/SDL_clipboard.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_clipboard.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_egl.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_egl.c $(objects)/.created
+$(objects)/SDL_egl.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_egl.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_fillrect.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_fillrect.c $(objects)/.created
+$(objects)/SDL_fillrect.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_fillrect.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_pixels.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_pixels.c $(objects)/.created
+$(objects)/SDL_pixels.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_pixels.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_rect.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_rect.c $(objects)/.created
+$(objects)/SDL_rect.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_rect.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_shape.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_shape.c $(objects)/.created
+$(objects)/SDL_shape.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_shape.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_stretch.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_stretch.c $(objects)/.created
+$(objects)/SDL_stretch.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_stretch.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_surface.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_surface.c $(objects)/.created
+$(objects)/SDL_surface.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_surface.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_video.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_video.c $(objects)/.created
+$(objects)/SDL_video.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_video.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_vulkan_utils.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_vulkan_utils.c $(objects)/.created
+$(objects)/SDL_vulkan_utils.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_vulkan_utils.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_yuv.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/SDL_yuv.c $(objects)/.created
+$(objects)/SDL_yuv.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/SDL_yuv.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/yuv_rgb.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/yuv2rgb/yuv_rgb.c $(objects)/.created
+$(objects)/yuv_rgb.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/yuv2rgb/yuv_rgb.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_nullevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/dummy/SDL_nullevents.c $(objects)/.created
+$(objects)/SDL_nullevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/dummy/SDL_nullevents.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_nullframebuffer.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/dummy/SDL_nullframebuffer.c $(objects)/.created
+$(objects)/SDL_nullframebuffer.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/dummy/SDL_nullframebuffer.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_nullvideo.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/dummy/SDL_nullvideo.c $(objects)/.created
+$(objects)/SDL_nullvideo.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/dummy/SDL_nullvideo.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_diskaudio.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/disk/SDL_diskaudio.c $(objects)/.created
+$(objects)/SDL_diskaudio.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/disk/SDL_diskaudio.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_dummyaudio.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/dummy/SDL_dummyaudio.c $(objects)/.created
+$(objects)/SDL_dummyaudio.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/dummy/SDL_dummyaudio.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysloadso.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/loadso/dlopen/SDL_sysloadso.c $(objects)/.created
+$(objects)/SDL_sysloadso.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/loadso/dlopen/SDL_sysloadso.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoaclipboard.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoaclipboard.m $(objects)/.created
+$(objects)/SDL_cocoaclipboard.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoaclipboard.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoaevents.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoaevents.m $(objects)/.created
+$(objects)/SDL_cocoaevents.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoaevents.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoakeyboard.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoakeyboard.m $(objects)/.created
+$(objects)/SDL_cocoakeyboard.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoakeyboard.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoamessagebox.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoamessagebox.m $(objects)/.created
+$(objects)/SDL_cocoamessagebox.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoamessagebox.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoametalview.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoametalview.m $(objects)/.created
+$(objects)/SDL_cocoametalview.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoametalview.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoamodes.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoamodes.m $(objects)/.created
+$(objects)/SDL_cocoamodes.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoamodes.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoamouse.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoamouse.m $(objects)/.created
+$(objects)/SDL_cocoamouse.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoamouse.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoamousetap.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoamousetap.m $(objects)/.created
+$(objects)/SDL_cocoamousetap.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoamousetap.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoaopengl.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoaopengl.m $(objects)/.created
+$(objects)/SDL_cocoaopengl.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoaopengl.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoaopengles.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoaopengles.m $(objects)/.created
+$(objects)/SDL_cocoaopengles.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoaopengles.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoashape.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoashape.m $(objects)/.created
+$(objects)/SDL_cocoashape.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoashape.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoavideo.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoavideo.m $(objects)/.created
+$(objects)/SDL_cocoavideo.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoavideo.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoavulkan.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoavulkan.m $(objects)/.created
+$(objects)/SDL_cocoavulkan.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoavulkan.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoawindow.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/video/cocoa/SDL_cocoawindow.m $(objects)/.created
+$(objects)/SDL_cocoawindow.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/video/cocoa/SDL_cocoawindow.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_render_metal.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/render/metal/SDL_render_metal.m $(objects)/.created
+$(objects)/SDL_render_metal.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/render/metal/SDL_render_metal.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_systhread.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/pthread/SDL_systhread.c $(objects)/.created
+$(objects)/SDL_systhread.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/pthread/SDL_systhread.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syssem.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/pthread/SDL_syssem.c $(objects)/.created
+$(objects)/SDL_syssem.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/pthread/SDL_syssem.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysmutex.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/pthread/SDL_sysmutex.c $(objects)/.created
+$(objects)/SDL_sysmutex.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/pthread/SDL_sysmutex.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syscond.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/pthread/SDL_syscond.c $(objects)/.created
+$(objects)/SDL_syscond.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/pthread/SDL_syscond.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_systls.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/thread/pthread/SDL_systls.c $(objects)/.created
+$(objects)/SDL_systls.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/thread/pthread/SDL_systls.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_coreaudio.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/audio/coreaudio/SDL_coreaudio.m $(objects)/.created
+$(objects)/SDL_coreaudio.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/audio/coreaudio/SDL_coreaudio.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysjoystick.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/joystick/darwin/SDL_sysjoystick.c $(objects)/.created
+$(objects)/SDL_sysjoystick.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/joystick/darwin/SDL_sysjoystick.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syshaptic.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/haptic/darwin/SDL_syshaptic.c $(objects)/.created
+$(objects)/SDL_syshaptic.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/haptic/darwin/SDL_syshaptic.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syspower.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/power/macosx/SDL_syspower.c $(objects)/.created
+$(objects)/SDL_syspower.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/power/macosx/SDL_syspower.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysfilesystem.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/filesystem/cocoa/SDL_sysfilesystem.m $(objects)/.created
+$(objects)/SDL_sysfilesystem.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/filesystem/cocoa/SDL_sysfilesystem.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_systimer.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/timer/unix/SDL_systimer.c $(objects)/.created
+$(objects)/SDL_systimer.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/timer/unix/SDL_systimer.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_rwopsbundlesupport.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/file/cocoa/SDL_rwopsbundlesupport.m $(objects)/.created
+$(objects)/SDL_rwopsbundlesupport.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/file/cocoa/SDL_rwopsbundlesupport.m $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_poll.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/core/unix/SDL_poll.c $(objects)/.created
+$(objects)/SDL_poll.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/core/unix/SDL_poll.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_dummysensor.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/sensor/dummy/SDL_dummysensor.c $(objects)/.created
+$(objects)/SDL_dummysensor.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/sensor/dummy/SDL_dummysensor.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
 
-$(objects)/SDL_dummy_main.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/main/dummy/SDL_dummy_main.c $(objects)/.created
+$(objects)/SDL_dummy_main.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/main/dummy/SDL_dummy_main.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_test_assert.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_assert.c $(objects)/.created
+$(objects)/SDL_test_assert.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_assert.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_common.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_common.c $(objects)/.created
+$(objects)/SDL_test_common.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_common.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_compare.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_compare.c $(objects)/.created
+$(objects)/SDL_test_compare.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_compare.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_crc32.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_crc32.c $(objects)/.created
+$(objects)/SDL_test_crc32.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_crc32.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_font.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_font.c $(objects)/.created
+$(objects)/SDL_test_font.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_font.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_fuzzer.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_fuzzer.c $(objects)/.created
+$(objects)/SDL_test_fuzzer.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_fuzzer.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_harness.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_harness.c $(objects)/.created
+$(objects)/SDL_test_harness.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_harness.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_imageBlit.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_imageBlit.c $(objects)/.created
+$(objects)/SDL_test_imageBlit.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_imageBlit.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_imageBlitBlend.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_imageBlitBlend.c $(objects)/.created
+$(objects)/SDL_test_imageBlitBlend.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_imageBlitBlend.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_imageFace.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_imageFace.c $(objects)/.created
+$(objects)/SDL_test_imageFace.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_imageFace.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_imagePrimitives.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_imagePrimitives.c $(objects)/.created
+$(objects)/SDL_test_imagePrimitives.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_imagePrimitives.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_imagePrimitivesBlend.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_imagePrimitivesBlend.c $(objects)/.created
+$(objects)/SDL_test_imagePrimitivesBlend.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_imagePrimitivesBlend.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_log.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_log.c $(objects)/.created
+$(objects)/SDL_test_log.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_log.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_md5.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_md5.c $(objects)/.created
+$(objects)/SDL_test_md5.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_md5.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_memory.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_memory.c $(objects)/.created
+$(objects)/SDL_test_memory.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_memory.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@ 
-$(objects)/SDL_test_random.lo: /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/test/SDL_test_random.c $(objects)/.created
+$(objects)/SDL_test_random.lo: /goinfre/jabilbo/RT/SDL2-2.0.12/src/test/SDL_test_random.c $(objects)/.created
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 

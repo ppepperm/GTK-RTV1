@@ -1,8 +1,8 @@
 build/SDL_dataqueue.lo: \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/SDL_dataqueue.c \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/./SDL_internal.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/dynapi/SDL_dynapi.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/dynapi/SDL_dynapi_overrides.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/SDL_dataqueue.c \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/./SDL_internal.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/dynapi/SDL_dynapi.h \
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -19,4 +19,4 @@ build/SDL_dataqueue.lo: \
   include/SDL_power.h include/SDL_render.h include/SDL_sensor.h \
   include/SDL_shape.h include/SDL_system.h include/SDL_timer.h \
   include/SDL_version.h \
-  /goinfre/jabilbo/RTV1/SDL2-2.0.12/src/./SDL_dataqueue.h
+  /goinfre/jabilbo/RT/SDL2-2.0.12/src/./SDL_dataqueue.h
