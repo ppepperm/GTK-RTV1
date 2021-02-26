@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/21 16:51:13 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/26 20:16:20 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,30 @@
 
 static void		show_help(t_sdl_sequence *sq)
 {
-	SDL_Rect rect;
+	TTF_Init();
+	TTF_Font * font = TTF_OpenFont("Roboto-Regular.ttf", 25);
+	if(!font)
+	{
+    printf("TTF_OpenFont: %s\n", TTF_GetError());
+	exit(0);
+	}
+	SDL_Color color = { 255, 255, 255 };
+	SDL_Surface * surface = TTF_RenderText_Solid(font, "Welcome to Gigi Labs", color);
+	TTF_CloseFont(font);
+	TTF_Quit();
+	/*SDL_Rect rect;
 	rect.x = 1080;
 	rect.y = 1;
-	rect.w = 360;
-	rect.y = 720;
-	SDL_SetRenderDrawColor(sq->renderer, 255, 0, 0, 255);
+	rect.w = 200;
+	rect.h = 200;
+	SDL_SetRenderDrawColor(sq->renderer, 1, 23, 0, 255);
 	SDL_Color color = { 255, 255, 255, 255 };
-	TTF_Font *font = TTF_OpenFont("Arial.ttf", 14);
-    SDL_Surface *surf = TTF_RenderText_Blended(font, "Authors:\ngjigglyp\njablilbo\nsreyne\nppepperm\n", color);
+    SDL_Surface *surf = TTF_RenderText_Blended(TTF_OpenFont("Roboto-Regular.ttf",\
+		14), "Authors:\ngjigglyp\njablilbo\nsreyne\nppepperm\n", color);
 	SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_RenderClear(sq->renderer);
 	SDL_RenderFillRect(sq->renderer, &rect);
-	SDL_RenderPresent(sq->renderer);
+	SDL_RenderPresent(sq->renderer);*/
 }
 
 int			init_sdl_sequence(t_sdl_sequence *sq)
@@ -37,15 +48,15 @@ int			init_sdl_sequence(t_sdl_sequence *sq)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (0);
 	sq->window = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,\
-	SDL_WINDOWPOS_UNDEFINED, 1440, W_H, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, 1280, W_H, SDL_WINDOW_SHOWN);
 	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
-	show_help(sq);
 	SDL_RenderClear(sq->renderer);
 	sq->win_tex = SDL_CreateTexture(sq->renderer,\
-	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 1440, W_H);
+	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 1280, W_H);
 	if (!sq->window || !sq->renderer || !sq->win_tex)
 		return (0);
+	show_help(sq);
 	return (1);
 }
 

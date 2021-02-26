@@ -6,51 +6,78 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/21 13:57:29 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/26 13:08:02 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= RTv1
-SRC :=	src/inits.c src/linal.c src/main.c src/trace.c src/input.c src/free.c\
-src/qaternion.c src/light.c src/chose.c src/transform.c src/intersections.c src/controls.c src/pthread.c\
-src/returns.c src/objects.c src/lights.c src/validation.c src/shadows.c src/events.c
-OBJ := $(SRC:%.c=%.o)
-CFLAGS := -Wall -Wextra -Werror -I includes
-LIB_FLAG :=  -L libft/ -lft `./SDL2-2.0.12/sdl2-config --libs --cflags` -O0
-LINUX_FLAG := -L libft/ -lft `./SDL2-2.0.12/sdl2-config --libs --cflags` -O0  -lm
-PATH_SDL := $(PWD)/frameworks
-SDL = $(PWD)/SDL2_ttf-2.0.15
-INCLUDES := includes frameworks/SDL2.framework/Versions/A/Headers frameworks/SDL2_ttf.framework/Versions/A/Headers frameworks/SDL2_image.framework/Versions/A/Headers frameworks/SDL2_mixer.framework/Headers frameworks/
+UNAME_S := $(shell uname -s)
+NAME = RT
+SRC_DIR = ./src/
+SRCF =	inits.c linal.c main.c trace.c input.c free.c\
+qaternion.c light.c chose.c transform.c intersections.c controls.c pthread.c\
+returns.c objects.c lights.c validation.c shadows.c events.c
 
-all: $(NAME)
+OBJ_DIR = ./obj/
+SRC = $(addprefix $(SRC_DIR), $(SRCF))
+OBJ = $(addprefix $(OBJ_DIR), $(OBJF))
+OBJF = $(SRCF:.c=.o)
+LIBS = libft/libft.a
+HEADERS = -I ./includes -I ./libft/includes
+HDR = includes/rt.h
 
-$(SDL):
-	cd $(PATH_SDL); ./configure --prefix=$(PATH_SDL); make;
-	make -sC $(PATH_SDL) install
+ifeq ($(UNAME_S), Linux)
+	FLAGS = -Wall -Wextra -Werror -lm -g 
+	CGFLAGS = `sdl2-config --cflags --libs` -lm -pthread
+else ifeq ($(UNAME_S), Darwin)
+	FLAGS = -Wall -Wextra -Werror -g
+	CGFLAGS =  -framework OpenGL -framework AppKit
+	INCLUDES	=	-I./frameworks/SDL2.framework/Versions/A/Headers \
+					-I./frameworks/SDL2_ttf.framework/Versions/A/Headers \
+					-I./frameworks/SDL2_image.framework/Versions/A/Headers \
+					-I./frameworks/SDL2_mixer.framework/Headers \
+					-F./frameworks/
+	FRAMEWORKS	=	-F./frameworks \
+					-rpath ./frameworks \
+					-framework OpenGL -framework AppKit -framework OpenCl \
+					-framework SDL2 -framework SDL2_ttf -framework SDL2_image \
+					-framework SDL2_mixer
+endif
 
-%.o : src/%.c $(INCLUDES)
-		gcc -c $(CFLAGS) -I $(INCLUDES) $SSRC -o
-		@echo $(SSRC:src/%.c = %)
+ifeq ($(UNAME_S), Linux)
+	CC = clang
+	COMP = $(CC) -g $(CGFLAGS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL_ttf -lfreetype
+	RECOMP = $(CC) -g $(INCLUDES) -c $< -o $@ $(HEADERS)
+else ifeq ($(UNAME_S), Darwin)
+	CC = gcc
+	COMP = $(CC) $(FLAGS) $(CGFLAGS) $(FRAMEWORKS) $(OBJ) $(LIBS) -o $(NAME) -lSDL -lSDL_ttf -lfreetype
+	RECOMP = $(CC) $(FLAGS) $(INCLUDES) $(HEADERS) -c $< -o $@
+endif
 
-$(NAME): $(OBJ) $(SDL)
-		@make -C libft
-		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LINUX_FLAG)
-		@echo "DONE"
+all: obj $(NAME)
 
-MAC : $(OBJ) $(SDL)
-		@make -C libft
-		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_FLAG)
-		@echo "DONE"
+obj:
+	mkdir -p $(OBJ_DIR)
+	
+$(NAME): libft/libft.a $(OBJ) $(HDR)
+	$(COMP)
+	@printf "Compailing RT done\n"
 
+$(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR)
+	$(RECOMP)
+	
 clean:
-		@rm -f $(OBJ)
-		@make -C libft clean
+	@make clean -C libft
+	@rm -Rf $(OBJ)
+	@rm -Rf obj
 
 fclean: clean
-		@rm -f $(NAME)
-		@make -C libft fclean
+	@rm -rf $(NAME)
+	@make fclean -C libft
+	@printf "All objects and binary of RTv1 was deleted\n"
 
-re: fclean $(NAME)
+libft/libft.a:
+	@make -C libft
+	
+re: fclean all
 
-.PHONY: all clean fclean re
 
