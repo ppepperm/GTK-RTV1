@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/27 11:50:50 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/27 11:57:52 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		show_help(t_sdl_sequence *sq)
 	TTF_Font * fnt = TTF_OpenFont("Roboto-Regular.ttf", 14);
 	SDL_Color color = { 255, 255, 255, 255 };
     SDL_Surface *surf = TTF_RenderText_Solid(fnt, \
-		"Authors:\ngjigglyp\njablilbo\nsreyne\nppepperm\n", color);
+		"Authors:  gjigglyp  jablilbo   sreyne    ppepperm  ", color);
 	SDL_Texture * text = SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_Rect rct = {rect.x, rect.y, rect.w, rect.h};
@@ -53,7 +53,6 @@ int			init_sdl_sequence(t_sdl_sequence *sq)
 	SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, W_W, W_H);
 	if (!sq->window || !sq->renderer || !sq->win_tex)
 		return (0);
-	show_help(sq);
 	return (1);
 }
 
@@ -97,6 +96,7 @@ int			main(int argc, char **argv)
 	draw_to_texture(scene, sq.win_tex);
 	while (!(SDL_PollEvent(&(sq.event)) && sq.event.type == SDL_QUIT))
 	{
+		show_help(&sq);
 		if (!control(sq.event, &scene, sq.win_tex))
 			break ;
 		if (control(sq.event, &scene, sq.win_tex) < 0)
