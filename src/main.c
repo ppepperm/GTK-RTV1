@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/27 11:57:52 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/27 12:45:09 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,34 @@ static void		show_help(t_sdl_sequence *sq)
 	rect.y = 600;
 	rect.w = W_W;
 	rect.h = W_H;
-	SDL_SetRenderDrawColor(sq->renderer, 1, 23, 0, 255);
+	SDL_SetRenderDrawColor(sq->renderer, 1, 23, 32, 255);
 	TTF_Init();
-	TTF_Font * fnt = TTF_OpenFont("Roboto-Regular.ttf", 14);
+	TTF_Font * fnt = TTF_OpenFont("Roboto-Regular.ttf", 18);
 	SDL_Color color = { 255, 255, 255, 255 };
     SDL_Surface *surf = TTF_RenderText_Solid(fnt, \
-		"Authors:  gjigglyp  jablilbo   sreyne    ppepperm  ", color);
+		"RT project was created by:", color);
 	SDL_Texture * text = SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_Rect rct = {rect.x, rect.y, rect.w, rect.h};
 	SDL_RenderCopy(sq->renderer, text, NULL, &rct);
+    SDL_Surface *surf0 = TTF_RenderText_Solid(fnt, \
+		"gjigglyp\tjablilbo\tsreyne\tppepperm", color);
+	SDL_Texture * text0 = SDL_CreateTextureFromSurface(sq->renderer, surf0);
+	SDL_QueryTexture(text0, NULL, NULL, &(rect.w), &(rect.h));
+	SDL_Rect rct0 = {rect.x, rect.y + 30, rect.w, rect.h};
+	SDL_RenderCopy(sq->renderer, text0, NULL, &rct0);
+    SDL_Surface *surf2 = TTF_RenderText_Solid(fnt, \
+		"Arrows - moving camera", color);
+	SDL_Texture * text2 = SDL_CreateTextureFromSurface(sq->renderer, surf2);
+	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
+	SDL_Rect rct2 = {rect.x + 400, rect.y, 200, rect.h};
+	SDL_RenderCopy(sq->renderer, text2, NULL, &rct2);
+    SDL_Surface *surf3 = TTF_RenderText_Solid(fnt, \
+		"ESC - close the program", color);
+	SDL_Texture * text3 = SDL_CreateTextureFromSurface(sq->renderer, surf3);
+	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
+	SDL_Rect rct3 = {rect.x + 400, rect.y + 30, 200, rect.h};
+	SDL_RenderCopy(sq->renderer, text3, NULL, &rct3);
 	SDL_RenderPresent(sq->renderer);
 	SDL_DestroyTexture(text);
 	SDL_FreeSurface(surf);
