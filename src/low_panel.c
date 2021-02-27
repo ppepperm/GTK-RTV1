@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 00:26:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/02/28 00:38:16 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 00:54:35 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    write_aut(t_sdl_sequence *sq, TTF_Font * fnt)
 	rect.h = W_H;
 	SDL_Color color = { 255, 255, 255, 255 };
     SDL_Surface *surf = TTF_RenderText_Solid(fnt, \
-		"RT project was created by:", color);
+		"RT project was created and developed by:", color);
 	SDL_Texture * text = SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_Rect rct = {rect.x, rect.y, rect.w, rect.h};
