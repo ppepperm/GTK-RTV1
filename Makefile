@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/26 22:46:19 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/28 00:31:11 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = RT
 SRC_DIR = ./src/
 SRCF =	inits.c linal.c main.c trace.c input.c free.c\
 qaternion.c light.c chose.c transform.c intersections.c controls.c pthread.c\
-returns.c objects.c lights.c validation.c shadows.c events.c
+returns.c objects.c lights.c validation.c shadows.c events.c low_panel.c
 
 OBJ_DIR = ./obj/
 SRC = $(addprefix $(SRC_DIR), $(SRCF))
@@ -60,7 +60,7 @@ obj:
 	
 $(NAME): libft/libft.a $(OBJ) $(HDR)
 	$(COMP)
-	@printf "Compailing RT done\n"
+	@printf "Compailing of RT has done\n"
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR)
 	$(RECOMP)
@@ -73,7 +73,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@make fclean -C libft
-	@printf "All objects and binary of RTv1 was deleted\n"
+	@printf "Binary and object files of RT were deleted\n"
 
 libft/libft.a:
 	@make -C libft

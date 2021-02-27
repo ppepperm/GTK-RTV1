@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/27 00:51:37 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 00:38:26 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,5 +266,8 @@ int					push_dot(t_scene *scene, char **nums);
 int					push_dir(t_scene *scene, char **nums);
 
 void				validation(char *fname);
+void				show_help_panel(t_sdl_sequence *sq);
+void				write_aut(t_sdl_sequence *sq, TTF_Font * fnt);
+void    			show_cont_guide(t_sdl_sequence *sq, TTF_Font * fnt);
 
 #endif
