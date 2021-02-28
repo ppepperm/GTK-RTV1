@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 15:49:08 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:22:09 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/02/28 19:53:20 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	chek_obj(char *str, t_scene *scene)
 
 	error = 1;
 	nums = ft_strsplit(str, ',');
-
 	if (chek_chek(nums, "sphere", 9))
 		error &= push_sphere(scene, nums);
 	else if (chek_chek(nums, "plane", 8))
@@ -78,11 +77,20 @@ static void	read_obj(int fd, t_scene *scene)
 	char	**nums;
 	char	*tmp;
 	int		i;
+	char	*tmp2;
 
 	error = 1;
 	i = 0;
+	tmp2 = NULL;
+	tmp = (char*)malloc(sizeof(char));
+	*tmp = ';';
 	while (get_next_line(fd, &str))
+	{
+		tmp2 = tmp;
 		tmp = ft_strjoin(tmp, str);
+		if (tmp2)
+			free(tmp2);
+	}
 	nums = ft_strsplit(tmp, ';');
 	while (nums[i] && nums[i + 1])
 	{
