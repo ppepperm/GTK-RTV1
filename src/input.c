@@ -42,6 +42,8 @@ static void	read_obj(int fd, t_scene *scene)
 			error &= push_cone(scene, nums);
 		else if (!ft_strcmp(nums[0], "cylinder"))
 			error &= push_cylinder(scene, nums);
+        else if (!ft_strcmp(nums[0], "hyperboloid"))
+            error &= push_hyperboloid(scene, nums);
 		else if (!ft_strcmp(nums[0], "dot_source"))
 			error &= push_dot(scene, nums);
 		else if (!ft_strcmp(nums[0], "dir_source"))

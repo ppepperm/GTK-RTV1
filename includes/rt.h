@@ -20,16 +20,17 @@
 # include <stdio.h>
 # include <pthread.h>
 
-# define W_H		720.0
-# define W_W		1080.0
-# define C_Z		1.0
-# define T_SPHERE	1
-# define T_PLANE	2
-# define T_CONE		3
-# define T_CYLINDER	4
-# define L_DOT		1
-# define L_DIR		2
-# define DEPTH		3
+# define W_H		    720.0
+# define W_W		    1080.0
+# define C_Z		    1.0
+# define T_SPHERE	    1
+# define T_PLANE	    2
+# define T_CONE	        3
+# define T_CYLINDER     4
+# define T_HYPERBOLOID  5
+# define L_DOT		    1
+# define L_DIR		    2
+# define DEPTH		    3
 
 typedef struct		s_i2
 {
@@ -94,6 +95,13 @@ typedef struct		s_cylinder
 	t_p3			pos;
 	double			r;
 }					t_cylinder;
+
+typedef struct      s_hyperboloid
+{
+    double          r;
+    double          c;
+
+}                   t_hyperboloid;
 
 typedef struct		s_camera
 {
@@ -204,6 +212,8 @@ void				*return_sphere(char **nums);
 void				*return_plane(char **nums);
 void				*return_cone(char **nums);
 void				*return_cylinder(char **nums);
+void		        *return_hyperboloid(char **nums);
+
 
 t_q					init_q(double s, double i, double j, double k);
 t_q					init_rotor(t_p3 axis, double angle);
@@ -227,6 +237,7 @@ t_p2				intersect_sphere(t_ray ray, t_object object);
 t_p2				intersect_plane(t_ray ray, t_object object);
 t_p2				intersect_cone(t_ray ray, t_object object);
 t_p2				intersect_cylinder(t_ray ray, t_object object);
+t_p2                intersect_hyperboloid(t_ray ray, t_object  object);
 int					check_shadow(t_object *objects, t_light light, t_p3 inter);
 
 t_transform			i_transform(t_transform transform);
@@ -261,6 +272,8 @@ int					push_sphere(t_scene *scene, char **nums);
 int					push_plane(t_scene *scene, char **nums);
 int					push_cone(t_scene *scene, char **nums);
 int					push_cylinder(t_scene *scene, char **nums);
+int                 push_hyperboloid(t_scene *scene, char **nums);
+
 
 void				inc_i(double cosa, t_light *lights, double *i, double pw);
 t_rgb				colour_mult(t_rgb base, double k);
@@ -272,6 +285,8 @@ t_p3				sphere_norm(t_object object, t_ray ray, double root);
 t_p3				plane_norm(t_object object, t_ray ray, double root);
 t_p3				cylinder_norm(t_object object, t_ray ray, double root);
 t_p3				cone_norm(t_object object, t_ray ray, double root);
+t_p3                hyperboloid_norm(t_object object, t_ray ray, double root);
+
 
 void				validation(char *fname);
 t_rgb				checkers(t_object *current, double root, t_ray ray);

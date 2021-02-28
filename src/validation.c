@@ -56,6 +56,8 @@ void	parser(char *l)
 		check_line(l, "cone", 10);
 	else if (l[0] == 'c' && l[1] == 'y')
 		check_line(l, "cylinder", 9);
+    else if (l[0] == 'h' && l[1] == 'y')
+        check_line(l, "hyperboloid", 10);
 	else if (l[0] == 'd')
 		check_line(l, "dot_source", 4);
 	else if (l[0] == 'p')

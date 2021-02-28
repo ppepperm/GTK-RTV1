@@ -98,3 +98,4 @@ double		cone_light(t_light *lights, t_object object, t_ray ray, double root)
 	arg.inter = inter;
 	return (get_light(object.head, lights, arg, ray));
 }
+

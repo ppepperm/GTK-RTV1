@@ -34,7 +34,7 @@ t_rgb 	checkers(t_object *current, double root, t_ray ray)
 		else
 			return (init_rgb(255, 255, 255, 255));
 	}
-	else if (current->type == T_CONE)
+	else if (current->type == T_CONE || current->type == T_HYPERBOLOID)
 	{
 		beta = inter.y;
 		normalize(&inter);

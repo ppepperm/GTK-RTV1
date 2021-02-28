@@ -89,3 +89,27 @@ t_p2	intersect_cylinder(t_ray ray, t_object object)
 	else
 		return (init_p2(-1, -1));
 }
+
+t_p2 intersect_hyperboloid(t_ray ray, t_object  object)
+{
+    t_hyperboloid   *hyperboloid;
+    t_p3            k;
+    double          c;
+    double          d;
+
+    hyperboloid = (t_hyperboloid*)object.data;
+    ray = ray_transform(ray, object.i_t, object.pos);
+    c = hyperboloid->r / hyperboloid->c;
+    k.x = (ray.dir.x * ray.dir.x\
+	+ ray.dir.z * ray.dir.z - ray.dir.y * ray.dir.y * c * c);
+    k.y = 2 * (ray.dir.x * ray.pos.x\
+	+ ray.dir.z * ray.pos.z - ray.dir.y * ray.pos.y * c * c);
+    k.z = (ray.pos.x * ray.pos.x\
+	+ ray.pos.z * ray.pos.z - ray.pos.y * ray.pos.y * c * c - hyperboloid->r*hyperboloid->r);
+    d = k.y * k.y - 4 * k.x * k.z;
+    if (d >= 0)
+        return (init_p2((-k.y - sqrt(d))\
+		/ (2 * k.x), (-k.y + sqrt(d)) / (2 * k.x)));
+    else
+        return (init_p2(-1, -1));
+}

@@ -126,3 +126,32 @@ int	push_cylinder(t_scene *scene, char **nums)
 	scene->objects = object;
 	return (1);
 }
+
+int	push_hyperboloid(t_scene *scene, char **nums)
+{
+    t_object	*object;
+
+    if (!(object = (t_object*)malloc(sizeof(t_object))))
+        return (0);
+    object->type = T_HYPERBOLOID;
+    if (!(object->data = return_cone(nums)))
+    {
+        free(object);
+        return (0);
+    }
+    object->pos = init_p3(ft_atoi(nums[1]),\
+	ft_atoi(nums[2]), ft_atoi(nums[3]));
+    object->t = init_transform(init_p3(1, 0, 0),\
+	init_p3(0, 1, 0), init_p3(0, 0, 1));
+    object->i_t = i_transform(object->t);
+    object->colour = init_rgb(ft_atoi(nums[6]),\
+	ft_atoi(nums[7]), ft_atoi(nums[8]), 255);
+    object->reflect = ft_atoi(nums[9]);
+    object->mirror = (double)ft_atoi(nums[10])/100;
+    object->intersect = intersect_hyperboloid;
+    object->light_funk = cone_light;
+    object->norm_funk = hyperboloid_norm;
+    object->next = scene->objects;
+    scene->objects = object;
+    return (1);
+}

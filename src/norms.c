@@ -61,3 +61,22 @@ t_p3	cone_norm(t_object object, t_ray ray, double root)
 	normalize(&norm);
 	return (norm);
 }
+
+t_p3    hyperboloid_norm(t_object object, t_ray ray, double root)
+{
+    t_p3		    inter;
+    t_p3		    norm;
+    t_hyperboloid   *hyperboloid;
+    t_p3		    new_inter;
+
+    inter = lin_comb(ray.pos, 1, ray.dir, root);
+    new_inter = transform_pos(inter, object.i_t, object.pos);
+    hyperboloid = (t_hyperboloid*)object.data;
+    norm.x = 2*new_inter.x/hyperboloid->r/hyperboloid->r;
+    norm.z = 2*new_inter.z/hyperboloid->r/hyperboloid->r;
+    norm.y = 2*new_inter.y/hyperboloid->c/hyperboloid->c;
+    norm = transform_dir(norm, object.t);
+    normalize(&norm);
+    return (norm);
+
+}
