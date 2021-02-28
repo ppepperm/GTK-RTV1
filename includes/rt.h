@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 00:38:26 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 15:05:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,15 @@ int					push_dir(t_scene *scene, char **nums);
 
 void				validation(char *fname);
 void				show_help_panel(t_sdl_sequence *sq);
-void				write_aut(t_sdl_sequence *sq, TTF_Font * fnt);
-void    			show_cont_guide(t_sdl_sequence *sq, TTF_Font * fnt);
+void				write_aut(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void    			show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void    			show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void    			show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void    			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
 
 #endif

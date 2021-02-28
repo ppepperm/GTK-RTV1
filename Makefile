@@ -6,15 +6,15 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/28 12:52:38 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/28 13:05:56 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 NAME = RT
 SRC_DIR = ./src/
-SRCF =	inits.c linal.c main.c trace.c input.c free.c\
-qaternion.c light.c chose.c transform.c intersections.c controls.c pthread.c\
+SRCF =	inits.c linal.c main.c trace.c input.c free.c \
+qaternion.c light.c chose.c transform.c intersections.c controls.c pthread.c \
 returns.c objects.c lights.c validation.c shadows.c events.c low_panel.c
 
 OBJ_DIR = ./obj/

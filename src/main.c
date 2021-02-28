@@ -6,32 +6,40 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 12:41:47 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 15:05:41 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void		show_help_panel(t_sdl_sequence *sq)
+void				show_help_panel(t_sdl_sequence *sq)
 {
-	SDL_Rect rect;
-	TTF_Font * fnt ;
-	
+	SDL_Rect		rect;
+	TTF_Font		*fnt;
+	SDL_Color		color;
+
 	rect.x = 0;
 	rect.y = 600;
 	rect.w = W_W;
 	rect.h = W_H;
+	color.a = 255;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
 	SDL_SetRenderDrawColor(sq->renderer, 1, 23, 32, 255);
 	TTF_Init();
 	SDL_RenderFillRect(sq->renderer, &rect);
 	fnt = TTF_OpenFont("Roboto-Regular.ttf", 18);
-	write_aut(sq, fnt);
-	show_cont_guide(sq, fnt);
+	write_aut(sq, fnt, color);
+	show_cont_guide(sq, fnt, color);
+	show_cont_guide2(sq, fnt, color);
+	show_cont_guide3(sq, fnt, color);
+	show_cont_guide4(sq, fnt, color);
 	TTF_CloseFont(fnt);
 	TTF_Quit();
 }
 
-int			init_sdl_sequence(t_sdl_sequence *sq)
+int					init_sdl_sequence(t_sdl_sequence *sq)
 {
 	sq->window = NULL;
 	sq->renderer = NULL;
@@ -50,7 +58,7 @@ int			init_sdl_sequence(t_sdl_sequence *sq)
 	return (1);
 }
 
-int			draw_to_texture(t_scene scene, SDL_Texture *win_tex)
+int					draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 {
 	unsigned char	*win_buff;
 	void			*tmp;
@@ -67,7 +75,7 @@ int			draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 	return (1);
 }
 
-void		init_exit(t_scene *scene, t_sdl_sequence sq)
+void				init_exit(t_scene *scene, t_sdl_sequence sq)
 {
 	free_scene(scene);
 	end_sdl(sq);
@@ -75,7 +83,7 @@ void		init_exit(t_scene *scene, t_sdl_sequence sq)
 	exit(EXIT_FAILURE);
 }
 
-int			main(int argc, char **argv)
+int					main(int argc, char **argv)
 {
 	t_sdl_sequence	sq;
 	t_scene			scene;
