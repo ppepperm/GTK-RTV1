@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 15:05:41 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 15:29:03 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void				show_help_panel(t_sdl_sequence *sq)
 	show_cont_guide2(sq, fnt, color);
 	show_cont_guide3(sq, fnt, color);
 	show_cont_guide4(sq, fnt, color);
+	SDL_RenderPresent(sq->renderer);
+	SDL_RenderPresent(sq->renderer);
 	TTF_CloseFont(fnt);
 	TTF_Quit();
 }
