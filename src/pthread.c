@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   pthread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:08:49 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/14 13:08:51 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/28 18:44:47 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+t_ray		init_ray(t_p3 pos, t_p3 dir)
+{
+	t_ray	ret;
+
+	ret.dir = dir;
+	ret.pos = pos;
+	return (ret);
+}
 
 void	init_threads(t_p_data **data, pthread_t **threads, pthread_attr_t *attr)
 {
