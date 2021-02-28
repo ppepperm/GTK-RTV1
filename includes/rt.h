@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 15:05:48 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:02:52 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ void				object_movement(SDL_Event event,
 void				object_rotation(SDL_Event event,
 					t_scene *s, t_object *object);
 void				object_shrink(SDL_Event event,
-                      t_object *object);
+						t_object *object);
 
 void				camera_control(SDL_Event event, t_scene *scene);
 void				object_control(SDL_Event event,
@@ -269,13 +269,13 @@ void				validation(char *fname);
 void				show_help_panel(t_sdl_sequence *sq);
 void				write_aut(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void    			show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
+void				show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void    			show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
+void				show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void    			show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
+void				show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void    			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
+void				show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 
 #endif
