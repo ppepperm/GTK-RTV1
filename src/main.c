@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 15:47:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 18:19:33 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int					init_sdl_sequence(t_sdl_sequence *sq)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (0);
 	sq->window = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,\
-	SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, W_W, 720, SDL_WINDOW_SHOWN);
 	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(sq->renderer);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chose.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:26:36 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/03 16:26:38 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/28 17:41:30 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ t_object		*return_chosen(t_scene scene, double x, double y)
 		}
 		scene.objects = scene.objects->next;
 	}
+	if (y >= 600)
+		return (NULL);
 	return (current);
 }
