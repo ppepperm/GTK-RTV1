@@ -80,40 +80,32 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	root = get_intersection(ray, scene, &current, &colour);
 	if (!current)
 		return (colour);
-    if (current && current == scene.chosen)
-		return (init_rgb(255, 0, 255, 255));
-
     if (scene.effect == 1)
         colour = checkers(current, root, ray);
-
+	if (current && current == scene.chosen)
+		colour = init_rgb(255, 0, 255, 255);
 	colour = colour_mult(colour,\
 	current->light_funk(scene.lights, *current, ray, root));
-
 	if (depth == DEPTH || current->mirror == 0)
 		return (colour);
-
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);
 	reflected_colour = trace_ray(reflected, scene, depth + 1);
-
 	t_rgb ret;
 	ret.r = colour.r*(1 - current->mirror) + reflected_colour.r*current->mirror;
 	ret.g = colour.g*(1 - current->mirror) + reflected_colour.g*current->mirror;
 	ret.b = colour.b*(1 - current->mirror) + reflected_colour.b*current->mirror;
 	ret.a = 255;
-
 	return (ret);
 }
 
 int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 {
 	t_i2			count;
-	t_p_data		*data;
-	pthread_t		*threads;
+	t_p_data		data[(size_t)(W_W)];
+	pthread_t		threads[(size_t)(W_W)];
 	pthread_attr_t	attr;
 
-	init_threads(&data, &threads, &attr);
-	if (!data || !threads)
-		return (0);
+	pthread_attr_init(&attr);
 	count.x = 0;
 	while (count.x < W_W)
 	{
@@ -125,6 +117,6 @@ int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
 		&attr, thread_trace, (void *)(&data[count.x]));
 		count.x++;
 	}
-	collect_threads(threads, data);
+	collect_threads(threads);
 	return (1);
 }

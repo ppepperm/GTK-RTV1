@@ -24,6 +24,25 @@ static void	remember_head(t_scene scene)
 	}
 }
 
+static void	push_obj(char **nums, t_scene *scene, int *error)
+{
+	if (!ft_strcmp(nums[0], "sphere"))
+		*error &= push_sphere(scene, nums);
+	else if (!ft_strcmp(nums[0], "plane"))
+		*error &= push_plane(scene, nums);
+	else if (!ft_strcmp(nums[0], "cone"))
+		*error &= push_cone(scene, nums);
+	else if (!ft_strcmp(nums[0], "cylinder"))
+		*error &= push_cylinder(scene, nums);
+	else if (!ft_strcmp(nums[0], "hyperboloid"))
+		*error &= push_hyperboloid(scene, nums);
+	else if (!ft_strcmp(nums[0], "dot_source"))
+		*error &= push_dot(scene, nums);
+	else if (!ft_strcmp(nums[0], "dir_source"))
+		*error &= push_dir(scene, nums);
+	free_nums(nums);
+}
+
 static void	read_obj(int fd, t_scene *scene)
 {
 	int			error;
@@ -34,21 +53,7 @@ static void	read_obj(int fd, t_scene *scene)
 	while (get_next_line(fd, &str))
 	{
 		nums = ft_strsplit(str, ';');
-		if (!ft_strcmp(nums[0], "sphere"))
-			error &= push_sphere(scene, nums);
-		else if (!ft_strcmp(nums[0], "plane"))
-			error &= push_plane(scene, nums);
-		else if (!ft_strcmp(nums[0], "cone"))
-			error &= push_cone(scene, nums);
-		else if (!ft_strcmp(nums[0], "cylinder"))
-			error &= push_cylinder(scene, nums);
-        else if (!ft_strcmp(nums[0], "hyperboloid"))
-            error &= push_hyperboloid(scene, nums);
-		else if (!ft_strcmp(nums[0], "dot_source"))
-			error &= push_dot(scene, nums);
-		else if (!ft_strcmp(nums[0], "dir_source"))
-			error &= push_dir(scene, nums);
-		free_nums(nums);
+		push_obj(nums, scene, &error);
 		free(str);
 		if (!error)
 			read_malloc_exit(scene);
