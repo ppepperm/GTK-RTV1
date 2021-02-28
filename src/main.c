@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 00:39:16 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/02/28 12:41:47 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int			draw_to_texture(t_scene scene, SDL_Texture *win_tex)
 	unsigned char	*win_buff;
 	void			*tmp;
 	int				pitch;
-	t_sdl_sequence *sq;
 
 	SDL_LockTexture(win_tex, NULL, &tmp, &pitch);
 	win_buff = (unsigned char *)tmp;
