@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/28 12:51:30 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/28 12:52:38 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ ifeq ($(UNAME_S), Linux)
 	RECOMP = $(CC) -g $(INCLUDES) -c $< -o $@ $(HEADERS)
 else ifeq ($(UNAME_S), Darwin)
 	CC = gcc
-	COMP = $(CC) $(FLAGS) $(CGFLAGS) $(FRAMEWORKS) $(OBJ) $(LIBS) -o $(NAME) -
+	COMP = $(CC) $(FLAGS) $(CGFLAGS) $(FRAMEWORKS) $(OBJ) $(LIBS) -o $(NAME)
 	RECOMP = $(CC) $(FLAGS) $(INCLUDES) $(HEADERS) -c $< -o $@
 endif
 
