@@ -134,7 +134,7 @@ int	push_hyperboloid(t_scene *scene, char **nums)
     if (!(object = (t_object*)malloc(sizeof(t_object))))
         return (0);
     object->type = T_HYPERBOLOID;
-    if (!(object->data = return_cone(nums)))
+    if (!(object->data = return_hyperboloid(nums)))
     {
         free(object);
         return (0);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/25 12:07:55 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/25 12:07:57 by ppepperm         ###   ########.fr       */
+/*   Created: 2021/02/28 17:32:44 by ppepperm          #+#    #+#             */
+/*   Updated: 2021/02/28 17:32:46 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,30 +98,19 @@ void		object_rotation(SDL_Event event, t_scene *s, t_object *object)
 
 void		object_shrink(SDL_Event event, t_object *object)
 {
-    if (event.key.keysym.scancode == SDL_SCANCODE_I)
-    {
-        object->t.y_dir = lin_comb(object->t.y_dir, 1.1, init_p3(0,0,0), 0);
-    }
-    else if (event.key.keysym.scancode == SDL_SCANCODE_K)
-    {
-        object->t.y_dir = lin_comb(object->t.y_dir, 1/1.1, init_p3(0,0,0), 0);
-    }
-    else if (event.key.keysym.scancode == SDL_SCANCODE_L)
-    {
-        object->t.x_dir = lin_comb(object->t.x_dir, 1.1, init_p3(0,0,0), 0);
-
-    }
-    else if (event.key.keysym.scancode == SDL_SCANCODE_J)
-    {
-        object->t.x_dir = lin_comb(object->t.x_dir, 1/1.1, init_p3(0,0,0), 0);
-    }
-    else if (event.key.keysym.scancode == SDL_SCANCODE_O)
-    {
-        object->t.z_dir = lin_comb(object->t.z_dir, 1.1, init_p3(0,0,0), 0);
-    }
-    else if (event.key.keysym.scancode == SDL_SCANCODE_U)
-    {
-        object->t.z_dir = lin_comb(object->t.z_dir, 1/1.1, init_p3(0,0,0), 0);
-    }
+	if (event.key.keysym.scancode == SDL_SCANCODE_I)
+		object->t.y_dir = lin_comb(object->t.y_dir, 1.1, init_p3(0, 0, 0), 0);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_K)
+		object->t.y_dir = lin_comb(object->t.y_dir,\
+		1 / 1.1, init_p3(0, 0, 0), 0);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_L)
+		object->t.x_dir = lin_comb(object->t.x_dir, 1.1, init_p3(0, 0, 0), 0);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_J)
+		object->t.x_dir = lin_comb(object->t.x_dir,\
+		1 / 1.1, init_p3(0, 0, 0), 0);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_O)
+		object->t.z_dir = lin_comb(object->t.z_dir, 1.1, init_p3(0, 0, 0), 0);
+	else if (event.key.keysym.scancode == SDL_SCANCODE_U)
+		object->t.z_dir = lin_comb(object->t.z_dir,\
+		1 / 1.1, init_p3(0, 0, 0), 0);
 }
-

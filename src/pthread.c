@@ -12,22 +12,6 @@
 
 #include "../includes/rt.h"
 
-void	init_threads(t_p_data **data, pthread_t **threads, pthread_attr_t *attr)
-{
-	*data = NULL;
-	*threads = NULL;
-	*data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
-	*threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
-	if (!(*data) || !(*threads))
-	{
-		if (*data)
-			free(*data);
-		if (*threads)
-			free(*threads);
-	}
-	pthread_attr_init(attr);
-}
-
 void	*thread_trace(void *input)
 {
 	t_p_data	*data;
@@ -50,7 +34,7 @@ void	*thread_trace(void *input)
 	pthread_exit(0);
 }
 
-void	collect_threads(pthread_t *threads, t_p_data *data)
+void	collect_threads(pthread_t *threads)
 {
 	int i;
 
@@ -60,6 +44,4 @@ void	collect_threads(pthread_t *threads, t_p_data *data)
 		pthread_join(threads[i], NULL);
 		i++;
 	}
-	free(data);
-	free(threads);
 }
