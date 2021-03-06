@@ -1,0 +1,46 @@
+sphere:
+		position: 0, 0, 32,
+		radius: 4,
+		color: 255, 100, 0,
+		reflect: 10,
+		mirror: 0,
+		10;
+sphere:
+		position: -10, 0, 32,
+		radius: 5,
+		color: 0, 100, 0,
+		reflect: 20,
+		mirror: 50,
+		10;
+cone:
+		position: 10, 5, 40,
+		radius: 3,
+		color: 4, 30, 255,
+		reflect: 30,
+		mirror: 20:
+		10;
+cylinder: 
+		position: -8, 0, 40,
+		radius: 5,
+		color: 255, 200, 0,
+		mirror: 20,
+		10;
+hyperboloid:
+		position: 10, 5, 40,
+		radius: 1,
+		color: 10, 30, 255,
+		reflect: 30,
+		mirror: 20,
+		60;
+plane:
+		position: 0, 1, 0,
+		dir: -2,
+		color: 0, 100, 255,
+		mirror: 10000000,
+		10;
+dot_source:
+		position: 80, 20, -40,
+		intensity: 10;
+dot_source:
+		position -80, 20, -40,
+		intensity: 5;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 13:11:39 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/26 13:16:06 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/28 18:32:07 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <stdbool.h>
 
 # define W_H		    720.0
 # define W_W		    1080.0
@@ -96,12 +97,12 @@ typedef struct		s_cylinder
 	double			r;
 }					t_cylinder;
 
-typedef struct      s_hyperboloid
+typedef struct		s_hyperboloid
 {
-    double          r;
-    double          c;
+	double			r;
+	double			c;
 
-}                   t_hyperboloid;
+}					t_hyperboloid;
 
 typedef struct		s_camera
 {
@@ -191,6 +192,7 @@ double				get_intersection(t_ray ray, t_scene scene,
 t_rgb				trace_ray(t_ray ray, t_scene scene, int depth);
 int					draw_scene(t_scene scene,
 					unsigned char *win_buff, int pitch);
+int					ft_atoip(const char *str);
 
 t_scene				read_scene(char *fname);
 
@@ -212,8 +214,7 @@ void				*return_sphere(char **nums);
 void				*return_plane(char **nums);
 void				*return_cone(char **nums);
 void				*return_cylinder(char **nums);
-void		        *return_hyperboloid(char **nums);
-
+void				*return_hyperboloid(char **nums);
 
 t_q					init_q(double s, double i, double j, double k);
 t_q					init_rotor(t_p3 axis, double angle);
@@ -237,7 +238,7 @@ t_p2				intersect_sphere(t_ray ray, t_object object);
 t_p2				intersect_plane(t_ray ray, t_object object);
 t_p2				intersect_cone(t_ray ray, t_object object);
 t_p2				intersect_cylinder(t_ray ray, t_object object);
-t_p2                intersect_hyperboloid(t_ray ray, t_object  object);
+t_p2				intersect_hyperboloid(t_ray ray, t_object object);
 int					check_shadow(t_object *objects, t_light light, t_p3 inter);
 
 t_transform			i_transform(t_transform transform);
@@ -254,7 +255,7 @@ void				object_movement(SDL_Event event,
 void				object_rotation(SDL_Event event,
 					t_scene *s, t_object *object);
 void				object_shrink(SDL_Event event,
-                      t_object *object);
+						t_object *object);
 
 void				camera_control(SDL_Event event, t_scene *scene);
 void				object_control(SDL_Event event,
@@ -269,8 +270,7 @@ int					push_sphere(t_scene *scene, char **nums);
 int					push_plane(t_scene *scene, char **nums);
 int					push_cone(t_scene *scene, char **nums);
 int					push_cylinder(t_scene *scene, char **nums);
-int                 push_hyperboloid(t_scene *scene, char **nums);
-
+int					push_hyperboloid(t_scene *scene, char **nums);
 
 void				inc_i(double cosa, t_light *lights, double *i, double pw);
 t_rgb				colour_mult(t_rgb base, double k);
@@ -282,8 +282,7 @@ t_p3				sphere_norm(t_object object, t_ray ray, double root);
 t_p3				plane_norm(t_object object, t_ray ray, double root);
 t_p3				cylinder_norm(t_object object, t_ray ray, double root);
 t_p3				cone_norm(t_object object, t_ray ray, double root);
-t_p3                hyperboloid_norm(t_object object, t_ray ray, double root);
-
+t_p3				hyperboloid_norm(t_object object, t_ray ray, double root);
 
 void				validation(char *fname);
 t_rgb				checkers(t_object *current, double root, t_ray ray);

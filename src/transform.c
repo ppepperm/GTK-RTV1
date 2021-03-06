@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/28 17:28:01 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 17:28:05 by ppepperm         ###   ########.fr       */
+/*   Created: 2020/07/23 13:39:29 by ppepperm          #+#    #+#             */
+/*   Updated: 2021/02/28 18:36:39 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_transform	i_transform(t_transform t)
+t_transform		i_transform(t_transform t)
 {
 	t_transform	inv;
 	double		det;
@@ -35,9 +35,9 @@ t_transform	i_transform(t_transform t)
 	return (inv);
 }
 
-t_p3		transform_pos(t_p3 pos, t_transform t, t_p3 t_pos)
+t_p3			transform_pos(t_p3 pos, t_transform t, t_p3 t_pos)
 {
-	t_p3 new_pos;
+	t_p3		new_pos;
 
 	pos = lin_comb(pos, 1, t_pos, -1);
 	new_pos = lin_comb(t.x_dir, pos.x, t.y_dir, pos.y);
@@ -45,18 +45,18 @@ t_p3		transform_pos(t_p3 pos, t_transform t, t_p3 t_pos)
 	return (new_pos);
 }
 
-t_p3		transform_dir(t_p3 dir, t_transform t)
+t_p3			transform_dir(t_p3 dir, t_transform t)
 {
-	t_p3 new_dir;
+	t_p3		new_dir;
 
 	new_dir = lin_comb(t.x_dir, dir.x, t.y_dir, dir.y);
 	new_dir = lin_comb(new_dir, 1, t.z_dir, dir.z);
 	return (new_dir);
 }
 
-t_ray		ray_transform(t_ray ray, t_transform t, t_p3 pos)
+t_ray			ray_transform(t_ray ray, t_transform t, t_p3 pos)
 {
-	t_ray new_ray;
+	t_ray		new_ray;
 
 	new_ray.pos = transform_pos(ray.pos, t, pos);
 	new_ray.dir = transform_dir(ray.dir, t);
