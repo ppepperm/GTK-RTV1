@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: out-belov1-mv <out-belov1-mv@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 13:39:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 13:41:03 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/03/06 13:36:09 by out-belov1-       #+#    #+#             */
+/*   Updated: 2021/03/06 13:36:10 by out-belov1-      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/rt.h"
 

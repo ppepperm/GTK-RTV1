@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/17 12:14:41 by ppepperm          #+#    #+#              #
-#    Updated: 2021/02/28 18:19:10 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/03/07 23:35:01 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME = RT
 SRC_DIR = ./src/
 SRCF =	inits.c linal.c main.c trace.c input.c free.c \
 qaternion.c light.c chose.c transform.c intersections.c controls.c pthread.c \
-returns.c objects.c lights.c validation.c shadows.c events.c low_panel.c
+returns.c objects.c lights.c validation.c shadows.c events.c low_panel.c \
+norms.c effect.c destroy_n_free.c
+
 
 OBJ_DIR = ./obj/
 SRC = $(addprefix $(SRC_DIR), $(SRCF))
@@ -84,4 +86,4 @@ libft/libft.a:
 	
 re: fclean all
 
-
+.PHONY: all clean

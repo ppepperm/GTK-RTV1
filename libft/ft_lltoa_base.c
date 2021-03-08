@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lltoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: out-belov1-mv <out-belov1-mv@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:13:19 by gjigglyp          #+#    #+#             */
-/*   Updated: 2019/10/24 19:13:22 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/06 13:57:35 by out-belov1-      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char					*ft_lltoa_base(long long num, int base)
 
 	len = 1;
 	neg = num < 0 ? 1 : 0;
-	if (base < 2 && base > 16)
-		return (NULL);
+	// if (base < 2 && base > 16)
+	// 	return (NULL);
 	if (!num)
 		return (ft_strdup("0"));
 	tmp = ft_absll(num);

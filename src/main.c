@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 13:11:29 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:19:33 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/03/06 13:35:59 by out-belov1-       #+#    #+#             */
+/*   Updated: 2021/03/08 00:33:33 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/rt.h"
 
@@ -19,8 +20,8 @@ void				show_help_panel(t_sdl_sequence *sq)
 	SDL_Color		color;
 
 	rect.x = 0;
-	rect.y = 600;
-	rect.w = W_W;
+	rect.y = W_H - 120;
+	rect.w = (W_W);
 	rect.h = W_H;
 	color.a = 255;
 	color.r = 255;
@@ -30,11 +31,7 @@ void				show_help_panel(t_sdl_sequence *sq)
 	TTF_Init();
 	SDL_RenderFillRect(sq->renderer, &rect);
 	fnt = TTF_OpenFont("Roboto-Regular.ttf", 18);
-	write_aut(sq, fnt, color);
-	show_cont_guide(sq, fnt, color);
-	show_cont_guide2(sq, fnt, color);
-	show_cont_guide3(sq, fnt, color);
-	show_cont_guide4(sq, fnt, color);
+	show_text_help(sq, fnt, color);
 	SDL_RenderPresent(sq->renderer);
 	SDL_RenderPresent(sq->renderer);
 	TTF_CloseFont(fnt);
@@ -49,7 +46,7 @@ int					init_sdl_sequence(t_sdl_sequence *sq)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (0);
 	sq->window = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,\
-	SDL_WINDOWPOS_UNDEFINED, W_W, 720, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, W_W, W_H, SDL_WINDOW_SHOWN);
 	sq->renderer = SDL_CreateRenderer(sq->window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(sq->renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(sq->renderer);
@@ -92,7 +89,6 @@ int					main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error(NULL);
-	validation(argv[1]);
 	scene = read_scene(argv[1]);
 	if (!init_sdl_sequence(&sq))
 		init_exit(&scene, sq);

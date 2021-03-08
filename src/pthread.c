@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pthread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:08:49 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/14 13:08:51 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/02/28 18:44:47 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-void	init_threads(t_p_data **data, pthread_t **threads, pthread_attr_t *attr)
-{
-	*data = NULL;
-	*threads = NULL;
-	*data = (t_p_data*)malloc(sizeof(t_p_data) * ((int)W_W));
-	*threads = (pthread_t*)malloc(sizeof(pthread_t) * ((int)W_W));
-	if (!(*data) || !(*threads))
-	{
-		if (*data)
-			free(*data);
-		if (*threads)
-			free(*threads);
-	}
-	pthread_attr_init(attr);
-}
 
 void	*thread_trace(void *input)
 {
@@ -40,7 +24,7 @@ void	*thread_trace(void *input)
 	while (row < W_H)
 	{
 		ray = get_ray(data->scene.camera, data->coll - W_W / 2, W_H / 2 - row);
-		colour = trace_ray(ray, data->scene);
+		colour = trace_ray(ray, data->scene, 0);
 		data->win_buff[data->coll * 4 + 0 + row * data->pitch] = colour.b;
 		data->win_buff[data->coll * 4 + 1 + row * data->pitch] = colour.g;
 		data->win_buff[data->coll * 4 + 2 + row * data->pitch] = colour.r;
@@ -50,7 +34,7 @@ void	*thread_trace(void *input)
 	pthread_exit(0);
 }
 
-void	collect_threads(pthread_t *threads, t_p_data *data)
+void	collect_threads(pthread_t *threads)
 {
 	int i;
 
@@ -60,6 +44,4 @@ void	collect_threads(pthread_t *threads, t_p_data *data)
 		pthread_join(threads[i], NULL);
 		i++;
 	}
-	free(data);
-	free(threads);
 }

@@ -30,6 +30,10 @@ void	camera_control(SDL_Event event, t_scene *scene)
 		scene->camera.y_dir = rotate(scene->camera.y_dir,\
 		scene->camera.z_dir, -2);
 	}
+	else if (event.key.keysym.scancode == SDL_SCANCODE_1)
+		scene->effect = 1;
+	else if (event.key.keysym.scancode == SDL_SCANCODE_0)
+		scene->effect = 0;
 }
 
 void	object_control(SDL_Event event, t_scene *scene, t_object *object)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: out-belov1-mv <out-belov1-mv@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/25 12:07:55 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 13:15:36 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/03/06 13:35:38 by out-belov1-       #+#    #+#             */
+/*   Updated: 2021/03/06 13:40:32 by out-belov1-      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,28 +99,18 @@ void		object_rotation(SDL_Event event, t_scene *s, t_object *object)
 void		object_shrink(SDL_Event event, t_object *object)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_I)
-	{
 		object->t.y_dir = lin_comb(object->t.y_dir, 1.1, init_p3(0, 0, 0), 0);
-	}
 	else if (event.key.keysym.scancode == SDL_SCANCODE_K)
-	{
-		object->t.y_dir = lin_comb(object->t.y_dir, 1 / 1.1,\
-		init_p3(0, 0, 0), 0);
-	}
+		object->t.y_dir = lin_comb(object->t.y_dir,\
+			1 / 1.1, init_p3(0, 0, 0), 0);
 	else if (event.key.keysym.scancode == SDL_SCANCODE_L)
-	{
 		object->t.x_dir = lin_comb(object->t.x_dir, 1.1, init_p3(0, 0, 0), 0);
-	}
 	else if (event.key.keysym.scancode == SDL_SCANCODE_J)
-	{
-		object->t.x_dir = lin_comb(object->t.x_dir, 1 / 1.1,\
-		init_p3(0, 0, 0), 0);
-	}
+		object->t.x_dir = lin_comb(object->t.x_dir,\
+			1 / 1.1, init_p3(0, 0, 0), 0);
 	else if (event.key.keysym.scancode == SDL_SCANCODE_O)
-	{
 		object->t.z_dir = lin_comb(object->t.z_dir, 1.1, init_p3(0, 0, 0), 0);
-	}
 	else if (event.key.keysym.scancode == SDL_SCANCODE_U)
-		object->t.z_dir = lin_comb(object->t.z_dir, 1 / 1.1,\
-		init_p3(0, 0, 0), 0);
+		object->t.z_dir = lin_comb(object->t.z_dir,\
+			1 / 1.1, init_p3(0, 0, 0), 0);
 }
