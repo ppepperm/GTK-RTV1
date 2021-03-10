@@ -6,13 +6,13 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:08:49 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:44:47 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 05:10:47 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	*thread_trace(void *input)
+void			*thread_trace(void *input)
 {
 	t_p_data	*data;
 	t_ray		ray;
@@ -34,9 +34,9 @@ void	*thread_trace(void *input)
 	pthread_exit(0);
 }
 
-void	collect_threads(pthread_t *threads)
+void			collect_threads(pthread_t *threads)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	while (i < W_W)
@@ -44,4 +44,14 @@ void	collect_threads(pthread_t *threads)
 		pthread_join(threads[i], NULL);
 		i++;
 	}
+}
+
+t_ray			reflect(t_ray ray, t_p3 norm, double root)
+{
+	t_ray		ret;
+
+	ret.pos = lin_comb(ray.pos, 1, ray.dir, root);
+	ret.dir = lin_comb(norm, -2 * sc_mult(norm, ray.dir), ray.dir, 1);
+	normalize(&(ret.dir));
+	return (ret);
 }

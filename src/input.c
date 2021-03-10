@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 15:49:08 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 19:53:20 by jabilbo          ###   ########.fr       */
+/*   Created: 2021/03/10 05:06:31 by jabilbo           #+#    #+#             */
+/*   Updated: 2021/03/10 05:19:02 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-#include <stdio.h>
 
 static void	remember_head(t_scene scene)
 {
@@ -32,22 +31,22 @@ static bool	chek_chek(char **str, char *xyz, int num)
 
 	i = 0;
 	tmp = ft_strstr(str[0], xyz);
-	if (tmp == NULL) {
-	    //printf("no name %s \n", xyz);
-        return (false);
-    }
+	if (tmp == NULL)
+		return (false);
 	while (i < num)
 	{
-		if (!str[i + 1]){
-            printf("malo\n");
-            return (false);
-        }
+		if (!str[i + 1])
+		{
+			printf("malo\n");
+			return (false);
+		}
 		i++;
 	}
-	if (str[i + 1]){
-        printf("mnogo\n");
-        return (false);
-    }
+	if (str[i + 1])
+	{
+		printf("mnogo\n");
+		return (false);
+	}
 	return (true);
 }
 
@@ -79,14 +78,12 @@ static int	chek_obj(char *str, t_scene *scene)
 
 static void	read_obj(int fd, t_scene *scene)
 {
-	int		error;
 	char	*str;
 	char	**nums;
 	char	*tmp;
 	int		i;
 	char	*tmp2;
 
-	error = 1;
 	i = 0;
 	tmp2 = NULL;
 	tmp = (char*)malloc(sizeof(char));
@@ -99,15 +96,23 @@ static void	read_obj(int fd, t_scene *scene)
 			free(tmp2);
 	}
 	nums = ft_strsplit(tmp, ';');
+	bespolezno(nums, scene);
+	free_nums(nums);
+	free(str);
+	if (!1)
+		read_malloc_exit(scene);
+}
+
+static void	bespolezno(char **nums, t_scene *scene)
+{
+	int		i;
+
+	i = 0;
 	while (nums[i] && nums[i + 1])
 	{
 		chek_obj(nums[i], scene);
 		i++;
 	}
-	free_nums(nums);
-	free(str);
-	if (!error)
-		read_malloc_exit(scene);
 }
 
 t_scene		read_scene(char *fname)

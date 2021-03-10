@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/22 20:09:59 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:52:42 by jabilbo          ###   ########.fr       */
+/*   Created: 2021/03/10 05:03:44 by jabilbo           #+#    #+#             */
+/*   Updated: 2021/03/10 05:04:57 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,6 @@ double			get_intersection(t_ray ray,
 	return (min(roots.x, roots.y));
 }
 
-t_ray			reflect(t_ray ray, t_p3 norm, double root)
-{
-	t_ray ret;
-
-	ret.pos = lin_comb(ray.pos, 1, ray.dir, root);
-	ret.dir = lin_comb(norm, -2 * sc_mult(norm, ray.dir), ray.dir, 1);
-	normalize(&(ret.dir));
-	return (ret);
-}
-
 t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 {
 	t_rgb		colour;
@@ -68,7 +58,6 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	t_object	*current;
 	t_rgb		reflected_colour;
 	t_ray		reflected;
-	t_rgb		ret;
 
 	root = get_intersection(ray, scene, &current, &colour);
 	if (!current)
@@ -83,6 +72,14 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 		return (colour);
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);
 	reflected_colour = trace_ray(reflected, scene, depth + 1);
+	return (color_rgb(colour, current, reflected_colour));
+}
+
+static t_rgb	color_rgb(t_rgb colour, t_object *current,\
+	t_rgb reflected_colour)
+{
+	t_rgb		ret;
+
 	ret.r = colour.r * (1 - current->mirror) +\
 		reflected_colour.r * current->mirror;
 	ret.g = colour.g * (1 - current->mirror) +\

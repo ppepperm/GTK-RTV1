@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:57:58 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/03/10 03:47:05 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 05:14:47 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,4 +155,3 @@ int				push_hyperboloid(t_scene *scene, char **nums)
 	scene->objects = object;
 	return (1);
 }
-// printf("%f %f %f\n", object->pos.x, object->pos.y, object->pos.z);
