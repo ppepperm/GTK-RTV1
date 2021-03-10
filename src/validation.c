@@ -6,47 +6,11 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 16:13:07 by ahusk             #+#    #+#             */
-/*   Updated: 2021/02/28 18:49:30 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 03:54:21 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-static int		ft_kost(int mult)
-{
-	if (mult < 0)
-		return (0);
-	return (-1);
-}
-
-int				ft_atoip(const char *str)
-{
-	long long	mult;
-	long long	nb;
-
-	mult = 1;
-	nb = 0;
-	while ((*str == ' ') || (*str == '\t') || (*str == '\v') || (*str == '\f')\
-			|| (*str == '\r') || (*str == '\n') || (((*str < '0') || (*str > '9')) && (*str != '-')))
-		str++;
-	if (*str == '-')
-	{
-		str++;
-		mult = -1;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str != '\0')
-	{
-		if ((*str < '0') || (*str > '9'))
-			return (nb * mult);
-		if (nb > nb * 10 + (*str - '0') && nb != 214748364)
-			return (ft_kost(mult));
-		nb = nb * 10 + (*str - '0');
-		str++;
-	}
-	return ((int)(nb * mult));
-}
 
 void			check_name(char *l, int *i, char *name)
 {
