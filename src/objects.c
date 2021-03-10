@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:57:58 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:40:32 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 03:47:05 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,18 +131,17 @@ int				push_hyperboloid(t_scene *scene, char **nums)
 {
 	t_object	*object;
 
-    if (!(object = (t_object*)malloc(sizeof(t_object))))
-        return (0);
-    object->type = T_HYPERBOLOID;
-    if (!(object->data = return_hyperboloid(nums)))
-    {
-        free(object);
-        return (0);
-    }
-    object->pos = init_p3(ft_atoip(nums[0]),\
+	if (!(object = (t_object*)malloc(sizeof(t_object))))
+		return (0);
+	object->type = T_HYPERBOLOID;
+	if (!(object->data = return_hyperboloid(nums)))
+	{
+		free(object);
+		return (0);
+	}
+	object->pos = init_p3(ft_atoip(nums[0]),\
 	ft_atoi(nums[1]), ft_atoi(nums[2]));
-    printf("%f %f %f\n", object->pos.x,object->pos.y,object->pos.z);
-    object->t = init_transform(init_p3(1, 0, 0),\
+	object->t = init_transform(init_p3(1, 0, 0),\
 	init_p3(0, 1, 0), init_p3(0, 0, 1));
 	object->i_t = i_transform(object->t);
 	object->colour = init_rgb(ft_atoip(nums[5]),\
@@ -156,3 +155,4 @@ int				push_hyperboloid(t_scene *scene, char **nums)
 	scene->objects = object;
 	return (1);
 }
+// printf("%f %f %f\n", object->pos.x, object->pos.y, object->pos.z);
