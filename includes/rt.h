@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:41:18 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/08 17:07:32 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/10 15:48:08 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,8 +300,9 @@ void				show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 void				show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void				destroy_n_free(SDL_Surface *surf[2], SDL_Texture *text[2]);
+void				destroy_n_free(SDL_Surface *surf, SDL_Texture *text);
 void				show_text_help(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
+t_ray				reflect(t_ray ray, t_p3 norm, double root);
 
 #endif

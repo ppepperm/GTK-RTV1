@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 00:26:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/03/08 00:58:05 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/10 16:37:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void			write_aut(t_sdl_sequence *sq, TTF_Font *fnt, SDL_Color color)
 	text[1] = SDL_CreateTextureFromSurface(sq->renderer, surf[1]);
 	SDL_QueryTexture(text[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text[1], NULL, &rect[1]);
-	destroy_n_free(text, surf);
+	SDL_DestroyTexture(text[0]);
+	SDL_FreeSurface(surf[0]);
+	SDL_DestroyTexture(text[1]);
+	SDL_FreeSurface(surf[1]);
 }
 
 void			show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
@@ -62,7 +65,10 @@ void			show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
 	text2[1] = SDL_CreateTextureFromSurface(sq->renderer, surf2[1]);
 	SDL_QueryTexture(text2[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text2[1], NULL, &rect[1]);
-	destroy_n_free(text2, surf2);
+	SDL_DestroyTexture(text2[0]);
+	SDL_FreeSurface(surf2[0]);
+	SDL_DestroyTexture(text2[1]);
+	SDL_FreeSurface(surf2[1]);
 }
 
 void			show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
@@ -88,7 +94,10 @@ void			show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
 	text3[1] = SDL_CreateTextureFromSurface(sq->renderer, surf3[1]);
 	SDL_QueryTexture(text3[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text3[1], NULL, &rect[1]);
-	destroy_n_free(text3, surf3);
+	SDL_DestroyTexture(text3[0]);
+	SDL_FreeSurface(surf3[0]);
+	SDL_DestroyTexture(text3[1]);
+	SDL_FreeSurface(surf3[1]);
 }
 
 void			show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
@@ -116,7 +125,10 @@ void			show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
 	text3[1] = SDL_CreateTextureFromSurface(sq->renderer, surf3[1]);
 	SDL_QueryTexture(text3[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text3[1], NULL, &rect[1]);
-	destroy_n_free(text3, surf3);
+	SDL_DestroyTexture(text3[0]);
+	SDL_FreeSurface(surf3[0]);
+	SDL_DestroyTexture(text3[1]);
+	SDL_FreeSurface(surf3[1]);
 }
 
 void			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
@@ -144,5 +156,8 @@ void			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
 	text[1] = SDL_CreateTextureFromSurface(sq->renderer, surf[1]);
 	SDL_QueryTexture(text[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text[1], NULL, &rect[1]);
-	destroy_n_free(text, surf);
+	SDL_DestroyTexture(text[0]);
+	SDL_FreeSurface(surf[0]);
+	SDL_DestroyTexture(text[1]);
+	SDL_FreeSurface(surf[1]);
 }

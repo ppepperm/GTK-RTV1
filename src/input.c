@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:06:31 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/10 05:19:02 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 15:50:07 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,18 @@ static int	chek_obj(char *str, t_scene *scene)
 	return (error);
 }
 
+static void	bespolezno(char **nums, t_scene *scene)
+{
+	int		i;
+
+	i = 0;
+	while (nums[i] && nums[i + 1])
+	{
+		chek_obj(nums[i], scene);
+		i++;
+	}
+}
+
 static void	read_obj(int fd, t_scene *scene)
 {
 	char	*str;
@@ -101,18 +113,6 @@ static void	read_obj(int fd, t_scene *scene)
 	free(str);
 	if (!1)
 		read_malloc_exit(scene);
-}
-
-static void	bespolezno(char **nums, t_scene *scene)
-{
-	int		i;
-
-	i = 0;
-	while (nums[i] && nums[i + 1])
-	{
-		chek_obj(nums[i], scene);
-		i++;
-	}
 }
 
 t_scene		read_scene(char *fname)

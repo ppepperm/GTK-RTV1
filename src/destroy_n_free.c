@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_n_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:03:24 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/10 05:03:26 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 16:02:51 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-void	destroy_n_free(SDL_Surface *surf[2], SDL_Texture *text[2])
+/*
+void	destroy_n_free(SDL_Surface surf, SDL_Texture text)
 {
-	SDL_DestroyTexture(text[0]);
-	SDL_FreeSurface(surf[0]);
-	SDL_DestroyTexture(text[1]);
-	SDL_FreeSurface(surf[1]);
+	SDL_DestroyTexture(text);
+	SDL_FreeSurface(surf);
 }
-
+*/
 void	show_text_help(t_sdl_sequence *sq, TTF_Font *fnt, SDL_Color color)
 {
 	write_aut(sq, fnt, color);

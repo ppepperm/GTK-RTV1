@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:03:44 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/10 05:04:57 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 15:48:02 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,21 @@ double			get_intersection(t_ray ray,
 	return (min(roots.x, roots.y));
 }
 
+static t_rgb	color_rgb(t_rgb colour, t_object *current,\
+	t_rgb reflected_colour)
+{
+	t_rgb		ret;
+
+	ret.r = colour.r * (1 - current->mirror) +\
+		reflected_colour.r * current->mirror;
+	ret.g = colour.g * (1 - current->mirror) +\
+		reflected_colour.g * current->mirror;
+	ret.b = colour.b * (1 - current->mirror) +\
+		reflected_colour.b * current->mirror;
+	ret.a = 255;
+	return (ret);
+}
+
 t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 {
 	t_rgb		colour;
@@ -73,21 +88,6 @@ t_rgb			trace_ray(t_ray ray, t_scene scene, int depth)
 	reflected = reflect(ray, current->norm_funk(*current, ray, root), root);
 	reflected_colour = trace_ray(reflected, scene, depth + 1);
 	return (color_rgb(colour, current, reflected_colour));
-}
-
-static t_rgb	color_rgb(t_rgb colour, t_object *current,\
-	t_rgb reflected_colour)
-{
-	t_rgb		ret;
-
-	ret.r = colour.r * (1 - current->mirror) +\
-		reflected_colour.r * current->mirror;
-	ret.g = colour.g * (1 - current->mirror) +\
-		reflected_colour.g * current->mirror;
-	ret.b = colour.b * (1 - current->mirror) +\
-		reflected_colour.b * current->mirror;
-	ret.a = 255;
-	return (ret);
 }
 
 int				draw_scene(t_scene scene, unsigned char *win_buff, int pitch)
