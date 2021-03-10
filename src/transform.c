@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:36:09 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/10 03:52:51 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 04:03:57 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,12 @@ t_ray			ray_transform(t_ray ray, t_transform t, t_p3 pos)
 	new_ray.pos = transform_pos(ray.pos, t, pos);
 	new_ray.dir = transform_dir(ray.dir, t);
 	return (new_ray);
+}
+
+void			ft_error(char *l)
+{
+	if (l)
+		free(l);
+	write(1, "invalid file\n", 13);
+	exit(EXIT_FAILURE);
 }

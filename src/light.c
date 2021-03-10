@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:01:07 by ppepperm          #+#    #+#             */
-/*   Updated: 2020/07/23 13:02:33 by ppepperm         ###   ########.fr       */
+/*   Updated: 2021/03/10 04:02:33 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ double		cone_light(t_light *lights, t_object object, t_ray ray, double root)
 	arg.inter = inter;
 	return (get_light(object.head, lights, arg, ray));
 }
-
