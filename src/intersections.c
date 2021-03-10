@@ -6,17 +6,17 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:49:52 by ppepperm          #+#    #+#             */
-/*   Updated: 2021/02/28 18:46:49 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/10 03:51:29 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_p2			intersect_sphere(t_ray ray, t_object object)
+t_p2				intersect_sphere(t_ray ray, t_object object)
 {
-	t_p3		k;
-	t_sphere	*sphere;
-	double		d;
+	t_p3			k;
+	t_sphere		*sphere;
+	double			d;
 
 	sphere = (t_sphere*)object.data;
 	ray = ray_transform(ray, object.i_t, object.pos);
@@ -31,11 +31,11 @@ t_p2			intersect_sphere(t_ray ray, t_object object)
 		return (init_p2(-1, -1));
 }
 
-t_p2			intersect_plane(t_ray ray, t_object object)
+t_p2				intersect_plane(t_ray ray, t_object object)
 {
-	t_plane		*plane;
-	double		den;
-	double		num;
+	t_plane			*plane;
+	double			den;
+	double			num;
 
 	plane = (t_plane*)object.data;
 	ray = ray_transform(ray, object.i_t, object.pos);
@@ -46,12 +46,12 @@ t_p2			intersect_plane(t_ray ray, t_object object)
 	return (init_p2(num / den, num / den));
 }
 
-t_p2			intersect_cone(t_ray ray, t_object object)
+t_p2				intersect_cone(t_ray ray, t_object object)
 {
-	t_cone		*cone;
-	t_p3		k;
-	double		c;
-	double		d;
+	t_cone			*cone;
+	t_p3			k;
+	double			c;
+	double			d;
 
 	cone = (t_cone*)object.data;
 	ray = ray_transform(ray, object.i_t, object.pos);
@@ -70,11 +70,11 @@ t_p2			intersect_cone(t_ray ray, t_object object)
 		return (init_p2(-1, -1));
 }
 
-t_p2			intersect_cylinder(t_ray ray, t_object object)
+t_p2				intersect_cylinder(t_ray ray, t_object object)
 {
-	t_cylinder	*cylinder;
-	t_p3		k;
-	double		d;
+	t_cylinder		*cylinder;
+	t_p3			k;
+	double			d;
 
 	cylinder = (t_cylinder*)object.data;
 	ray = ray_transform(ray, object.i_t, object.pos);
@@ -90,7 +90,7 @@ t_p2			intersect_cylinder(t_ray ray, t_object object)
 		return (init_p2(-1, -1));
 }
 
-t_p2				intersect_hyperboloid(t_ray ray, t_object  object)
+t_p2				intersect_hyperboloid(t_ray ray, t_object object)
 {
 	t_hyperboloid	*hyperboloid;
 	t_p3			k;
@@ -105,7 +105,8 @@ t_p2				intersect_hyperboloid(t_ray ray, t_object  object)
 	k.y = 2 * (ray.dir.x * ray.pos.x\
 	+ ray.dir.z * ray.pos.z - ray.dir.y * ray.pos.y * c * c);
 	k.z = (ray.pos.x * ray.pos.x\
-	+ ray.pos.z * ray.pos.z - ray.pos.y * ray.pos.y * c * c - hyperboloid->r*hyperboloid->r);
+	+ ray.pos.z * ray.pos.z - ray.pos.y * ray.pos.y\
+	* c * c - hyperboloid->r * hyperboloid->r);
 	d = k.y * k.y - 4 * k.x * k.z;
 	if (d >= 0)
 		return (init_p2((-k.y - sqrt(d))\
