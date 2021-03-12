@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:41:18 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/10 15:48:08 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/12 23:40:04 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdbool.h>
 
 # define W_H		    600.0
-# define W_W		    1080.0
+# define W_W		    1280.0
 # define C_Z		    1.0
 # define T_SPHERE	    1
 # define T_PLANE	    2
@@ -292,6 +292,8 @@ t_rgb				checkers(t_object *current, double root, t_ray ray);
 void				show_help_panel(t_sdl_sequence *sq);
 void				write_aut(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
+void				write_aut2(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
 void				show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 void				show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
@@ -299,6 +301,10 @@ void				show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
 void				show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 void				show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void				show_cont_guide5(t_sdl_sequence *sq, TTF_Font *fnt,\
+						SDL_Color color);
+void				show_cont_guide6(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 void				destroy_n_free(SDL_Surface *surf, SDL_Texture *text);
 void				show_text_help(t_sdl_sequence *sq, TTF_Font *fnt,\

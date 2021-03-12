@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:35:59 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/10 04:07:06 by jabilbo          ###   ########.fr       */
+/*   Updated: 2021/03/11 17:50:10 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void				show_help_panel(t_sdl_sequence *sq)
 	rect.x = 0;
 	rect.y = W_H - 120;
 	rect.w = (W_W);
-	rect.h = W_H;
+	rect.h = W_H - rect.y;
 	color.a = 255;
 	color.r = 255;
 	color.g = 255;
