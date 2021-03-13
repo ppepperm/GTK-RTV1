@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ulltoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: out-belov1-mv <out-belov1-mv@student.42    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 19:16:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/03/06 13:58:08 by out-belov1-      ###   ########.fr       */
+/*   Created: 2021/03/13 18:21:59 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/03/13 18:23:16 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char					*ft_ulltoa_base(unsigned long long dgt, int base)
 	char				*retn;
 
 	i = 0;
-	// if (base < 2 && base > 16)
-	// 	return (NULL);
 	if (!dgt)
 		return (ft_strdup("0"));
 	temp = dgt;
