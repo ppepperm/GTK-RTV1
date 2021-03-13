@@ -6,23 +6,11 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:06:31 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/10 15:50:07 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 17:54:17 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-static void	remember_head(t_scene scene)
-{
-	t_object *head;
-
-	head = scene.objects;
-	while (scene.objects)
-	{
-		scene.objects->head = head;
-		scene.objects = scene.objects->next;
-	}
-}
 
 static bool	chek_chek(char **str, char *xyz, int num)
 {

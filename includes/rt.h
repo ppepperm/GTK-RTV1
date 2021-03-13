@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:41:18 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/13 16:46:28 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 17:54:55 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,7 @@ t_p3				transform_dir(t_p3 dir, t_transform t);
 t_ray				ray_transform(t_ray ray, t_transform t, t_p3 pos);
 
 t_object			*return_chosen(t_scene scene, double x, double y);
-
+void				remember_head(t_scene scene);
 void				camera_movement(SDL_Event event, t_scene *s);
 void				camera_rotation(SDL_Event event, t_scene *s);
 void				object_movement(SDL_Event event,

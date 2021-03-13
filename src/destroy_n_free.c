@@ -6,11 +6,23 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:03:24 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/13 14:46:02 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 17:54:23 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+void	remember_head(t_scene scene)
+{
+	t_object *head;
+
+	head = scene.objects;
+	while (scene.objects)
+	{
+		scene.objects->head = head;
+		scene.objects = scene.objects->next;
+	}
+}
 
 void	show_text_help(t_sdl_sequence *sq, TTF_Font *fnt, SDL_Color color)
 {
