@@ -6,18 +6,12 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 05:03:24 by jabilbo           #+#    #+#             */
-/*   Updated: 2021/03/12 23:12:11 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 14:46:02 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-/*
-void	destroy_n_free(SDL_Surface surf, SDL_Texture text)
-{
-	SDL_DestroyTexture(text);
-	SDL_FreeSurface(surf);
-}
-*/
+
 void	show_text_help(t_sdl_sequence *sq, TTF_Font *fnt, SDL_Color color)
 {
 	write_aut(sq, fnt, color);

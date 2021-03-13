@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 13:41:18 by out-belov1-       #+#    #+#             */
-/*   Updated: 2021/03/12 23:40:04 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 16:46:28 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 
-# define W_H		    600.0
+# define W_H		    720.0
 # define W_W		    1280.0
 # define C_Z		    1.0
 # define T_SPHERE	    1
@@ -306,7 +306,6 @@ void				show_cont_guide5(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 void				show_cont_guide6(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
-void				destroy_n_free(SDL_Surface *surf, SDL_Texture *text);
 void				show_text_help(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color);
 t_ray				reflect(t_ray ray, t_p3 norm, double root);

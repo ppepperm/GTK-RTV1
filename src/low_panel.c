@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 00:26:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/03/12 23:39:25 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/03/13 14:42:19 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
 	SDL_DestroyTexture(text);
 	SDL_FreeSurface(surf);
 }
+
 void			show_cont_guide5(t_sdl_sequence *sq, TTF_Font *fnt,\
 						SDL_Color color)
 {
