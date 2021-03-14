@@ -72,35 +72,8 @@ plane:
   position: 0, 0, 1,
   dir: 500,
   color: 85, 22, 150,
-  mirror: 10,
+  mirror: 0,
   10;
-dot_source:
-  position: 0, 4, 80,
-  intensity: 80;
-dot_source:
-  position: -10, 0, 80,
-  intensity: 60;
-dot_source:
-  position: 10, 0, 80,
-  intensity: 70;
-dot_source:
-  position: 0, 0, 60,
-  intensity: 30;
-dot_source:
-  position: 0, 0, 100,
-  intensity: 20;
-dot_source:
-  position: -15, -50, 80,
-  intensity: 50;
-dot_source:
-  position: 15, -50, 80,
-  intensity: 50;
-dot_source:
-  position: 0, -50, 65,
-  intensity: 50;
-dot_source:
-  position: 0, -20, 60,
-  intensity: 60;
 dir_source:
-  position 0, 0, 0,
-  intensity: 90;
+  position: 1, -1, 0,
+  intensity: 8;
