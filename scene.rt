@@ -41,8 +41,8 @@ plane:
   mirror: 10000000,
   10;
 dot_source:
-  position: 80, 20, -40,
-  intensity: 10;
-dot_source:
-  position -80, 20, -40,
+  position: 50, 1, -40,
+  intensity: 5;
+dir_source:
+  position: -1, -1, 0,
   intensity: 5;

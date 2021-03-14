@@ -63,7 +63,7 @@ obj:
 $(NAME): libft/libft.a $(OBJ) $(HDR)
 	$(COMP)
 	@printf " \033[1;37m▆\\033[1;33m▆\\033[1;36m▆\\033[1;32m▆\\033[1;35m▆\\033[1;31m▆\\033[1;34m▆\\033[1;30m▆\033[0m"
-	@printf "\\033[32m\nCompailing of RT project has done\033[0m\n"
+	@printf "\\033[32m\nCompiling of RT project has done\033[0m\n"
 	@printf " \033[1;37m▆\\033[1;33m▆\\033[1;36m▆\\033[1;32m▆\\033[1;35m▆\\033[1;31m▆\\033[1;34m▆\\033[1;30m▆\033[0m\n"
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR)

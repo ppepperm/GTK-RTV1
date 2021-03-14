@@ -70,7 +70,7 @@ static void	bespolezno(char **nums, t_scene *scene)
 	int		i;
 
 	i = 0;
-	while (nums[i] && nums[i + 1])
+	while (nums[i])
 	{
 		chek_obj(nums[i], scene);
 		i++;
@@ -82,10 +82,8 @@ static void	read_obj(int fd, t_scene *scene)
 	char	*str;
 	char	**nums;
 	char	*tmp;
-	int		i;
 	char	*tmp2;
 
-	i = 0;
 	tmp2 = NULL;
 	tmp = (char*)malloc(sizeof(char));
 	*tmp = ';';
@@ -102,8 +100,6 @@ static void	read_obj(int fd, t_scene *scene)
 	bespolezno(nums, scene);
 	free_nums(nums);
 	free(tmp);
-	if (!1)
-		read_malloc_exit(scene);
 }
 
 t_scene		read_scene(char *fname)

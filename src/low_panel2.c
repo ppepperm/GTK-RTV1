@@ -61,8 +61,8 @@ void			show_cont_guide6(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect.y = W_H - 30;
 	rect.w = W_W;
 	rect.h = W_H;
-	surf = TTF_RenderText_Solid(fnt, "J/I/K/L - change chosen shape's size",\
-		color);
+	surf = TTF_RenderText_Solid(fnt,\
+	"J/I/K/L/O/U - change chosen shape's size", color);
 	text = SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_RenderCopy(sq->renderer, text, NULL, &rect);

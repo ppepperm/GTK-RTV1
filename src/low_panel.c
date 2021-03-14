@@ -82,7 +82,7 @@ void			show_cont_guide3(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect.w = W_W;
 	rect.h = W_H;
 	surf3 = TTF_RenderText_Solid(fnt, \
-		"Q/E - tilt the camera or the shape", color);
+		"fwd/bwd/rght/lft/Q/E tilt camera/shape", color);
 	text3 = SDL_CreateTextureFromSurface(sq->renderer, surf3);
 	SDL_QueryTexture(text3, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_RenderCopy(sq->renderer, text3, NULL, &rect);
@@ -101,8 +101,8 @@ void			show_cont_guide4(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect.y = W_H - 30;
 	rect.w = W_W;
 	rect.h = W_H;
-	surf = TTF_RenderText_Solid(fnt, "A/S/D/W - move the clicked shape",\
-		color);
+	surf = TTF_RenderText_Solid(fnt,\
+	"A/S/D/W/lShift/lCtrl - move camera/shape", color);
 	text = SDL_CreateTextureFromSurface(sq->renderer, surf);
 	SDL_QueryTexture(text, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_RenderCopy(sq->renderer, text, NULL, &rect);
@@ -122,7 +122,7 @@ void			show_cont_guide5(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect.w = W_W - rect.x;
 	rect.h = W_H;
 	surf3 = TTF_RenderText_Solid(fnt,\
-		"Left or right mouse button - click on the shape", color);
+		"Left or right mouse button - choose shape", color);
 	text3 = SDL_CreateTextureFromSurface(sq->renderer, surf3);
 	SDL_QueryTexture(text3, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_RenderCopy(sq->renderer, text3, NULL, &rect);
