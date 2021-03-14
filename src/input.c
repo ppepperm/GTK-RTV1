@@ -108,6 +108,8 @@ t_scene		read_scene(char *fname)
 	int		fd;
 
 	fd = open(fname, O_RDWR);
+	if (fd < 0)
+		exit(0);
 	scene.camera = init_camera(init_p3(0, 0, 0),\
 	init_p3(1, 0, 0), init_p3(0, 1, 0), init_p3(0, 0, 1));
 	scene.objects = NULL;
