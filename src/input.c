@@ -61,6 +61,7 @@ static int	chek_obj(char *str, t_scene *scene)
 		error &= push_dir(scene, nums);
 	if (!error)
 		read_malloc_exit(scene);
+	free_nums(nums);
 	return (error);
 }
 
@@ -94,11 +95,13 @@ static void	read_obj(int fd, t_scene *scene)
 		tmp = ft_strjoin(tmp, str);
 		if (tmp2)
 			free(tmp2);
+		if (str)
+			free(str);
 	}
 	nums = ft_strsplit(tmp, ';');
 	bespolezno(nums, scene);
 	free_nums(nums);
-	free(str);
+	free(tmp);
 	if (!1)
 		read_malloc_exit(scene);
 }
