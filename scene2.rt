@@ -1,0 +1,106 @@
+sphere:
+  position: 40, 27, 80,
+  radius: 2,
+  color: 0, 0, 255,
+  reflect: 10,
+  mirror: 0,
+  10;
+sphere:
+  position: -40, 47 , 80,
+  radius: 3,
+  color: 15, 76, 129,
+  reflect: 20,
+  mirror: 0,
+  10;
+sphere:
+  position: -25, 30, 80,
+  radius: 7,
+  color: 200, 200, 0,
+  reflect: 10,
+  mirror: 0,
+  10;
+sphere:
+  position: -25, 30, 80,
+  radius: 8,
+  color: 135, 206, 235,
+  reflect: 10,
+  mirror: 0,
+  10;
+sphere:
+  position: 20, 36, 80,
+  radius: 8,
+  color: 255, 100, 0,
+  reflect: 20,
+  mirror: 0,
+  10;
+sphere:
+  position: 20, 15, 80,
+  radius: 2,
+  color: 255, 100, 0,
+  reflect: 10,
+  mirror: 0,
+  10;
+sphere:
+  position: 0, 18, 80,
+  radius: 3,
+  color: 0, 180, 255,
+  reflect: 20,
+  mirror: 0,
+  10;
+sphere:
+  position: -10, 10, 80,
+  radius: 2,
+  color: 255, 100, 0,
+  reflect: 10,
+  mirror: 0,
+  10;
+sphere:
+  position: 15, 5, 80,
+  radius: 1,
+  color: 255, 200, 200,
+  reflect: 20,
+  mirror: 0,
+  10;
+sphere:
+  position: 0, -20, 80,
+  radius: 20,
+  color: 212, 175, 55,
+  reflect: 20,
+  mirror: 10,
+  10;
+plane:
+  position: 0, 0, 1,
+  dir: 500,
+  color: 85, 22, 150,
+  mirror: 10,
+  10;
+dot_source:
+  position: 0, 4, 80,
+  intensity: 80;
+dot_source:
+  position: -10, 0, 80,
+  intensity: 60;
+dot_source:
+  position: 10, 0, 80,
+  intensity: 70;
+dot_source:
+  position: 0, 0, 60,
+  intensity: 30;
+dot_source:
+  position: 0, 0, 100,
+  intensity: 20;
+dot_source:
+  position: -15, -50, 80,
+  intensity: 50;
+dot_source:
+  position: 15, -50, 80,
+  intensity: 50;
+dot_source:
+  position: 0, -50, 65,
+  intensity: 50;
+dot_source:
+  position: 0, -20, 60,
+  intensity: 60;
+dir_source:
+  position 0, 0, 0,
+  intensity: 90;
