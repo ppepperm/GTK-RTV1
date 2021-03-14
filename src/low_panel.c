@@ -27,7 +27,7 @@ void			show_cont_guide(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect[1].y = rect[0].y + 30;
 	rect[1].w = W_W - rect[0].x;
 	rect[1].h = rect[0].h;
-	surf2[0] = TTF_RenderText_Solid(fnt, "Arrows - moving the camera", color);
+	surf2[0] = TTF_RenderText_Solid(fnt, "Controls:", color);
 	text2[0] = SDL_CreateTextureFromSurface(sq->renderer, surf2[0]);
 	SDL_QueryTexture(text2[0], NULL, NULL, &(rect[0].w), &(rect[0].h));
 	SDL_RenderCopy(sq->renderer, text2[0], NULL, &rect[0]);
@@ -56,11 +56,11 @@ void			show_cont_guide2(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect[1].y = rect[0].y + 30;
 	rect[1].w = W_W - rect[0].x;
 	rect[1].h = rect[0].h;
-	surf3[0] = TTF_RenderText_Solid(fnt, "W - zoom in", color);
+	surf3[0] = TTF_RenderText_Solid(fnt, "1 - checkers on", color);
 	text3[0] = SDL_CreateTextureFromSurface(sq->renderer, surf3[0]);
 	SDL_QueryTexture(text3[0], NULL, NULL, &(rect[0].w), &(rect[0].h));
 	SDL_RenderCopy(sq->renderer, text3[0], NULL, &rect[0]);
-	surf3[1] = TTF_RenderText_Solid(fnt, "S - zoom out", color);
+	surf3[1] = TTF_RenderText_Solid(fnt, "0 - checkers off", color);
 	text3[1] = SDL_CreateTextureFromSurface(sq->renderer, surf3[1]);
 	SDL_QueryTexture(text3[1], NULL, NULL, &(rect[1].w), &(rect[1].h));
 	SDL_RenderCopy(sq->renderer, text3[1], NULL, &rect[1]);
@@ -122,7 +122,7 @@ void			show_cont_guide5(t_sdl_sequence *sq, TTF_Font *fnt,\
 	rect.w = W_W - rect.x;
 	rect.h = W_H;
 	surf3 = TTF_RenderText_Solid(fnt,\
-		"Left or right mouse button - choose shape", color);
+		"LMB/F - choose/un_choose shape", color);
 	text3 = SDL_CreateTextureFromSurface(sq->renderer, surf3);
 	SDL_QueryTexture(text3, NULL, NULL, &(rect.w), &(rect.h));
 	SDL_RenderCopy(sq->renderer, text3, NULL, &rect);
